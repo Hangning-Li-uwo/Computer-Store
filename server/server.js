@@ -38,9 +38,9 @@ app.post("/api/setUserProfile", async (req, res) => {
   const userDocRef = doc(firestore, 'Profiles', uid);
   const userInfo = await getDoc(userDocRef);
   console.log("role: ",userInfo.data());
-  if(userInfo.exists && (userInfo.data().role == 'user' || userInfo.data().role == 'admin')){
+  if (userInfo.exists() && userInfo.data() && (userInfo.data().role === 'user' || userInfo.data().role === 'admin')) {
     res.status(200).send({ message: "Profile retrieved!" });
-  }else{
+  } else{
     try {
       // Save user data to Firestore
       await setDoc(doc(firestore, "Profiles", uid), {
