@@ -1,7 +1,7 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
-const { getFirestore, doc, setDoc, updateDoc } = require("firebase/firestore");
+const { getFirestore, doc, getDoc, setDoc, updateDoc } = require("firebase/firestore");
 const { initializeApp } = require("firebase/app");
 
 const firebaseConfig = {
@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json());
 
 app.use((req, res, next) => {
   res.removeHeader("Cross-Origin-Opener-Policy");
@@ -36,8 +36,9 @@ app.post("/api/setUserProfile", async (req, res) => {
   const { uid, firstName, lastName, email, photoURL } = req.body;
 
   const userDocRef = doc(firestore, 'Profiles', uid);
-  if(userDocRef !== null){
-    // console.log(userDocRef);
+  const userInfo = await getDoc(userDocRef);
+  console.log("role: ",userInfo.data());
+  if(userInfo.exists && (userInfo.data().role == 'user' || userInfo.data().role == 'admin')){
     res.status(200).send({ message: "Profile retrieved!" });
   }else{
     try {
@@ -61,8 +62,6 @@ app.post("/api/setUserProfile", async (req, res) => {
 // Endpoint to assign role
 app.post('/api/assignRole', async (req, res) => {
   const { uid, role } = req.body;
-  console.log(uid)
-  console.log(role)
   if (!uid && !role) {
     return res.status(400).send({ message: 'no user info' });
   }
