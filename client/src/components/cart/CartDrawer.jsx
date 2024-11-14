@@ -3,7 +3,13 @@ import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { blueGrey } from "@mui/material/colors";
 import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
+import { Typography } from "@mui/material";
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeCartItem, setCartItem } from "../../state";
 
@@ -25,9 +31,9 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
   const dispatch = useDispatch();
 
-  const deleteItinerary = (index) => {
+  const deleteItem = (index) => {
     // Dispatch an action to remove the card by index
-    dispatch(removeCartItem(index))
+    dispatch(removeCartItem(index));
   };
 
   const list = (
@@ -50,31 +56,29 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
         Cart
       </h3>
 
-      {/* {travelCards && travelCards.length > 0 && (
-        <>
-          <List>
-            {travelCards.map((itinerary, index) => (
-              <div style={{ marginTop: "20px" }}>
-                <ItineraryCard
-                  key={index}
-                  index={index}
-                  itineraryData={itinerary} // Pass the individual itinerary array
-                  onClick={(event) => event.stopPropagation()} // Stop click events from propagating
-                  onDelete={() => deleteItinerary(index)} // Pass the index if you want to enable deleting
-                />
-              </div>
-            ))}
-          </List>
-          <Divider />
-        </>
+      {items.length > 0 ? (
+        <List>
+          {items.map((item, index) => (
+            <ListItem
+              key={index}
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <ListItemText primary={item.title} secondary={item.description} />
+              <IconButton
+                onClick={() => deleteItem(index)}
+                edge="end"
+                aria-label="delete"
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
+          ))}
+        </List>
+      ) : (
+        <Typography variant="h6" color="text.secondary" sx={{ marginTop: 4 }}>
+          Cart is empty
+        </Typography>
       )}
-      {
-        !travelCards || travelCards.length == 0 && (
-            <h2 style={{color: "grey"}}>
-                Not Available
-            </h2>
-        )
-      } */}
     </Box>
   );
 

@@ -10,12 +10,27 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Features from "./Features";
 import ITEM_LIST from "./ItemList";
+import { useDispatch } from "react-redux";
+import { setCartItem } from "../../state";
+import { toast } from "sonner";
+import { green } from "@mui/material/colors";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
 
 // TODO
 export default function ComputerLists() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const dispatch = useDispatch();
+
+  const addToCart = (item) => {
+    toast(`${item.name} added to the cart`, {
+      icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+    });
+    dispatch(setCartItem(item));
+  };
 
   return (
     <Grid
@@ -55,7 +70,12 @@ export default function ComputerLists() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" onClick={() => alert("Add")}>
+              <Button
+                size="small"
+                onClick={() => {
+                  addToCart(item);
+                }}
+              >
                 Add
               </Button>
               <Button size="small" onClick={handleOpen}>
@@ -76,7 +96,7 @@ export default function ComputerLists() {
                     boxShadow: 24,
                     backgroundColor: "#f9f9f9",
                     padding: 4,
-                    borderRadius: 2
+                    borderRadius: 2,
                   }}
                 >
                   <Features />
