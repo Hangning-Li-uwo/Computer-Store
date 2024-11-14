@@ -56,7 +56,6 @@ function Search({query, setQuery}) {
 
   const handleSearchSubmit = () => {
     setQuery(input);
-    console.log("Search triggered with query:", input);
   };
 
   const handleSearchChange = (event) => {
@@ -124,14 +123,16 @@ function Dashboard(props) {
   // Update filtered items
   React.useEffect(() => {
     // convert all texts into lower cases
+    console.log("query: ", query);
     const results = ITEM_LIST.filter((item) =>
       item.name.toLowerCase().includes(query.toLowerCase()) ||
       item.manufacturer.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredItems(results);
-    console.log("results: " + results.name)
-  }, [query]);
 
+    console.log(filteredItems[0].name);
+  }, [query]);
+  
   React.useEffect(() => {
     // console.log(currentUser.role);
   }, [currentUser]);
@@ -176,6 +177,7 @@ function Dashboard(props) {
             <AccountMenu {...props} setOpenCartDrawer={setOpenCartDrawer} />
           ),
         }}
+        
       >
         {router.pathname == "/dashboard" && <Index filteredItems={filteredItems}/>}
         {router.pathname == "/stock" && <Stock />}

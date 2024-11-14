@@ -11,8 +11,7 @@ import SendIcon from "@mui/icons-material/Send";
 import ComputerLists from "./Computers";
 import { Typography } from "@mui/material";
 
-
-function Index({filteredItems}) {
+function Index({ filteredItems }) {
   const { currentUser, loading } = useAuth();
   const [role, setRole] = useState("");
   const [isAssigningRole, setIsAssigningRole] = useState(false);
@@ -21,8 +20,7 @@ function Index({filteredItems}) {
   useEffect(() => {
     if (
       currentUser !== null &&
-      (currentUser.role === "admin" ||
-      currentUser.role === "user")
+      (currentUser.role === "admin" || currentUser.role === "user")
     ) {
       // console.log(loading);
       setIsAssigningRole(true);
@@ -106,7 +104,7 @@ function Index({filteredItems}) {
             paddingTop: "2vh",
           }}
         >
-          <ComputerLists />
+          <ComputerLists filteredItems={filteredItems} />
         </Box>
       )}
     </div>

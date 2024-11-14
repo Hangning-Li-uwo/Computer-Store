@@ -18,7 +18,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
 // TODO
-export default function ComputerLists() {
+export default function ComputerLists( {filteredItems} ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,7 +43,7 @@ export default function ComputerLists() {
         // marginLeft: 20
       }}
     >
-      {ITEM_LIST.map((item) => (
+      {filteredItems.map((item) => (
         <Grid container xs={12} sm={6} md={4} key={item.id}>
           <Card
             sx={{
