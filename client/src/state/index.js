@@ -1,11 +1,11 @@
+// state.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   mode: "light",
   user: null,
   token: null,
-  
-  items: []
+  items: [] // Cart items array
 };
 
 export const authSlice = createSlice({
@@ -16,14 +16,15 @@ export const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     setCartItem: (state, action) => {
-        // TODO
+      // Add the new item to the items array
+      state.items.push(action.payload);
     },
     removeCartItem: (state, action) => {
-        // TODO
+      // Remove the item at the specified index
+      state.items = state.items.filter((_, index) => index !== action.payload);
     },
   },
 });
 
-export const { setMode, setCartItem, removeCartItem, } =
-  authSlice.actions;
+export const { setMode, setCartItem, removeCartItem } = authSlice.actions;
 export default authSlice.reducer;
