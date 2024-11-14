@@ -7,12 +7,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import ProtectedRoutes from "./components/ProtectedRoutes";
 import { themeSettings } from "./theme";
 import { AuthProvider } from "./context/AuthContext";
 import Dashboard from "./components/home/Dashboard";
 import OAuthSignIn from "./components/auth/OAuthSignIn";
-import Admin from "./components/Admin";
 
 const ROLES = {
   ADMIN: "admin",
@@ -33,17 +31,10 @@ function App() {
       <CssBaseline />
         <AuthProvider>
           <Router>
-            {/* <OneTapAuth /> */}
             <Routes>
-              {/* <Route element={<ProtectedRoutes allowedRoles={[ROLES.USER]} />}> */}
               <Route path="/" element={<Dashboard />} />
               <Route path="/home" element={<Dashboard />} />
               <Route path="/sign-in" element={<OAuthSignIn />} />
-              {/* </Route> */}
-              {/* Only ADMIN can have access to this page */}
-              <Route element={<ProtectedRoutes allowedRoles={[ROLES.ADMIN]} />}>
-                <Route path="/admin" element={<Admin />} />
-              </Route>
             </Routes>
           </Router>
         </AuthProvider>
