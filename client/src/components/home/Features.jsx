@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, Link } from "@mui/material";
-import Grid from '@mui/material/Grid2';
-import AppleIcon from "@mui/icons-material/Apple";
+import Grid from '@mui/material/Grid2';import
+ AppleIcon from "@mui/icons-material/Apple";
 import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
@@ -61,9 +61,9 @@ export default function iMacFeatures() {
         Configure your desktop in the next step.
       </Typography>
 
-      <Grid container spacing={4} sx={{ marginTop: 2 }}>
+      <Grid container spacing={4}  sx={{ marginTop: 2 }}>
         {features.map((feature, index) => (
-          <Grid xs={12} sm={6} md={3} key={index}>
+          <Grid xs={12} sm={6} md={3} size={3} key={index}>
             <Box sx={{ textAlign: "center" }}>
               {feature.icon}
               <Typography variant="h6" gutterBottom sx={{ marginTop: 1 }}>

@@ -133,21 +133,24 @@ function Dashboard(props) {
   }, [query]);
 
   React.useEffect(() => {
+    // console.log(currentUser.role);
   }, [currentUser]);
 
-  if (loading && currentUser) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
+  if(currentUser){
+    if (loading) {
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      );
+    }
   }
 
   return (
