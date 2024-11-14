@@ -11,14 +11,14 @@ import { themeSettings } from "./theme";
 import { AuthProvider } from "./context/AuthContext";
 import Dashboard from "./components/home/Dashboard";
 import OAuthSignIn from "./components/auth/OAuthSignIn";
+import { Toaster } from 'sonner';
 
 const ROLES = {
   ADMIN: "admin",
   USER: "user",
 };
+
 function App() {
-
-
   React.useEffect(() => {
     // Update the document title using the browser API
     document.title = "Computer Store";
@@ -30,6 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
         <AuthProvider>
+        <Toaster position="top-right" />
           <Router>
             <Routes>
               <Route path="/" element={<Dashboard />} />
