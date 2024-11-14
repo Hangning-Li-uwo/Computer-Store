@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider, Link } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2"; // Updated import for new Grid system
-import AppleIcon from "@mui/icons-material/Apple"; // Replace with custom icons as needed
+import Grid from '@mui/material/Grid2';
+import AppleIcon from "@mui/icons-material/Apple";
 import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
