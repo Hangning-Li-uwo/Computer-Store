@@ -19,9 +19,9 @@ function Index() {
   // console.log(loading);
   useEffect(() => {
     if (
-      currentUser === null ||
-      currentUser.role === "admin" ||
-      currentUser.role === "user"
+      currentUser !== null &&
+      (currentUser.role === "admin" ||
+      currentUser.role === "user")
     ) {
       // console.log(loading);
       setIsAssigningRole(true);

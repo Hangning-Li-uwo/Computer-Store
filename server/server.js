@@ -51,7 +51,7 @@ app.post("/api/setUserProfile", async (req, res) => {
         email,
         photoURL
       });
-      res.status(201).send({ message: "Profile created successfully" });
+      res.status(200).send({ message: "Profile created successfully" });
     } catch (error) {
       console.error("Error creating profile:", error);
       res.status(500).send({ message: "Failed to create profile" });

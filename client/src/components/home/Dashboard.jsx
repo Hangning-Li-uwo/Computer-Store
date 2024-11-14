@@ -14,9 +14,9 @@ import { useDemoRouter } from "@toolpad/core/internal";
 import Index from "./Index";
 import { useAuth } from "../../context/AuthContext";
 import Stock from "../stock/Stock";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import CircularProgress from "@mui/material/CircularProgress";
 import CartDrawer from "../cart/CartDrawer";
-import { themeSettings } from "../../theme";
+import Box from "@mui/material/Box";
 
 const USER_NAVIGATION = [
   {
@@ -91,7 +91,6 @@ Index.prototype = {
 };
 
 function Dashboard(props) {
-
   const { currentUser, loading } = useAuth();
 
   const router = useDemoRouter("/dashboard");
@@ -100,6 +99,21 @@ function Dashboard(props) {
   React.useEffect(() => {
     console.log("Current User: " + currentUser);
   }, [currentUser]);
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <AppProvider
@@ -121,10 +135,7 @@ function Dashboard(props) {
         slots={{
           toolbarActions: Search,
           toolbarAccount: (props) => (
-            <AccountMenu
-              {...props}
-              setOpenCartDrawer={setOpenCartDrawer}
-            />
+            <AccountMenu {...props} setOpenCartDrawer={setOpenCartDrawer} />
           ),
         }}
       >
