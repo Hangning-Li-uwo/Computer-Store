@@ -14,6 +14,7 @@ const ITEM_LIST = [
     description:
       "Image Playground. Create fun, original images based on a description, a concept or even a person from your Photos library.",
     image: iMacImage,
+    price: 1699.00,
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const ITEM_LIST = [
     description:
       "MacBook Pro features the most advanced lineup of chips ever built for a pro laptop.",
     image: MacProImage,
+    price: 2699.00,
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const ITEM_LIST = [
     description:
       "AirPods Max deliver stunningly detailed, high‑fidelity audio. Personalised Spatial Audio with dynamic head tracking for sound that surrounds you. ",
     image: AirPodsMaxImage,
+    price: 779.00,
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ const ITEM_LIST = [
     description:
       "Jam-packed with innovation, HomePod mini delivers unexpectedly big sound for a speaker of its size. ",
     image: HomePodMiniImage,
+    price:129.00,
   },
 ];
 

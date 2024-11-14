@@ -23,8 +23,12 @@ export const authSlice = createSlice({
       // Remove the item at the specified index
       state.items = state.items.filter((_, index) => index !== action.payload);
     },
+    clearCartItem: (state, action) => {
+      // Remove the item at the specified index
+      state.items = [];
+    },
   },
 });
 
-export const { setMode, setCartItem, removeCartItem } = authSlice.actions;
+export const { setMode, setCartItem, removeCartItem, clearCartItem} = authSlice.actions;
 export default authSlice.reducer;
