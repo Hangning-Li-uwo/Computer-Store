@@ -9,9 +9,10 @@ import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import ComputerLists from "./Computers";
+import { Typography } from "@mui/material";
 
 
-function Index() {
+function Index({filteredItems}) {
   const { currentUser, loading } = useAuth();
   const [role, setRole] = useState("");
   const [isAssigningRole, setIsAssigningRole] = useState(false);

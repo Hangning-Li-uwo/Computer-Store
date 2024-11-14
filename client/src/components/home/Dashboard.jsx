@@ -17,6 +17,7 @@ import Stock from "../stock/Stock";
 import CircularProgress from "@mui/material/CircularProgress";
 import CartDrawer from "../cart/CartDrawer";
 import Box from "@mui/material/Box";
+import ITEM_LIST from './ItemList';
 
 const USER_NAVIGATION = [
   {
@@ -50,7 +51,25 @@ const ADMIN_NAVIGATION = [
   },
 ];
 
-function Search() {
+function Search({query, setQuery}) {
+  const [input, setInput] = React.useState("");
+
+  const handleSearchSubmit = () => {
+    setQuery(input);
+    console.log("Search triggered with query:", input);
+  };
+
+  const handleSearchChange = (event) => {
+    setInput(event.target.value);
+  };
+
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearchSubmit(); // Trigger search
+    }
+  };
+
   return (
     <React.Fragment>
       <Tooltip title="Search" enterDelay={1000}>
@@ -70,10 +89,13 @@ function Search() {
         label="Search"
         variant="outlined"
         size="small"
+        onKeyDownCapture={handleKeyPress}
+        onChange={handleSearchChange}
+        value={input}
         slotProps={{
           input: {
             endAdornment: (
-              <IconButton type="button" aria-label="search" size="small">
+              <IconButton type="button" aria-label="search" size="small" onClick={handleSearchSubmit}>
                 <SearchIcon />
               </IconButton>
             ),
@@ -96,8 +118,21 @@ function Dashboard(props) {
   const router = useDemoRouter("/dashboard");
   const [openCartDrawer, setOpenCartDrawer] = React.useState(false);
 
+  const [query, setQuery] = React.useState("");
+  const [filteredItems, setFilteredItems] = React.useState(ITEM_LIST); // filtered items
+
+  // Update filtered items
   React.useEffect(() => {
-    console.log("Current User: " + currentUser);
+    // convert all texts into lower cases
+    const results = ITEM_LIST.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase()) ||
+      item.manufacturer.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredItems(results);
+    console.log("results: " + results.name)
+  }, [query]);
+
+  React.useEffect(() => {
   }, [currentUser]);
 
   if (loading) {
@@ -133,13 +168,13 @@ function Dashboard(props) {
     >
       <DashboardLayout
         slots={{
-          toolbarActions: Search,
+          toolbarActions: () => <Search query={query} setQuery={setQuery} />,
           toolbarAccount: (props) => (
             <AccountMenu {...props} setOpenCartDrawer={setOpenCartDrawer} />
           ),
         }}
       >
-        {router.pathname == "/dashboard" && <Index />}
+        {router.pathname == "/dashboard" && <Index filteredItems={filteredItems}/>}
         {router.pathname == "/stock" && <Stock />}
       </DashboardLayout>
 
