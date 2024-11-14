@@ -8,10 +8,12 @@ import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeCartItem, setCartItem } from "../../state";
+import { clearCartItem, removeCartItem, setCartItem } from "../../state";
+import CartButton from '@mui/material/Button';
+
 
 // TODO
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
@@ -35,6 +37,13 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     // Dispatch an action to remove the card by index
     dispatch(removeCartItem(index));
   };
+
+  const clearCart = () => {
+    // Dispatch an action to clear the card by index
+    dispatch(clearCartItem());
+  };
+
+  const subtotal = items.reduce((sum, item) => sum + (item.price || 0), 0);
 
   const list = (
     <Box
@@ -73,6 +82,18 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
               </IconButton>
             </ListItem>
           ))}
+          <Divider sx={{ width: "100%", my: 2 }} />
+          <Typography variant="h6" sx={{ textAlign: "center", my: 2 }}>
+            Subtotal: ${subtotal.toFixed(2)}
+          </Typography>
+          <CartButton 
+            // sx={{
+            //   color: '#673ab7', // Set text color
+            // }}
+            onClick={() => clearCart()}
+            >
+            Clear
+          </CartButton>
         </List>
       ) : (
         <Typography variant="h6" color="text.secondary" sx={{ marginTop: 4 }}>
