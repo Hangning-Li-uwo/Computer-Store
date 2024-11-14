@@ -135,7 +135,7 @@ function Dashboard(props) {
   React.useEffect(() => {
   }, [currentUser]);
 
-  if (loading) {
+  if (loading && currentUser) {
     return (
       <Box
         sx={{
