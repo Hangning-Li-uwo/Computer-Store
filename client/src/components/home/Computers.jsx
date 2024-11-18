@@ -9,16 +9,19 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import Features from "./Features";
-import ITEM_LIST from "./ItemList";
 import { useDispatch } from "react-redux";
 import { setCartItem } from "../../state";
 import { toast } from "sonner";
-import { green } from "@mui/material/colors";
+import { green, red } from "@mui/material/colors";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { useAuth } from "../../context/AuthContext";
 
 
 // TODO
 export default function ComputerLists( {filteredItems} ) {
+  const {currentUser} = useAuth();
+  console.log(currentUser);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -73,7 +76,13 @@ export default function ComputerLists( {filteredItems} ) {
               <Button
                 size="small"
                 onClick={() => {
-                  addToCart(item);
+                  if(!currentUser || currentUser === ''){
+                    toast(`Please login`, {
+                      icon: <CancelIcon sx={{ color: red[500] }} />,
+                    });
+                  }else{
+                    addToCart(item);
+                  }
                 }}
               >
                 Add

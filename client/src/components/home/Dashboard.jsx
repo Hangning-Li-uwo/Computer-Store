@@ -129,8 +129,6 @@ function Dashboard(props) {
       item.manufacturer.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredItems(results);
-
-    console.log(filteredItems[0].name);
   }, [query]);
   
   React.useEffect(() => {

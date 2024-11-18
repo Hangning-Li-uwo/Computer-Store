@@ -58,12 +58,12 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       }}
       role="presentation"
     >
-      <h3
-        style={{ fontFamily: "Comic Sans MS", marginTop: "20%" }}
+      <h1
+        style={{ fontFamily: "Comic Sans MS", marginTop: "20%"}}
         className="h3-text"
       >
         Cart
-      </h3>
+      </h1>
 
       {items.length > 0 ? (
         <List>

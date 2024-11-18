@@ -101,7 +101,8 @@ function Index({ filteredItems }) {
             flexDirection: "column",
             alignItems: "center",
             height: "100vh",
-            paddingTop: "2vh",
+            paddingTop: "10vh",
+            
           }}
         >
           <ComputerLists filteredItems={filteredItems} />
