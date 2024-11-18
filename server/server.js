@@ -1,7 +1,7 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
-const { getFirestore, doc, getDoc, setDoc, updateDoc } = require("firebase/firestore");
+const { getFirestore, collection, doc, getDoc,getDocs, setDoc, updateDoc } = require("firebase/firestore");
 const { initializeApp } = require("firebase/app");
 
 const firebaseConfig = {
@@ -78,7 +78,78 @@ app.post('/api/assignRole', async (req, res) => {
   }
 });
 
+app.get("/api/getStock", async (req, res) => {
+  const { id } = req.query; // Extract item ID from query parameters
+
+  if (!id) {
+    return res.status(400).send({ message: "Item ID is required" });
+  }
+
+  try {
+    // Access the Firestore collection and find the item by ID
+    const stockDocRef = doc(firestore, "Stock", id);
+    const stockDoc = await getDoc(stockDocRef);
+
+    if (stockDoc.exists()) {
+      const stockData = stockDoc.data();
+      res.status(200).send({ quantity: stockData.quantity }); // Send the quantity of the item
+    } else {
+      res.status(404).send({ message: "Item not found in stock" });
+    }
+  } catch (error) {
+    console.error("Error retrieving stock:", error);
+    res.status(500).send({ message: "Failed to retrieve stock" });
+  }
+});
+
+app.post("/api/updateStock", async (req, res) => {
+  const { pid, pname, quantity } = req.body;
+
+  const stockDocRef = doc(firestore, 'Stock', String(pid));
+  const stockInfo = await getDoc(stockDocRef);
+
+  // if stock exist, update the stock
+  if (stockInfo.exists()) {
+    await updateDoc(stockDocRef, { quantity });
+    res.status(200).send({ message: "Stock info retrieved!" });
+  }else{
+    try {
+      // create stock
+      await setDoc(doc(firestore, "Stock", String(pid)), {
+        pid,
+        pname,
+        quantity: quantity
+      });
+      res.status(200).send({ message: "Stock updated" });
+  } catch (error) {
+    console.error("Error retrieving stock:", error);
+    res.status(500).send({ message: "Failed to retrieve stock" });
+  }
+}
+});
+
+app.get('/api/reviews', async (req, res) => {
+  try {
+    const response = await axios.get('https://serpapi.com/search', {
+      params: {
+        engine: 'google_product',
+        product_id: '21473839577',
+        reviews: true,
+        api_key: 'df5e954cf47dc057227a92264234498d4f6496e679d69d162e05b148ee7626a9',
+      },
+    });
+    res.status(200).json(response.data.reviews_results);
+  } catch (error) {
+    // res.status(500).json({ error: error });
+    res.status(200).json([
+      { rating: 5, title: 'Amazing Product!', snippet: 'Highly recommend it.' },
+      { rating: 4, title: 'Great value', snippet: 'Satisfied with the purchase.' },
+    ]);
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
