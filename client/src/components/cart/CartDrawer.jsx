@@ -9,11 +9,11 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
 import { Button, Typography } from "@mui/material";
-
+import { toast } from "sonner";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCartItem, removeCartItem, setCartItem } from "../../state";
-import CartButton from '@mui/material/Button';
-
+import CartButton from "@mui/material/Button";
 
 // TODO
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
@@ -38,8 +38,26 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     dispatch(removeCartItem(index));
   };
 
-  const clearCart = () => {
+  const clearCart = async (items) => {
     // Dispatch an action to clear the card by index
+    try {
+      for (const item of items) {
+        // Update stock for each item in the backend
+        await axios.post("http://localhost:5001/api/updateStock", {
+          pid: item[0].id, // Product ID
+          pname: item[0].name, // Product name
+          quantity: item[1].quantity, // TODO
+        });
+      }
+
+      // Clear the cart in the state
+      dispatch(clearCartItem());
+
+      // Notify the user that the cart has been cleared
+      toast.success("Cart cleared and stock updated successfully!");
+    } catch (error) {
+      console.error("Error clearing cart and updating stock:", error.message);
+    }
     dispatch(clearCartItem());
   };
 
@@ -59,7 +77,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       role="presentation"
     >
       <h1
-        style={{ fontFamily: "Comic Sans MS", marginTop: "20%"}}
+        style={{ fontFamily: "Comic Sans MS", marginTop: "20%" }}
         className="h3-text"
       >
         Cart
@@ -86,14 +104,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
           <Typography variant="h6" sx={{ textAlign: "center", my: 2 }}>
             Subtotal: ${subtotal.toFixed(2)}
           </Typography>
-          <CartButton 
-            // sx={{
-            //   color: '#673ab7', // Set text color
-            // }}
-            onClick={() => clearCart()}
-            >
-            Clear
-          </CartButton>
+          <CartButton onClick={() => clearCart(items)}>Clear</CartButton>
         </List>
       ) : (
         <Typography variant="h6" color="text.secondary" sx={{ marginTop: 4 }}>

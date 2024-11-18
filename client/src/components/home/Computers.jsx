@@ -13,14 +13,13 @@ import { useDispatch } from "react-redux";
 import { setCartItem } from "../../state";
 import { toast } from "sonner";
 import { green, red } from "@mui/material/colors";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { useAuth } from "../../context/AuthContext";
+import axios from "axios";
 
-
-// TODO
-export default function ComputerLists( {filteredItems} ) {
-  const {currentUser} = useAuth();
+export default function ComputerLists({ filteredItems }) {
+  const { currentUser } = useAuth();
   console.log(currentUser);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -33,6 +32,37 @@ export default function ComputerLists( {filteredItems} ) {
       icon: <CheckCircleIcon sx={{ color: green[500] }} />,
     });
     dispatch(setCartItem(item));
+  };
+
+  const handleCart = async (item) => {
+    if (!currentUser || currentUser === "") {
+      toast.error(`Please login`, {
+        icon: <CancelIcon sx={{ color: red[500] }} />,
+      });
+    } else {
+      try {
+        // Step 1: Check stock availability for the selected item
+        const response = await axios.get(
+          `http://localhost:5001/api/getStock?id=${item.id}`
+        );
+
+        if (response.status === 200 && response.data.quantity > 0) {
+          const updatedItem = { ...item, quantity: response.data.quantity };
+          // Add the updated item to the cart
+          addToCart(updatedItem);
+        } else {
+          // Stock is not available
+          toast.error(`Out of stock`, {
+            icon: <CancelIcon sx={{ color: red[500] }} />,
+          });
+        }
+      } catch (error) {
+        console.error("Error checking stock:", error.message);
+        toast(`Error checking stock`, {
+          icon: <CancelIcon sx={{ color: red[500] }} />,
+        });
+      }
+    }
   };
 
   return (
@@ -76,13 +106,7 @@ export default function ComputerLists( {filteredItems} ) {
               <Button
                 size="small"
                 onClick={() => {
-                  if(!currentUser || currentUser === ''){
-                    toast(`Please login`, {
-                      icon: <CancelIcon sx={{ color: red[500] }} />,
-                    });
-                  }else{
-                    addToCart(item);
-                  }
+                  handleCart(item);
                 }}
               >
                 Add
