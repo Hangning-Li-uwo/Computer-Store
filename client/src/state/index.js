@@ -5,7 +5,8 @@ const initialState = {
   mode: "light",
   user: null,
   token: null,
-  items: [] // Cart items array
+  orders: [],
+  items: [], // Cart items array
 };
 
 export const authSlice = createSlice({
@@ -14,6 +15,24 @@ export const authSlice = createSlice({
   reducers: {
     setMode: (state) => {
       state.mode = state.mode === "light" ? "dark" : "light";
+    },
+    setUserProfile: (state, action) => {
+      state.user = action.payload.user;
+    },
+    updateRole: (state, action) => {
+      if (state.user) {
+        state.user.role = action.payload.role; // Update the role in the Redux store
+      }
+    },
+    logOut: (state, action) => {
+      state.user = null;
+    },
+    updateProfile: (state, action) => {
+      state.user = {
+        ...state.user,
+        address: action.payload.address,
+        paymentMethod: action.payload.paymentMethod,
+      };
     },
     setCartItem: (state, action) => {
       // Add the new item to the items array
@@ -27,8 +46,25 @@ export const authSlice = createSlice({
       // Remove the item at the specified index
       state.items = [];
     },
+    setOrderItem: (state, action) => {
+
+    },
+    deleteOrderItem: (state, action) => {
+
+    }
   },
 });
 
-export const { setMode, setCartItem, removeCartItem, clearCartItem} = authSlice.actions;
+export const {
+  setMode,
+  setUserProfile,
+  updateProfile,
+  updateRole,
+  logOut,
+  setCartItem,
+  removeCartItem,
+  clearCartItem,
+  setOrderItem,
+  deleteOrderItem
+} = authSlice.actions;
 export default authSlice.reducer;
