@@ -6,15 +6,21 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Logout from "@mui/icons-material/Logout";
+import HistoryIcon from "@mui/icons-material/History";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { useAuth } from "../../context/AuthContext";
 import { auth } from "../../components/firebase";
 import { reactLocalStorage } from "reactjs-localstorage";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function AccountMenu({ setOpenCartDrawer }) {
+export default function AccountMenu({
+  setOpenCartDrawer,
+  setOpenSettingsDrawer,
+  setOpenHistoryDrawer,
+}) {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
 
@@ -102,16 +108,33 @@ export default function AccountMenu({ setOpenCartDrawer }) {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem onClick={() => {
-            setOpenCartDrawer(true)
-
-          }}>
-            <ShoppingCartIcon fontSize="small" sx={{marginRight: 2}}/>
+          <MenuItem
+            onClick={() => {
+              setOpenCartDrawer(true);
+            }}
+          >
+            <ShoppingCartIcon fontSize="small" sx={{ marginRight: 2 }} />
             Cart
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setOpenSettingsDrawer(true);
+            }}
+          >
+            <SettingsIcon fontSize="small" sx={{ marginRight: 2 }} />
+            Profile Settings
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setOpenHistoryDrawer(true);
+            }}
+          >
+            <HistoryIcon fontSize="small" sx={{ marginRight: 2 }} />
+            Order History
           </MenuItem>
           <Divider />
           <MenuItem onClick={LogOut}>
-            <Logout fontSize="small" sx={{marginRight: 2}}/>
+            <Logout fontSize="small" sx={{ marginRight: 2 }} />
             Logout
           </MenuItem>
         </Menu>
