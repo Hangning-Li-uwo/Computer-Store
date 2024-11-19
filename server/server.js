@@ -43,15 +43,19 @@ app.post("/api/setUserProfile", async (req, res) => {
   } else{
     try {
       // Save user data to Firestore
-      await setDoc(doc(firestore, "Profiles", uid), {
+      const newProfile = {
         firstName,
         lastName,
         role: "",
         UID: uid,
         email,
-        photoURL
-      });
-      res.status(200).send({ message: "Profile created successfully" });
+        photoURL,
+        address: "",
+        paymentMethod: ""
+      };
+
+      await setDoc(doc(firestore, "Profiles", uid), newProfile);
+      res.status(200).send(newProfile);
     } catch (error) {
       console.error("Error creating profile:", error);
       res.status(500).send({ message: "Failed to create profile" });
@@ -69,7 +73,7 @@ app.post('/api/assignRole', async (req, res) => {
   try {
     // Update user's role in Firestore
     const userDocRef = doc(firestore, 'Profiles', uid);
-    await updateDoc(userDocRef, { role });
+    await updateDoc(userDocRef, { role: role });
 
     res.status(200).send({ message: 'Role assigned successfully' });
   } catch (error) {
@@ -145,6 +149,33 @@ app.get('/api/reviews', async (req, res) => {
       { rating: 5, title: 'Amazing Product!', snippet: 'Highly recommend it.' },
       { rating: 4, title: 'Great value', snippet: 'Satisfied with the purchase.' },
     ]);
+  }
+});
+
+app.post("/api/updateUserProfile", async (req, res) => {
+  const { uid, address, paymentMethod } = req.body;
+
+  if (!uid && !role) {
+    return res.status(400).send({ message: 'no user info' });
+  }
+
+  if (!address || !paymentMethod) {
+    return res.status(400).send({ message: "Address and payment method are required." });
+  }
+
+  try {
+
+    const userDocRef = doc(firestore, "Profiles", uid);
+
+    await updateDoc(userDocRef, {
+      address: address,
+      paymentMethod: paymentMethod,
+    });
+
+    res.status(200).send({ message: "Profile updated successfully!" });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    res.status(500).send({ message: "Failed to update user profile." });
   }
 });
 
