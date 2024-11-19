@@ -32,8 +32,7 @@ function Index() {
     setFilteredItems(results);
   }, [query]);
 
-  useEffect(() => {
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const roleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +65,7 @@ function Index() {
 
   return (
     <div>
-      {user && user.role === '' ? (
+      {user && user.role === "" ? (
         <Box
           sx={{
             maxWidth: "30%",
@@ -126,11 +125,11 @@ function Index() {
           {/* Computer List */}
           <Box
             sx={{
-              marginTop: "100px", // Add top margin to avoid overlap with fixed search bar
               display: "flex",
-              flexDirection: "column",
+              justifyContent: "center",
               alignItems: "center",
-              height: "auto", // Adjust height as necessary
+              marginTop: "10vh",
+              width: "100%",
             }}
           >
             <ComputerLists filteredItems={filteredItems} />

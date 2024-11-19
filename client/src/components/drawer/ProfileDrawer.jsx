@@ -93,7 +93,7 @@ function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
           </h1>
 
           <TextField
-            id="address"
+            id="addr"
             label="Address"
             variant="outlined"
             value={address}

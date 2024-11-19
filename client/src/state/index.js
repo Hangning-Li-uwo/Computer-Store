@@ -17,7 +17,14 @@ export const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     setUserProfile: (state, action) => {
-      state.user = action.payload.user;
+      state.user.UID = action.payload.UID;
+      state.user.firstName = action.payload.firstName;
+      state.user.lastName = action.payload.lastName;
+      state.user.role = action.payload.role;
+      state.user.email = action.payload.email;
+      state.user.photoURL = action.payload.photoURL;
+      state.user.address = action.payload.address;
+      state.user.paymentMethod = action.payload.paymentMethod;
     },
     updateRole: (state, action) => {
       if (state.user) {
@@ -28,11 +35,10 @@ export const authSlice = createSlice({
       state.user = null;
     },
     updateProfile: (state, action) => {
-      state.user = {
-        ...state.user,
-        address: action.payload.address,
-        paymentMethod: action.payload.paymentMethod,
-      };
+      if (state.user) {
+        state.user.address = action.payload.address;
+        state.user.paymentMethod = action.payload.paymentMethod;
+      }
     },
     setCartItem: (state, action) => {
       // Add the new item to the items array
@@ -46,12 +52,8 @@ export const authSlice = createSlice({
       // Remove the item at the specified index
       state.items = [];
     },
-    setOrderItem: (state, action) => {
-
-    },
-    deleteOrderItem: (state, action) => {
-
-    }
+    setOrderItem: (state, action) => {},
+    deleteOrderItem: (state, action) => {},
   },
 });
 
@@ -65,6 +67,6 @@ export const {
   removeCartItem,
   clearCartItem,
   setOrderItem,
-  deleteOrderItem
+  deleteOrderItem,
 } = authSlice.actions;
 export default authSlice.reducer;

@@ -20,7 +20,7 @@ import axios from "axios";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
-  console.log(currentUser);
+  // console.log(currentUser);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -73,7 +73,7 @@ export default function ComputerLists({ filteredItems }) {
         width: "100%",
         maxWidth: "1200px", // Max width for the container
         margin: "0 auto", // Center the grid container
-        // marginLeft: 20
+        justifyContent: 'center'
       }}
     >
       {filteredItems.map((item) => (

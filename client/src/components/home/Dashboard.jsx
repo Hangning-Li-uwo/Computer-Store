@@ -46,7 +46,7 @@ const ADMIN_NAVIGATION = [
   {
     segment: "orders",
     title: "Orders",
-    icon: <DashboardIcon />,
+    icon: <HistoryIcon />,
   },
   {
     kind: "divider",
