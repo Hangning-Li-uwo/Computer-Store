@@ -4,6 +4,8 @@ import { SignInPage } from "@toolpad/core/SignInPage";
 import { useTheme } from "@mui/material/styles";
 import { signInWithPopup } from "firebase/auth";
 import { auth, google } from "../firebase";
+import { setUserProfile } from "../../state/index";
+import { useDispatch } from "react-redux";
 
 const providers = [{ id: "google", name: "Google" }];
 
@@ -23,6 +25,7 @@ export default function OAuthSignIn() {
   const theme = useTheme();
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const dispatch = useDispatch();
 
   const signIn = async () => {
     setError("");
@@ -44,7 +47,7 @@ export default function OAuthSignIn() {
       };
 
       // Send a request to the backend to set the user profile in Firestore
-      await fetch("http://localhost:5001/api/setUserProfile", {
+      const response = await fetch("http://localhost:5001/api/setUserProfile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,8 +55,28 @@ export default function OAuthSignIn() {
         body: JSON.stringify(userData),
       });
 
-      // Sign-in success; redirect as needed
-      window.location.href = "/";
+      if (response.ok) {
+        const profile = await response.json(); // Retrieve the full profile from the backend
+
+        // Dispatch setUserProfile with the full profile
+        dispatch(
+          setUserProfile({
+            user: {
+              UID: profile.UID,
+              firstName: profile.firstName,
+              lastName: profile.lastName,
+              role: profile.role,
+              email: profile.email,
+              photoURL: profile.photoURL,
+              address: profile.address,
+              paymentMethod: profile.paymentMethod,
+            },
+            token: user.accessToken,
+          })
+        );
+        // Sign-in success; redirect as needed
+        window.location.href = "/";
+      }
     } catch (error) {
       console.log(error.message);
       setError("Failed to create a new account");

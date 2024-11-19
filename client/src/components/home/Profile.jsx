@@ -12,14 +12,15 @@ import HistoryIcon from "@mui/icons-material/History";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useAuth } from "../../context/AuthContext";
 import { auth } from "../../components/firebase";
-import { reactLocalStorage } from "reactjs-localstorage";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../state";
+import { useSelector } from "react-redux";
 
 export default function AccountMenu({
   setOpenCartDrawer,
   setOpenSettingsDrawer,
-  setOpenHistoryDrawer,
 }) {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -34,9 +35,11 @@ export default function AccountMenu({
     setAnchorEl(null);
   };
 
+  const dispatch = useDispatch();
+
   const LogOut = async () => {
     await auth.signOut(); // Sign out from Firebase
-    reactLocalStorage.remove("currentUser");
+    dispatch(logOut());
     alert("Successfully signed out");
     window.location.href = "/";
   };
@@ -123,14 +126,6 @@ export default function AccountMenu({
           >
             <SettingsIcon fontSize="small" sx={{ marginRight: 2 }} />
             Profile Settings
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              setOpenHistoryDrawer(true);
-            }}
-          >
-            <HistoryIcon fontSize="small" sx={{ marginRight: 2 }} />
-            Order History
           </MenuItem>
           <Divider />
           <MenuItem onClick={LogOut}>
