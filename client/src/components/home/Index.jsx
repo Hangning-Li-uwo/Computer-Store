@@ -10,19 +10,32 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import ComputerLists from "./Computers";
 import { Typography } from "@mui/material";
+import Search from "./Search";
+import ITEM_LIST from "./ItemList";
 
-function Index({ filteredItems }) {
+function Index() {
   const { currentUser, loading } = useAuth();
   const [role, setRole] = useState("");
   const [isAssigningRole, setIsAssigningRole] = useState(false);
 
-  // console.log(loading);
+  const [query, setQuery] = React.useState("");
+  const [filteredItems, setFilteredItems] = React.useState(ITEM_LIST); // filtered items
+
+  // Update filtered items
+  React.useEffect(() => {
+    const results = ITEM_LIST.filter(
+      (item) =>
+        item.name.toLowerCase().includes(query.toLowerCase()) ||
+        item.manufacturer.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredItems(results);
+  }, [query]);
+
   useEffect(() => {
     if (
       currentUser !== null &&
       (currentUser.role === "admin" || currentUser.role === "user")
     ) {
-      // console.log(loading);
       setIsAssigningRole(true);
     }
   }, [currentUser]);
@@ -40,12 +53,10 @@ function Index({ filteredItems }) {
 
       if (response.ok) {
         const data = await response.json();
-        // Update local user data
         currentUser.role = role;
         reactLocalStorage.set("currentUser", currentUser);
         setIsAssigningRole(true);
         alert(data.message);
-        // window.location.href = "/";
       } else {
         throw new Error("Failed to assign role");
       }
@@ -94,19 +105,35 @@ function Index({ filteredItems }) {
           </FormControl>
         </Box>
       ) : (
-        <Box
-          sx={{
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            height: "100vh",
-            paddingTop: "10vh",
-            
-          }}
-        >
-          <ComputerLists filteredItems={filteredItems} />
-        </Box>
+        <>
+          {/* Search Field - Positioned Fixed */}
+          <Box
+            sx={{
+              marginTop: 8,
+              position: "fixed", // Keeps the search bar fixed while scrolling
+              top: 0,
+              zIndex: 1000, // Ensures it stays above other content
+              width: "100%", // Full width of the container
+              padding: 2, // Add some padding
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Optional shadow for better UX
+            }}
+          >
+            <Search query={query} setQuery={setQuery} />
+          </Box>
+
+          {/* Computer List */}
+          <Box
+            sx={{
+              marginTop: "100px", // Add top margin to avoid overlap with fixed search bar
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              height: "auto", // Adjust height as necessary
+            }}
+          >
+            <ComputerLists filteredItems={filteredItems} />
+          </Box>
+        </>
       )}
     </div>
   );
