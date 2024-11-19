@@ -127,7 +127,7 @@ export default function ComputerLists({ filteredItems }) {
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     boxShadow: 24,
-                    backgroundColor: "#f9f9f9",
+                    // backgroundColor: "#f9f9f9",
                     padding: 4,
                     borderRadius: 2,
                   }}

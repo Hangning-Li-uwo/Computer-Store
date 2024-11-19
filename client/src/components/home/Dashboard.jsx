@@ -1,23 +1,20 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
 import AccountMenu from "./Profile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import HistoryIcon from '@mui/icons-material/History';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
 import Index from "./Index";
 import { useAuth } from "../../context/AuthContext";
 import Stock from "../stock/Stock";
-import CircularProgress from "@mui/material/CircularProgress";
 import CartDrawer from "../drawer/CartDrawer";
-import Box from "@mui/material/Box";
 import ProfileDrawer from "../drawer/ProfileDrawer";
-import HistoryDrawer from "../drawer/HistoryDrawer";
-import ITEM_LIST from "./ItemList";
+import { useSelector } from "react-redux";
+import OrderHistory from "./OrderHistory";
 
 const USER_NAVIGATION = [
   {
@@ -28,6 +25,11 @@ const USER_NAVIGATION = [
     segment: "dashboard",
     title: "Dashboard",
     icon: <DashboardIcon />,
+  },
+  {
+    segment: "orders",
+    title: "Orders",
+    icon: <HistoryIcon />,
   },
 ];
 
@@ -42,7 +44,17 @@ const ADMIN_NAVIGATION = [
     icon: <DashboardIcon />,
   },
   {
+    segment: "orders",
+    title: "Orders",
+    icon: <DashboardIcon />,
+  },
+  {
     kind: "divider",
+  },
+  {
+    segment: "Manage orders",
+    title: "Manage orders",
+    icon: <ManageHistoryIcon />,
   },
   {
     segment: "stock",
@@ -51,55 +63,20 @@ const ADMIN_NAVIGATION = [
   },
 ];
 
-
-
 Index.prototype = {
   pathname: PropTypes.string.isRequired,
 };
 
 function Dashboard(props) {
-  const { currentUser, loading } = useAuth();
-
+  const { user, loading } = useAuth();
+  const currentUser = useSelector((state) => state.user);
   const router = useDemoRouter("/dashboard");
   const [openCartDrawer, setOpenCartDrawer] = React.useState(false);
-  const [openHistoryDrawer, setOpenHistoryDrawer] = React.useState(false);
   const [openSettingsDrawer, setOpenSettingsDrawer] = React.useState(false);
 
-
-  // const [filteredItems, setFilteredItems] = React.useState(ITEM_LIST); // filtered items
-
-  // // Update filtered items
-  // React.useEffect(() => {
-  //   // convert all texts into lower cases
-  //   console.log("query: ", query);
-  //   const results = ITEM_LIST.filter(
-  //     (item) =>
-  //       item.name.toLowerCase().includes(query.toLowerCase()) ||
-  //       item.manufacturer.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   setFilteredItems(results);
-  // }, [query]);
-
   React.useEffect(() => {
-    // console.log(currentUser.role);
+    console.log("Current role: ", currentUser);
   }, [currentUser]);
-
-  if (currentUser) {
-    if (loading) {
-      return (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "100vh",
-          }}
-        >
-          <CircularProgress />
-        </Box>
-      );
-    }
-  }
 
   return (
     <AppProvider
@@ -125,15 +102,14 @@ function Dashboard(props) {
               {...props}
               setOpenCartDrawer={setOpenCartDrawer}
               setOpenSettingsDrawer={setOpenSettingsDrawer}
-              setOpenHistoryDrawer={setOpenHistoryDrawer}
             />
           ),
         }}
       >
-        {router.pathname == "/dashboard" && (
-          <Index />
-        )}
+        {router.pathname == "/dashboard" && <Index />}
         {router.pathname == "/stock" && <Stock />}
+        {router.pathname == "/orders" && <OrderHistory />}
+
       </DashboardLayout>
 
       {/* Drawer Disolay */}
@@ -145,10 +121,6 @@ function Dashboard(props) {
         openSettingsDrawer={openSettingsDrawer}
         setOpenSettingsDrawer={setOpenSettingsDrawer}
       />
-      {/* <HistoryDrawer
-        setOpenHistoryDrawer={setOpenHistoryDrawer}
-        openHistoryDrawer={openHistoryDrawer}
-      /> */}
     </AppProvider>
   );
 }

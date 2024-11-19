@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import { reactLocalStorage } from "reactjs-localstorage";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,14 +7,17 @@ import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import ComputerLists from "./Computers";
-import { Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { updateRole } from "../../state";
 import Search from "./Search";
 import ITEM_LIST from "./ItemList";
 
 function Index() {
-  const { currentUser, loading } = useAuth();
+  const user = useSelector((state) => state.user);
+
   const [role, setRole] = useState("");
-  const [isAssigningRole, setIsAssigningRole] = useState(false);
+  const dispatch = useDispatch();
+  // const [isAssigningRole, setIsAssigningRole] = useState(false);
 
   const [query, setQuery] = React.useState("");
   const [filteredItems, setFilteredItems] = React.useState(ITEM_LIST); // filtered items
@@ -32,13 +33,7 @@ function Index() {
   }, [query]);
 
   useEffect(() => {
-    if (
-      currentUser !== null &&
-      (currentUser.role === "admin" || currentUser.role === "user")
-    ) {
-      setIsAssigningRole(true);
-    }
-  }, [currentUser]);
+  }, [user]);
 
   const roleSubmit = async (e) => {
     e.preventDefault();
@@ -48,14 +43,17 @@ function Index() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ uid: currentUser.UID, role: role }),
+        body: JSON.stringify({ uid: user.UID, role: role }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        currentUser.role = role;
-        reactLocalStorage.set("currentUser", currentUser);
-        setIsAssigningRole(true);
+        dispatch(
+          updateRole({
+            role: role,
+          })
+        );
+        // setIsAssigningRole(true);
         alert(data.message);
       } else {
         throw new Error("Failed to assign role");
@@ -68,7 +66,7 @@ function Index() {
 
   return (
     <div>
-      {!isAssigningRole && !loading ? (
+      {user && user.role === '' ? (
         <Box
           sx={{
             maxWidth: "30%",
@@ -107,15 +105,19 @@ function Index() {
       ) : (
         <>
           {/* Search Field - Positioned Fixed */}
+
           <Box
             sx={{
               marginTop: 8,
-              position: "fixed", // Keeps the search bar fixed while scrolling
+              position: "fixed",
               top: 0,
-              zIndex: 1000, // Ensures it stays above other content
-              width: "100%", // Full width of the container
-              padding: 2, // Add some padding
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Optional shadow for better UX
+              zIndex: 1000,
+              width: "100%",
+              padding: 2,
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+              display: "flex",
+              alignItems: "center",
+              gap: "15px",
             }}
           >
             <Search query={query} setQuery={setQuery} />
