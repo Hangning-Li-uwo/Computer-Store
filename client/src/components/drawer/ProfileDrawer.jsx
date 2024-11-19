@@ -10,12 +10,16 @@ import Select from "@mui/material/Select";
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import { Button } from "@mui/material";
+import { useAuth } from "../../context/AuthContext";
+import { dispatch } from "react-redux";
 
 function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
+  const {currentUser} = useAuth();
   const [isOpen, setIsOpen] = React.useState(false);
   const [pay, setPay] = React.useState('');
   const [address, setAddress] = React.useState('');
-
+  const dispatch = useDispatch();
+  
   React.useEffect(() => {
     setIsOpen(openSettingsDrawer); // Sync with external prop
   }, [openSettingsDrawer]);
@@ -25,7 +29,7 @@ function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
     setOpenSettingsDrawer(open); // Notify parent component
   };
 
-  const dispatch = useDispatch();
+
 
   const handlePay = (event) => {
     setPay(event.target.value);
@@ -36,20 +40,16 @@ function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
   };
 
   const updateUserProfile = async () => {
-    if (!address || !pay) {
-      alert("Please fill out both address and payment method.");
-      return;
-    }
-
     try {
-      // Send user data to the backend
-      const response = await axios.post("http://localhost:5001/api/updateUserProfile", {
-        address,
-        paymentMethod: pay,
+      const response = await fetch("http://localhost:5001/api/updateUserProfile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uid: currentUser.UID, address: address, paymentMethod: pay }),
       });
-
+  
       if (response.status === 200) {
-        // Update Redux store with the updated user profile
         dispatch(
           updateProfile({
             address: address,
