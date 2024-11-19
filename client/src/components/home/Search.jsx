@@ -17,7 +17,7 @@ function Search({ query, setQuery }) {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      handleSearchSubmit(); // Trigger search
+      handleSearchSubmit();
     }
   };
 
@@ -26,34 +26,42 @@ function Search({ query, setQuery }) {
       sx={{
         display: "flex",
         alignItems: "center",
-        width: "85%",
+        backgroundColor: "rgba(255, 255, 255, 0.2)", // Transparent background
+        borderRadius: "25px", // Rounded edges
+        padding: "5px 15px",
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow
+        backdropFilter: "blur(10px)", // Blurring effect for the glass look
+        // width: "100%",
+        // maxWidth: "400px",
+        transition: "all 0.3s ease", // Smooth hover transition
+        "&:hover": {
+          backgroundColor: "rgba(255, 255, 255, 0.3)", // Slightly brighter on hover
+        },
       }}
     >
-      {/* TextField with Search Icon inside */}
+      <IconButton
+        aria-label="search"
+        onClick={handleSearchSubmit}
+        sx={{ color: "#fff", padding: 0 }}
+      >
+        <SearchIcon />
+      </IconButton>
       <TextField
-        label="Search"
-        variant="outlined"
-        size="small"
+        variant="standard"
+        placeholder="Search..."
+        InputProps={{
+          disableUnderline: true, // Remove default underline
+        }}
         onKeyDownCapture={handleKeyPress}
         onChange={handleSearchChange}
         value={input}
-        InputProps={{
-          startAdornment: ( // Icon inside the TextField
-            <IconButton
-              type="button"
-              aria-label="search"
-              size="small"
-              onClick={handleSearchSubmit}
-              edge="start" // Aligns the icon to the start of the input
-            >
-              <SearchIcon />
-            </IconButton>
-          ),
-        }}
         sx={{
-          flexGrow: 1, // Takes available width in a flex container
-          minWidth: 150, // Ensures a minimum width for the input field
-          maxWidth: "100%", // Prevents overflow
+          flex: 1,
+          marginLeft: "10px",
+          color: "#fff", // White text
+          "&::placeholder": {
+            color: "rgba(255, 255, 255, 0.7)", // Lighter placeholder
+          },
         }}
       />
     </Box>
