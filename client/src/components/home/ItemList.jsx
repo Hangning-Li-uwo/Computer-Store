@@ -1,4 +1,3 @@
-
 import iMacImage from "../../static/images/iMac.png";
 import MacProImage from "../../static/images/MacPro.png";
 import AirPodsMaxImage from "../../static/images/AirPodsMax.png";
@@ -21,6 +20,19 @@ import RazerMonitorLightBarImage from "../../static/images/RazerAetherMonitorLig
 import RazerKittyEarHeadsetImage from "../../static/images/RazerKittyEarHeadset.png";
 import RazerHuntsmanV2TenkeylessImage from "../../static/images/Razer Huntsman V2 Tenkeyless.png";
 import RazerBasiliskV3ProImage from "../../static/images/Razer Basilisk V3 Pro.png";
+
+import RazerRGBMouseMatImage from "../../static/images/Razer RGB Mouse Mat.png";
+import RazerBlade15Image from "../../static/images/RazerBlade15.png";
+import RazerAetherLampProImage from "../../static/images/Razer Aether Lamp Pro.png";
+import RazerSeirenV3ChromaImage from "../../static/images/Razer Seiren V3 Chroma.png";
+import RazerKiyoProImage from "../../static/images/Razer Kiyo Pro.png";
+import ViprTechGhostGamingComputerImage from "../../static/images/ViprTechGhost Gaming Computer.png";
+import CLXRAGamingDesktopImage from "../../static/images/CLX RA Gaming Desktop.png";
+import LofreeFoundationKeyboardImage from "../../static/images/LofreeFoundationKeyboard.png";
+import LofreeTransparentKeyboardImage from "../../static/images/LofreeTransKeyboard.png";
+import LofreeMoruKeyboardImage from "../../static/images/LofreeMoruKeyboard1.png";
+import LofreePetalMouseImage from "../../static/images/LofreePetalMouse.png";
+import HPChromebookPlusImage from "../../static/images/HP Chromebook Plus.png";
 
 
 const ITEM_LIST = [
@@ -84,8 +96,42 @@ const ITEM_LIST = [
     image: ALIENWAREAURORAR16Image,
     price: 2549.99,
   },
+
   {
     id: 7,
+    name: 'ViprTechGhost Gaming Computer',
+    manufacturer: "ViprTechGhost",
+    title: 'ViprTechGhost Gaming Computer - $1593.99',
+    description:
+      "The ViprTech Ghost (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games.",
+    image: ViprTechGhostGamingComputerImage,
+    price: 1593.99,
+  },
+  
+  {
+    id: 8,
+    name: 'CLX RA Gaming Desktop',
+    manufacturer: "ViprTechGhost",
+    title: 'CLX RA Gaming Desktop - $9,909.99',
+    description:
+      "This powerful CLX RA is driven by an Intel Core i9 14900K 3.2GHz 24-Core processor, and 96GB of quick as lightning DDR5 memory! Coupled with GeForce RTX 4090 24GB graphics, for eye-stunning visuals.",
+    image: CLXRAGamingDesktopImage,
+    price: 9909.99,
+  },
+  {
+    id: 9,
+    name: 'HP Chromebook Plus',
+    manufacturer: "HP",
+    title: 'HP Chromebook Plus - $649.99',
+    description:
+      "Ramped up to give you more power for multi-tasking with a reputable Intel® Core™ i3 Processor1, speedy memory, and a large, vibrant display that boots up instantly.",
+    image: HPChromebookPlusImage,
+    price: 649.99,
+  },
+  
+
+  {
+    id: 20,
     name: 'Surface Laptop',
     manufacturer: "Microsoft",
     title: 'Surface Laptop - $1,449.99',
@@ -95,7 +141,7 @@ const ITEM_LIST = [
     price: 1449.99,
   },
   {
-    id: 8,
+    id: 27,
     name: 'Surface Laptop Studio2',
     manufacturer: "Microsoft",
     title: 'Surface Laptop Studio2 - $2,699.99',
@@ -105,12 +151,22 @@ const ITEM_LIST = [
     price: 2699.99,
   },
 
-  
-  //=================Accessories=================
-  
-  
   {
-    id: 34,
+    id: 28,
+    name: 'Razer Blade 15',
+    manufacturer: "Razer",
+    title: 'Razer Blade 15 - $2,699.99',
+    description:
+      "With the Razer Blade 15, true power will always be wherever you are.",
+    image: RazerBlade15Image,
+    price: 2699.99,
+  },
+
+
+  //================= Accessories =================
+
+  {
+    id: 30,
     name: 'Razer Huntsman V2 Tenkeyless',
     manufacturer: "Razer",
     title: 'Razer Huntsman V2 Tenkeyless - $124.99',
@@ -120,7 +176,7 @@ const ITEM_LIST = [
     price: 124.99,
   },
   {
-    id: 35,
+    id: 31,
     name: 'Razer Headset with Kitty Ears V2',
     manufacturer: "Razer",
     title: 'Razer Kitty Ears V2 - $97.99',
@@ -130,7 +186,28 @@ const ITEM_LIST = [
     price: 97.99,
   },
   {
-    id: 36,
+    id: 32,
+    name: 'Razer RGB Mouse Mat',
+    manufacturer: "Razer",
+    title: 'Razer RGB Mouse Mat - $139.99',
+    description:
+      "Edge-to-Edge Backlit Design, 15-Zone Chroma Lighting, Integrated USB 2.0 Port",
+    image: RazerRGBMouseMatImage,
+    price: 139.99,
+  },
+  {
+    id: 33,
+    name: 'Razer Kiyo Pro',
+    manufacturer: "Razer",
+    title: 'Razer Kiyo Pro - $168.99',
+    description:
+      "USB Camera with High-Performance Adaptive Light Sensor",
+    image: RazerKiyoProImage,
+    price: 168.99,
+  },
+  
+  {
+    id: 34,
     name: 'Razer Basilisk V3 Pro',
     manufacturer: "Razer",
     title: 'Razer Basilisk V3 Pro - $178.99',
@@ -138,6 +215,26 @@ const ITEM_LIST = [
       "Customizable Wireless Gaming Mouse with Razer HyperScroll Tilt Wheel",
     image: RazerBasiliskV3ProImage,
     price: 178.99,
+  },
+  {
+    id: 35,
+    name: 'Razer Aether Lamp Pro',
+    manufacturer: "Razer",
+    title: 'Razer Aether Lamp Pro - $139.99',
+    description:
+      "GB LED Lamp with Multi-zone Lighting",
+    image: RazerAetherLampProImage,
+    price: 139.99,
+  },
+  {
+    id: 36,
+    name: 'Razer Seiren V3 Chroma',
+    manufacturer: "Razer",
+    title: 'Razer Seiren V3 Chroma - $189.99',
+    description:
+      "RGB USB Microphone with Tap-to-Mute",
+    image: RazerSeirenV3ChromaImage,
+    price: 189.99,
   },
   {
     id: 37,
@@ -170,7 +267,48 @@ const ITEM_LIST = [
     price: 227.99,
   },
   {
-    id: 40,
+    id: 41,
+    name: 'Lofree Petal Mouse',
+    manufacturer: "Lofree",
+    title: 'Lofree Petal Mouse - $69.00',
+    description:
+      "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
+    image: LofreePetalMouseImage,
+    price: 69.00,
+  },
+  {
+    id: 42,
+    name: 'Lofree Foundation Keyboard',
+    manufacturer: "Lofree",
+    title: 'Lofree Foundation Keyboard - $239.00',
+    description:
+      "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
+    image: LofreeFoundationKeyboardImage,
+    price: 239.00,
+  },
+  {
+    id: 43,
+    name: 'Lofree Moru Keyboard',
+    manufacturer: "Lofree",
+    title: 'Lofree 1% Moru Keyboard - $239.00',
+    description:
+      "Discover the 1% Moru, a 68 layout-keyboard designed not just for typing, but for transforming everyday spaces into havens of serenity. ",
+    image: LofreeMoruKeyboardImage,
+    price: 239.00,
+  },
+  {
+    id: 44,
+    name: 'Lofree Transparent Keyboard',
+    manufacturer: "Lofree",
+    title: 'Lofree 1% Transparent Keyboard - $219.00',
+    description:
+      "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
+    image: LofreeTransparentKeyboardImage,
+    price: 219.00,
+  },
+  
+  {
+    id: 45,
     name: 'Surface Arc Mouse',
     manufacturer: "Microsoft",
     title: 'Surface Arc Mouse - $99.99',
@@ -180,7 +318,7 @@ const ITEM_LIST = [
     price: 99.99,
   },
   {
-    id: 41,
+    id: 46,
     name: 'Alienware Keyboard AW510K',
     manufacturer: "Alienware",
     title: 'Alienware Keyboard AW510K - $179.99',
@@ -190,7 +328,7 @@ const ITEM_LIST = [
     price: 179.99,
   },
   {
-    id: 42,
+    id: 47,
     name: 'Alienware Headset AW920H',
     manufacturer: "Alienware",
     title: 'Alienware Headset AW920H - $189.99',
@@ -200,7 +338,7 @@ const ITEM_LIST = [
     price: 189.99,
   },
   {
-    id: 43,
+    id: 48,
     name: 'Alienware Gaming Mouse AW620M',
     manufacturer: "Alienware",
     title: 'Alienware Gaming Mouse AW620M - $137.99',
@@ -210,7 +348,7 @@ const ITEM_LIST = [
     price: 137.99,
   },
   {
-    id: 44,
+    id: 49,
     name: 'Alienware Gaming Mouse AW610',
     manufacturer: "Alienware",
     title: 'Alienware Gaming Mouse AW610 - $109.99',
@@ -219,8 +357,10 @@ const ITEM_LIST = [
     image: AlienwareGamingMouseAW610MImage,
     price: 109.99,
   },
+  
+  
   {
-    id: 45,
+    id: 50,
     name: 'AirPods Pro 2',
     manufacturer: "Apple",
     title: 'AirPods Pro 2 - $249.00',
@@ -230,7 +370,7 @@ const ITEM_LIST = [
     price: 249.00,
   },
   {
-    id: 46,
+    id: 51,
     name: "AirPods Max",
     manufacturer: "Apple",
     title: "AirPods Max - $779.00",
@@ -240,7 +380,7 @@ const ITEM_LIST = [
     price: 779.00,
   },
   {
-    id: 47,
+    id: 52,
     name: "HomePod Mini",
     manufacturer: "Apple",
     title: "HomePod Mini - $129.00",
