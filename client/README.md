@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 `npm install @mui/material @emotion/react @emotion/styled @mui/icons-material`
 
-`npm install react-router-dom @toolpad/core reactjs-localstorage firebase redux-persist react-redux @reduxjs/toolkit sonner`
+`npm install react-router-dom @toolpad/core reactjs-localstorage firebase redux-persist react-redux @reduxjs/toolkit sonner axios`
 
 if react-refresh error, please run
 `npm install -D  react-refresh@0.11.0`
