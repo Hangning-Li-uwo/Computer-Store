@@ -41,8 +41,16 @@ export const authSlice = createSlice({
       }
     },
     setCartItem: (state, action) => {
-      // Add the new item to the items array
-      state.items.push(action.payload);
+      // Check if the item already exists in the cart
+      const existingItem = state.items.find(item => item.name === action.payload.name);
+    
+      if (existingItem) {
+        // Increment the quantity if the item exists
+        existingItem.quantity += 1;
+      } else {
+        // Add the item to the cart with an initial quantity of 1
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
     },
     removeCartItem: (state, action) => {
       // Remove the item at the specified index
@@ -52,8 +60,14 @@ export const authSlice = createSlice({
       // Remove the item at the specified index
       state.items = [];
     },
-    setOrderItem: (state, action) => {},
-    deleteOrderItem: (state, action) => {},
+    setOrderItem: (state, action) => {
+      const newOrder = { ...action.payload, id: state.nextOrderId };
+      state.orders.push(newOrder);
+      state.nextOrderId += 1; // Increment the ID for the next order
+    },
+    deleteOrderItem: (state, action) => {
+      state.orders = state.orders.filter((_, index) => index !== action.payload);
+    },
   },
 });
 

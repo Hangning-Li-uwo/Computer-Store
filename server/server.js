@@ -1,8 +1,18 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
-const { getFirestore, collection, doc, getDoc,getDocs, setDoc, updateDoc } = require("firebase/firestore");
+const {
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} = require("firebase/firestore");
 const { initializeApp } = require("firebase/app");
+const formData = require("form-data");
+const Mailgun = require("mailgun.js");
 
 const firebaseConfig = {
   apiKey: "AIzaSyDyc5gj-7b9YclJGtd1ud9n822WOytoitU",
@@ -11,7 +21,7 @@ const firebaseConfig = {
   storageBucket: "sensor-13ce6.firebasestorage.app",
   messagingSenderId: "1059425604798",
   appId: "1:1059425604798:web:c2d5f9f5c680422dbebaef",
-  measurementId: "G-B9YXDTQCTC"
+  measurementId: "G-B9YXDTQCTC",
 };
 
 // Initialize Firebase
@@ -32,15 +42,66 @@ app.use((req, res, next) => {
   next();
 });
 
+const mailgun = new Mailgun(formData);
+const mg = mailgun.client({
+  username: "api",
+  key: "0abfa711cd0bd888adf24fbc65e9cfc7-6df690bb-15812f8c",
+});
+
+// Route to send email confirmation
+app.post("/api/sendConfirmationEmail", async (req, res) => {
+  const { uid } = req.body;
+
+  if (!uid) {
+    return res.status(400).send({ message: "User ID is required" });
+  }
+
+  try {
+    // Fetch user data from Firestore
+    const userDocRef = doc(firestore, "Profiles", uid);
+    const userDoc = await getDoc(userDocRef);
+
+    if (!userDoc.exists()) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    const userData = userDoc.data();
+    // Send email
+    await mg.messages
+      .create("sandbox7393dc96ed224d0d8810ad9e74fa977f.mailgun.org", {
+        from: "Order Confirmation <mailgun@sandbox7393dc96ed224d0d8810ad9e74fa977f.mailgun.org>",
+        to: [userData.email],
+        subject: "Order Confirmation",
+        text: `Hi ${userData.firstName}, please confirm your order.`,
+        html: `<h1>Thank You, ${userData.firstName}!</h1>
+      <p>We appreciate your order and are excited to serve you!</p>
+      <p>Please confirm your order by clicking the link below:</p>
+      <p><a href="http://localhost:3000.com/confirm-email?uid=${uid}" style="color: blue; text-decoration: underline;">Confirm Your Order</a></p>
+      <p>If you have any questions, feel free to reach out to our support team.</p>
+      <p>Best regards,<br>The Team</p>`,
+      })
+      .then((msg) => console.log(msg))
+      .catch((err) => console.log(err));
+
+    res.status(200).send({ message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).send({ message: "Failed to send email" });
+  }
+});
+
 app.post("/api/setUserProfile", async (req, res) => {
   const { uid, firstName, lastName, email, photoURL } = req.body;
 
-  const userDocRef = doc(firestore, 'Profiles', uid);
+  const userDocRef = doc(firestore, "Profiles", uid);
   const userInfo = await getDoc(userDocRef);
-  console.log("role: ",userInfo.data());
-  if (userInfo.exists() && userInfo.data() && (userInfo.data().role === 'user' || userInfo.data().role === 'admin')) {
-    res.status(200).send({ message: "Profile retrieved!" });
-  } else{
+  if (
+    userInfo.exists() &&
+    userInfo.data() &&
+    (userInfo.data().role === "user" || userInfo.data().role === "admin")
+  ) {
+    res.status(200).send(userInfo.data());
+  } else {
     try {
       // Save user data to Firestore
       const newProfile = {
@@ -51,7 +112,7 @@ app.post("/api/setUserProfile", async (req, res) => {
         email,
         photoURL,
         address: "",
-        paymentMethod: ""
+        paymentMethod: "",
       };
 
       await setDoc(doc(firestore, "Profiles", uid), newProfile);
@@ -64,21 +125,21 @@ app.post("/api/setUserProfile", async (req, res) => {
 });
 
 // Endpoint to assign role
-app.post('/api/assignRole', async (req, res) => {
+app.post("/api/assignRole", async (req, res) => {
   const { uid, role } = req.body;
   if (!uid && !role) {
-    return res.status(400).send({ message: 'no user info' });
+    return res.status(400).send({ message: "no user info" });
   }
 
   try {
     // Update user's role in Firestore
-    const userDocRef = doc(firestore, 'Profiles', uid);
+    const userDocRef = doc(firestore, "Profiles", uid);
     await updateDoc(userDocRef, { role: role });
 
-    res.status(200).send({ message: 'Role assigned successfully' });
+    res.status(200).send({ message: "Role assigned successfully" });
   } catch (error) {
-    console.error('Error updating role:', error);
-    res.status(500).send({ message: 'Failed to assign role' });
+    console.error("Error updating role:", error);
+    res.status(500).send({ message: "Failed to assign role" });
   }
 });
 
@@ -109,45 +170,50 @@ app.get("/api/getStock", async (req, res) => {
 app.post("/api/updateStock", async (req, res) => {
   const { pid, pname, quantity } = req.body;
 
-  const stockDocRef = doc(firestore, 'Stock', String(pid));
+  const stockDocRef = doc(firestore, "Stock", String(pid));
   const stockInfo = await getDoc(stockDocRef);
 
   // if stock exist, update the stock
   if (stockInfo.exists()) {
     await updateDoc(stockDocRef, { quantity });
     res.status(200).send({ message: "Stock info retrieved!" });
-  }else{
+  } else {
     try {
       // create stock
       await setDoc(doc(firestore, "Stock", String(pid)), {
         pid,
         pname,
-        quantity: quantity
+        quantity: quantity,
       });
       res.status(200).send({ message: "Stock updated" });
-  } catch (error) {
-    console.error("Error retrieving stock:", error);
-    res.status(500).send({ message: "Failed to retrieve stock" });
+    } catch (error) {
+      console.error("Error retrieving stock:", error);
+      res.status(500).send({ message: "Failed to retrieve stock" });
+    }
   }
-}
 });
 
-app.get('/api/reviews', async (req, res) => {
+app.get("/api/reviews", async (req, res) => {
   try {
-    const response = await axios.get('https://serpapi.com/search', {
+    const response = await axios.get("https://serpapi.com/search", {
       params: {
-        engine: 'google_product',
-        product_id: '21473839577',
+        engine: "google_product",
+        product_id: "21473839577",
         reviews: true,
-        api_key: 'df5e954cf47dc057227a92264234498d4f6496e679d69d162e05b148ee7626a9',
+        api_key:
+          "df5e954cf47dc057227a92264234498d4f6496e679d69d162e05b148ee7626a9",
       },
     });
     res.status(200).json(response.data.reviews_results);
   } catch (error) {
     // res.status(500).json({ error: error });
     res.status(200).json([
-      { rating: 5, title: 'Amazing Product!', snippet: 'Highly recommend it.' },
-      { rating: 4, title: 'Great value', snippet: 'Satisfied with the purchase.' },
+      { rating: 5, title: "Amazing Product!", snippet: "Highly recommend it." },
+      {
+        rating: 4,
+        title: "Great value",
+        snippet: "Satisfied with the purchase.",
+      },
     ]);
   }
 });
@@ -156,15 +222,16 @@ app.post("/api/updateUserProfile", async (req, res) => {
   const { uid, address, paymentMethod } = req.body;
 
   if (!uid && !role) {
-    return res.status(400).send({ message: 'no user info' });
+    return res.status(400).send({ message: "no user info" });
   }
 
   if (!address || !paymentMethod) {
-    return res.status(400).send({ message: "Address and payment method are required." });
+    return res
+      .status(400)
+      .send({ message: "Address and payment method are required." });
   }
 
   try {
-
     const userDocRef = doc(firestore, "Profiles", uid);
 
     await updateDoc(userDocRef, {
@@ -183,4 +250,3 @@ app.post("/api/updateUserProfile", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-

@@ -12,7 +12,7 @@ import { Button, Typography } from "@mui/material";
 import { toast } from "sonner";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { clearCartItem, removeCartItem, setCartItem } from "../../state";
+import { clearCartItem, removeCartItem, setOrderItem } from "../../state";
 import CartButton from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
@@ -67,11 +67,14 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     // sendEmail();
     try {
       const response = await axios.post("http://localhost:5001/api/sendConfirmationEmail", {
-        uid: user.UID, // Pass the user ID to identify the user in Firestore
+        uid: user.UID, 
+        order: items
       });
   
       if (response.status === 200) {
-        toast.success("Order Submitted, please confirm your order in email!", {
+        dispatch(setOrderItem(items));  // create an order
+        dispatch(clearCartItem());
+        toast.success("Order Submitted, please check order confirmation email!", {
           icon: <CheckCircleIcon sx={{ color: green[500] }} />,
         });
       } else {
@@ -108,7 +111,8 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       {items.length > 0 ? (
         <List>
           {items.map((item, index) => (
-            <ListItem
+            <>
+             <ListItem
               key={index}
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
@@ -121,6 +125,14 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
                 <DeleteIcon />
               </IconButton>
             </ListItem>
+            <ListItem
+              key={index}
+              sx={{ display: "flex", justifyContent: "space-between", marginLeft: 2 }}
+            >
+              <ListItemText secondary={`X ${item.quantity}`} />
+            </ListItem>
+            </>
+           
           ))}
           <Divider sx={{ width: "100%", my: 2 }} />
           <Typography variant="h6" sx={{ textAlign: "center", my: 2 }}>
