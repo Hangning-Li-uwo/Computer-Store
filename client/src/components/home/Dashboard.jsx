@@ -75,7 +75,7 @@ function Dashboard(props) {
   const [openSettingsDrawer, setOpenSettingsDrawer] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("Current role: ", currentUser);
+    console.log("Current user: ", currentUser);
   }, [currentUser]);
 
   return (

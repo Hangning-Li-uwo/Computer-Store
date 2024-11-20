@@ -12,7 +12,7 @@ import { Button, Typography } from "@mui/material";
 import { toast } from "sonner";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { clearCartItem, removeCartItem, setOrderItem } from "../../state";
+import { removeCartItem, setOrderItem } from "../../state";
 import CartButton from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
@@ -44,46 +44,27 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
 
   const clearCart = async () => {
-    // Dispatch an action to clear the card by index
+    dispatch(setOrderItem(items));  // create an order
     // try {
-    //   for (const item of items) {
-    //     // Update stock for each item in the backend
-    //     await axios.post("http://localhost:5001/api/updateStock", {
-    //       pid: item[0].id, // Product ID
-    //       pname: item[0].name, // Product name
-    //       quantity: item[1].quantity, // TODO
-    //     });
-    //   }
 
-    //   // Clear the cart in the state
-    //   dispatch(clearCartItem());
-
-    //   // Notify the user that the cart has been cleared
-    // } catch (error) {
-    //   console.error("Error clearing cart and updating stock:", error.message);
-    // }
-    // dispatch(clearCartItem());
-    // send email
-    // sendEmail();
-    try {
-      const response = await axios.post("http://localhost:5001/api/sendConfirmationEmail", {
-        uid: user.UID, 
-        order: items
-      });
+    //   const response = await axios.post("http://localhost:5001/api/sendConfirmationEmail", {
+    //     uid: user.UID, 
+    //     order: items
+    //   });
   
-      if (response.status === 200) {
-        dispatch(setOrderItem(items));  // create an order
-        dispatch(clearCartItem());
-        toast.success("Order Submitted, please check order confirmation email!", {
-          icon: <CheckCircleIcon sx={{ color: green[500] }} />,
-        });
-      } else {
-        alert("Failed to send email confirmation.");
-      }
-    } catch (error) {
-      console.error("Error sending email confirmation:", error.message);
-      alert("An error occurred while sending email confirmation.");
-    }
+    //   if (response.status === 200) {
+    //     dispatch(setOrderItem(items));  // create an order
+    //     dispatch(clearCartItem());
+    //     toast.success("Order Submitted, please check order confirmation email!", {
+    //       icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+    //     });
+    //   } else {
+    //     alert("Failed to send email confirmation.");
+    //   }
+    // } catch (error) {
+    //   console.error("Error sending email confirmation:", error.message);
+    //   alert("An error occurred while sending email confirmation.");
+    // }
   };
 
   const subtotal = items.reduce((sum, item) => sum + (item.price || 0), 0);
@@ -126,7 +107,6 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
               </IconButton>
             </ListItem>
             <ListItem
-              key={index}
               sx={{ display: "flex", justifyContent: "space-between", marginLeft: 2 }}
             >
               <ListItemText secondary={`X ${item.quantity}`} />

@@ -17,14 +17,7 @@ export const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     setUserProfile: (state, action) => {
-      state.user.UID = action.payload.UID;
-      state.user.firstName = action.payload.firstName;
-      state.user.lastName = action.payload.lastName;
-      state.user.role = action.payload.role;
-      state.user.email = action.payload.email;
-      state.user.photoURL = action.payload.photoURL;
-      state.user.address = action.payload.address;
-      state.user.paymentMethod = action.payload.paymentMethod;
+      state.user = action.payload.profile;
     },
     updateRole: (state, action) => {
       if (state.user) {
@@ -42,8 +35,10 @@ export const authSlice = createSlice({
     },
     setCartItem: (state, action) => {
       // Check if the item already exists in the cart
-      const existingItem = state.items.find(item => item.name === action.payload.name);
-    
+      const existingItem = state.items.find(
+        (item) => item.name === action.payload.name
+      );
+
       if (existingItem) {
         // Increment the quantity if the item exists
         existingItem.quantity += 1;
@@ -58,15 +53,21 @@ export const authSlice = createSlice({
     },
     clearCartItem: (state, action) => {
       // Remove the item at the specified index
-      state.items = [];
+      // state.items = [];
     },
     setOrderItem: (state, action) => {
-      const newOrder = { ...action.payload, id: state.nextOrderId };
+      const newOrder = { ...action.payload, id: state.nextOrderId || 1 };
+      state.nextOrderId = (state.nextOrderId || 1) + 1;
+    
       state.orders.push(newOrder);
-      state.nextOrderId += 1; // Increment the ID for the next order
+    
+      // Clear cart items
+      state.items = [];
     },
     deleteOrderItem: (state, action) => {
-      state.orders = state.orders.filter((_, index) => index !== action.payload);
+      state.orders = state.orders.filter(
+        (_, index) => index !== action.payload
+      );
     },
   },
 });
