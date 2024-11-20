@@ -58,18 +58,7 @@ export default function OAuthSignIn() {
       if (response.ok) {
         const profile = await response.json(); // Retrieve the full profile from the backend
         // Dispatch setUserProfile with the full profile
-        dispatch(
-          setUserProfile({
-            UID: profile.UID,
-            firstName: profile.firstName,
-            lastName: profile.lastName,
-            role: profile.role,
-            email: profile.email,
-            photoURL: profile.photoURL,
-            address: profile.address,
-            paymentMethod: profile.paymentMethod
-          })
-        );
+        dispatch(setUserProfile({ profile }));
         // Sign-in success; redirect as needed
         window.location.href = "/";
       }
