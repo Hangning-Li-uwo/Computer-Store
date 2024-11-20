@@ -1,5 +1,6 @@
 // server.js
 const express = require("express");
+require('dotenv').config(); // Load .env variables
 const cors = require("cors");
 const {
   getFirestore,
@@ -45,7 +46,7 @@ app.use((req, res, next) => {
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
   username: "api",
-  key: "0abfa711cd0bd888adf24fbc65e9cfc7-6df690bb-15812f8c",
+  key: process.env.MAiLGUN_API_KEY,
 });
 
 // Route to send email confirmation
