@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,13 +7,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { blue, green } from "@mui/material/colors";
+import { green } from "@mui/material/colors";
 import { toast } from "sonner";
+import ITEM_LIST from "../home/ItemList";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,44 +30,48 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
 export default function Stock() {
-  const [rows, setRows] = React.useState([
-    { id: 1, name: "iMac", brand: "Apple", quantity: 10 },
-    { id: 2, name: "Macbook Pro", brand: "Apple", quantity: 0 },
-    { id: 3, name: "AirPods Max", brand: "Apple", quantity: 5 },
-    { id: 4, name: "HomePod Mini", brand: "Apple", quantity: 100 },
-  ]);
+  const isMobile = useMediaQuery("(max-width: 600px)"); // Detect if it's a mobile view
 
-  const [stock, setStock] = React.useState([]);
+  const [rows, setRows] = React.useState(
+    ITEM_LIST.map((item) => ({
+      name: item.name,
+      manufacturer: item.manufacturer,
+      quantity: 10, // Default quantity
+    }))
+  );
+  const [loading, setLoading] = useState(true);
 
-  const handleQuantityChange = (e, id) => {
+
+  const handleQuantityChange = (e, name) => {
     const updatedRows = rows.map((row) =>
-      row.id === id ? { ...row, quantity: e.target.value } : row
+      row.name === name ? { ...row, quantity: parseInt(e.target.value, 10) || 0 } : row
     );
     setRows(updatedRows);
   };
 
-  const handleUpdateStock = async (id) => {
-    // Find the row corresponding to the clicked Update button
-    const selectedRow = rows.find((row) => row.id === id);
+  const handleUpdateStock = async (name) => {
+    const selectedRow = rows.find((row) => row.name === name);
 
     if (selectedRow) {
       try {
-        // Send the updated stock info to the backend
-        const response = await axios.post(
-          "http://localhost:5001/api/updateStock",
-          {
-            pid: id, // Product ID
-            pname: selectedRow.name, // Product name
-            quantity: selectedRow.quantity, // Updated quantity
-          }
-        );
+        const matchingItem = ITEM_LIST.find((item) => item.name === selectedRow.name);
+
+        if (!matchingItem) {
+          console.error("Matching item not found in ITEM_LIST");
+          return;
+        }
+
+        const response = await axios.post("http://localhost:5001/api/updateStock", {
+          id: matchingItem.id,
+          name: selectedRow.name,
+          quantity: selectedRow.quantity,
+        });
 
         if (response.status === 200) {
           toast.success("Stock updated successfully!", {
@@ -78,14 +83,33 @@ export default function Stock() {
       } catch (error) {
         console.error("Error updating stock:", error.message);
       }
-    } else {
-      console.error("No row found with the given ID:", id);
     }
   };
 
-  const addRow = () => {
+  useEffect(() => {
+    const fetchStockData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/api/getAllStock");
+        if (response.status === 200) {
+          console.log(response);
+          setRows(response.data);
+        } else {
+          console.error("Failed to fetch stock data:", response.data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching stock data:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchStockData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state
   }
+
 
   return (
     <Box
@@ -94,18 +118,24 @@ export default function Stock() {
         justifyContent: "center",
         alignItems: "center",
         marginTop: 5,
-        // width: "90%",
-        flexDirection: 'column'
+        flexDirection: "column",
+        px: 2, // Padding for mobile views
       }}
     >
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <TableContainer
+        component={Paper}
+        sx={{
+          width: isMobile ? "100%" : "80%", // Full width on mobile
+          overflowX: "auto", // Allow horizontal scrolling on mobile
+        }}
+      >
+        <Table sx={{ minWidth: 500 }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Item Name</StyledTableCell>
-              <StyledTableCell align="center">Brand</StyledTableCell>
+              {!isMobile && <StyledTableCell align="center">Manufacturer</StyledTableCell>}
               <StyledTableCell align="center">Quantity</StyledTableCell>
-              <StyledTableCell align="center">In Stock</StyledTableCell>
+              {!isMobile && <StyledTableCell align="center">In Stock</StyledTableCell>}
               <StyledTableCell align="center">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -115,31 +145,35 @@ export default function Stock() {
                 <StyledTableCell align="center" component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.brand}</StyledTableCell>
+                {!isMobile && (
+                  <StyledTableCell align="center">{row.manufacturer}</StyledTableCell>
+                )}
                 <StyledTableCell align="center">
                   <TextField
                     id="outlined-number"
                     type="number"
                     value={row.quantity >= 0 ? row.quantity : 0}
-                    onChange={(e) => handleQuantityChange(e, row.id)}
+                    onChange={(e) => handleQuantityChange(e, row.name)}
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    size="small"
                   />
                 </StyledTableCell>
+                {!isMobile && (
+                  <StyledTableCell align="center">
+                    <Typography sx={{ color: row.quantity > 0 ? "green" : "red" }}>
+                      {row.quantity > 0 ? "In Stock" : "Out of Stock"}
+                    </Typography>
+                  </StyledTableCell>
+                )}
                 <StyledTableCell align="center">
-                  <Typography
-                    sx={{ color: row.quantity > 0 ? "green" : "red" }}
+                  <Button
+                    size="small"
+                    variant="contained"
+                    onClick={() => handleUpdateStock(row.name)}
                   >
-                    {row.quantity > 0 ? "In Stock" : "Out of Stock"}
-                  </Typography>
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button onClick={() => handleUpdateStock(row.id)}>
                     Update
-                  </Button>
-                  <Button onClick={() => handleUpdateStock(row.id)}>
-                    Delete
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
@@ -150,4 +184,3 @@ export default function Stock() {
     </Box>
   );
 }
-
