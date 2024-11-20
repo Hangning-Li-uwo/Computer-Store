@@ -14,7 +14,6 @@ import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { blue, green } from "@mui/material/colors";
 import { toast } from "sonner";
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -148,10 +147,6 @@ export default function Stock() {
           </TableBody>
         </Table>
       </TableContainer>
-
-
-      <AddBoxIcon fontSize="large" sx={{ color: blue[900], marginTop: 2, cursor: "pointer" }}
-       onClick={()=> addRow()}/>
     </Box>
   );
 }
