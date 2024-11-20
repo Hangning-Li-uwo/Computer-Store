@@ -1,7 +1,7 @@
 ## Server
 
 ### Installation
-`npm install express cors firebase nodemon`
+`npm install express cors firebase nodemon form-data mailgun.js`
 
 ### Server Start
 run `npm run dev` to start the server
