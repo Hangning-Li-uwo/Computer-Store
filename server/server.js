@@ -168,22 +168,43 @@ app.get("/api/getStock", async (req, res) => {
   }
 });
 
-app.post("/api/updateStock", async (req, res) => {
-  const { pid, pname, quantity } = req.body;
+app.get("/api/getAllStock", async (req, res) => {
+  try {
+    const stockCollectionRef = collection(firestore, "Stock");
+    const stockSnapshot = await getDocs(stockCollectionRef);
 
-  const stockDocRef = doc(firestore, "Stock", String(pid));
+    if (stockSnapshot.empty) {
+      return res.status(404).send({ message: "No stock items found" });
+    }
+
+    const stockItems = [];
+    stockSnapshot.forEach((doc) => {
+      stockItems.push({ id: doc.id, ...doc.data() });
+    });
+
+    res.status(200).send(stockItems);
+  } catch (error) {
+    console.error("Error retrieving all stock:", error);
+    res.status(500).send({ message: "Failed to retrieve all stock" });
+  }
+});
+
+app.post("/api/updateStock", async (req, res) => {
+  const { id, name, quantity } = req.body;
+
+  const stockDocRef = doc(firestore, "Stock", String(id));
   const stockInfo = await getDoc(stockDocRef);
 
   // if stock exist, update the stock
   if (stockInfo.exists()) {
-    await updateDoc(stockDocRef, { quantity });
+    await updateDoc(stockDocRef, {id, name, quantity });
     res.status(200).send({ message: "Stock info retrieved!" });
   } else {
     try {
       // create stock
-      await setDoc(doc(firestore, "Stock", String(pid)), {
-        pid,
-        pname,
+      await setDoc(doc(firestore, "Stock", String(id)), {
+        id,
+        name,
         quantity: quantity,
       });
       res.status(200).send({ message: "Stock updated" });
