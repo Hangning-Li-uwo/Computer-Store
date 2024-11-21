@@ -25,15 +25,14 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
   const stock = useSelector((state) => state.localStock);
 
   React.useEffect(() => {
-    setIsOpen(openCartDrawer); // Sync internal state with external prop
+    setIsOpen(openCartDrawer);
   }, [openCartDrawer]);
 
   const toggleDrawer = (open) => (event) => {
-    setIsOpen(open); // Update internal state
-    setOpenCartDrawer(open); // Notify external state of the change
+    setIsOpen(open); 
+    setOpenCartDrawer(open);
   };
 
-  //   const preferredMode = useSelector((state) => state.mode);
   const items = useSelector((state) => state.items);
 
   const dispatch = useDispatch();
@@ -47,8 +46,8 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     try {
       // Validate item quantities against stock
       const isInvalid = items.find((item) => {
-        const matchingStock = stock.find((s) => s.name === item.name); // Find matching stock
-        return matchingStock && item.quantity > matchingStock.quantity; // Check if item quantity exceeds stock
+        const matchingStock = stock.find((s) => s.name === item.name);
+        return matchingStock && item.quantity > matchingStock.quantity;
       });
 
       if (isInvalid) {
@@ -72,7 +71,6 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
         })
         .filter((item) => item !== null);
 
-      // Loop through each item and send individual API requests
       for (const stockItem of updatedStock) {
         const response = await axios.post(
           "http://localhost:5001/api/updateStock",
