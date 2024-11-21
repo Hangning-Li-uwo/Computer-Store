@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import { blueGrey } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -16,6 +16,7 @@ import { removeCartItem, setOrderItem } from "../../state";
 import CartButton from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 // TODO
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
@@ -42,32 +43,47 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     dispatch(removeCartItem(index));
   };
 
-
-
   const clearCart = async () => {
     try {
-      const updatedStock = items.map((item) => {
-        const matchingStock = stock.find((s) => s.name === item.name); // Find the stock item by ID
-        if (matchingStock) {
-          console.log(matchingStock);
-          return {
-            id: item.id,
-            name: item.name,
-            quantity: matchingStock.quantity - item.quantity, // New quantity
-          };
-        }
-        return null;
-      }).filter((item) => item !== null);
-  
+      // Validate item quantities against stock
+      const isInvalid = items.find((item) => {
+        const matchingStock = stock.find((s) => s.name === item.name); // Find matching stock
+        return matchingStock && item.quantity > matchingStock.quantity; // Check if item quantity exceeds stock
+      });
+
+      if (isInvalid) {
+        return toast.error(`The quantity of "${isInvalid.name}" exceeds available stock`, {
+          icon: <CancelIcon sx={{ color: red[500] }} />,
+        });
+      }
+
+      // Prepare updated stock data
+      const updatedStock = items
+        .map((item) => {
+          const matchingStock = stock.find((s) => s.name === item.name); // Find the stock item by name
+          if (matchingStock) {
+            return {
+              id: item.id,
+              name: item.name,
+              quantity: matchingStock.quantity - item.quantity, // New quantity
+            };
+          }
+          return null;
+        })
+        .filter((item) => item !== null);
+
       // Loop through each item and send individual API requests
       for (const stockItem of updatedStock) {
-        const response = await axios.post("http://localhost:5001/api/updateStock", stockItem);
-  
+        const response = await axios.post(
+          "http://localhost:5001/api/updateStock",
+          stockItem
+        );
+
         if (response.status !== 200) {
           throw new Error(`Failed to update stock for item ID ${stockItem.id}`);
         }
       }
-      
+
       dispatch(setOrderItem(items)); // Create an order
       toast.success("Order Submitted and stock updated!", {
         icon: <CheckCircleIcon sx={{ color: green[500] }} />,
@@ -75,26 +91,6 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     } catch (error) {
       console.error("Error updating stock:", error.message);
     }
-    // try {
-
-    //   const response = await axios.post("http://localhost:5001/api/sendConfirmationEmail", {
-    //     uid: user.UID, 
-    //     order: items
-    //   });
-  
-    //   if (response.status === 200) {
-    //     dispatch(setOrderItem(items));  // create an order
-    //     dispatch(clearCartItem());
-    //     toast.success("Order Submitted, please check order confirmation email!", {
-    //       icon: <CheckCircleIcon sx={{ color: green[500] }} />,
-    //     });
-    //   } else {
-    //     alert("Failed to send email confirmation.");
-    //   }
-    // } catch (error) {
-    //   console.error("Error sending email confirmation:", error.message);
-    //   alert("An error occurred while sending email confirmation.");
-    // }
   };
 
   const subtotal = items.reduce((sum, item) => sum + (item.price || 0), 0);
@@ -118,15 +114,20 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       >
         Cart
       </h1>
-  
+
       {items.length > 0 ? (
         <List>
           {items.map((item, index) => (
-            <React.Fragment key={index}> {/* Apply the key to React.Fragment */}
+            <React.Fragment key={index}>
+              {" "}
+              {/* Apply the key to React.Fragment */}
               <ListItem
                 sx={{ display: "flex", justifyContent: "space-between" }}
               >
-                <ListItemText primary={item.title} secondary={item.description} />
+                <ListItemText
+                  primary={item.title}
+                  secondary={item.description}
+                />
                 <IconButton
                   onClick={() => deleteItem(index)}
                   edge="end"
@@ -174,4 +175,3 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     </div>
   );
 }
-

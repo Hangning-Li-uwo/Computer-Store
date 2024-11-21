@@ -125,7 +125,7 @@ app.post("/api/setUserProfile", async (req, res) => {
   }
 });
 
-// Endpoint to assign role
+// Endpoint to assign roles
 app.post("/api/assignRole", async (req, res) => {
   const { uid, role } = req.body;
   if (!uid && !role) {

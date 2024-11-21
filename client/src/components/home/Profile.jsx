@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Logout from "@mui/icons-material/Logout";
-import HistoryIcon from "@mui/icons-material/History";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useAuth } from "../../context/AuthContext";
 import { auth } from "../../components/firebase";
@@ -16,7 +15,6 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../state";
-import { useSelector } from "react-redux";
 
 export default function AccountMenu({
   setOpenCartDrawer,

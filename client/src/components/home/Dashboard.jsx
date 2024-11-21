@@ -9,11 +9,12 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
 import Index from "./Index";
-import Stock from "../stock/Stock";
+import Stock from "../admin/Stock";
 import CartDrawer from "../drawer/CartDrawer";
 import ProfileDrawer from "../drawer/ProfileDrawer";
 import { useSelector } from "react-redux";
 import OrderHistory from "./OrderHistory";
+import ManageOrder from "../admin/ManageOrder";
 
 const USER_NAVIGATION = [
   {
@@ -51,7 +52,7 @@ const ADMIN_NAVIGATION = [
     kind: "divider",
   },
   {
-    segment: "Manage orders",
+    segment: "manageOrders",
     title: "Manage orders",
     icon: <ManageHistoryIcon />,
   },
@@ -73,6 +74,7 @@ function Dashboard(props) {
   const [openSettingsDrawer, setOpenSettingsDrawer] = React.useState(false);
 
   React.useEffect(() => {
+    console.log("current user: ", currentUser);
   }, [currentUser]);
 
   return (
@@ -104,8 +106,10 @@ function Dashboard(props) {
         }}
       >
         {router.pathname == "/dashboard" && <Index />}
-        {router.pathname == "/stock" && <Stock />}
         {router.pathname == "/orders" && <OrderHistory />}
+        {router.pathname == "/manageOrders" && <ManageOrder />}
+        {router.pathname == "/stock" && <Stock />}
+
 
       </DashboardLayout>
 
