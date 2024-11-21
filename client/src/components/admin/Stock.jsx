@@ -202,7 +202,7 @@ export default function Stock() {
                     <Typography
                       sx={{ color: row.quantity > 0 ? "green" : "red" }}
                     >
-                      {row.quantity > 0 ? "In Stock" : "Out of Stock"}
+                      {row.quantity > 0 ? "In Stock" : "Sold Out"}
                     </Typography>
                   </StyledTableCell>
                 )}

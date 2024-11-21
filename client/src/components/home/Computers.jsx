@@ -165,7 +165,7 @@ export default function ComputerLists({ filteredItems }) {
               <CardActions>
                 {matchingStock && matchingStock.quantity === 0 ? (
                   <Button disabled>
-                    Unavailable
+                    Sold Out
                   </Button>
                 ) : (
                   <Button

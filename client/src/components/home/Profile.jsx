@@ -15,6 +15,9 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../state";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { green } from "@mui/material/colors";
+import { toast } from "sonner";
 
 export default function AccountMenu({
   setOpenCartDrawer,
@@ -38,7 +41,9 @@ export default function AccountMenu({
   const LogOut = async () => {
     await auth.signOut(); // Sign out from Firebase
     dispatch(logOut());
-    alert("Successfully signed out");
+    toast.success("Successfully signed out", {
+      icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+    });
     window.location.href = "/";
   };
 

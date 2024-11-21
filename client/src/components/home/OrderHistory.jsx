@@ -55,6 +55,12 @@ export default function OrderHistory() {
               <TableCell align="center" colSpan={3}>
                 Order #{order.id} (Date: {new Date(order.date).toLocaleString()})
               </TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell align="center" colSpan={3}>
+                Address - {order?.address} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Payment Method - {order?.paymentMethod}
+              </TableCell>
               <TableCell align="right">Price</TableCell>
             </TableRow>
             <TableRow>

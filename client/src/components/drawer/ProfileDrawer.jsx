@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../state";
 import TextField from "@mui/material/TextField";
@@ -11,7 +10,9 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import { Button } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
-import { dispatch } from "react-redux";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { green } from "@mui/material/colors";
+import { toast } from "sonner";
 
 function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
   const {currentUser} = useAuth();
@@ -56,7 +57,9 @@ function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
             paymentMethod: pay,
           })
         );
-        alert("Profile updated successfully!");
+        toast.success("Profile updated successfully!", {
+          icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+        });
       } else {
         alert("Failed to update profile.");
       }

@@ -61,6 +61,8 @@ export const authSlice = createSlice({
         id: state.nextOrderId || 1,
         items: action.payload, // Pass an array of items directly
         date: new Date().toISOString(),
+        address: state.user.address,
+        paymentMethod: state.user.paymentMethod
       };
     
       state.nextOrderId = (state.nextOrderId || 1) + 1;

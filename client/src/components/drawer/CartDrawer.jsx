@@ -22,6 +22,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const user = useSelector((state) => state.user);
+  console.log(user);
   const stock = useSelector((state) => state.localStock);
 
   React.useEffect(() => {
@@ -52,6 +53,12 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
       if (isInvalid) {
         return toast.error(`The quantity of "${isInvalid.name}" exceeds available stock`, {
+          icon: <CancelIcon sx={{ color: red[500] }} />,
+        });
+      }
+
+      if(user.address === "" || user.paymentMethod === ""){
+        return toast.error(`Missing address and payment info`, {
           icon: <CancelIcon sx={{ color: red[500] }} />,
         });
       }
