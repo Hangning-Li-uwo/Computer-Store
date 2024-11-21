@@ -6,6 +6,7 @@ const initialState = {
   user: null,
   token: null,
   orders: [],
+  localStock: [],
   items: [], // Cart items array
 };
 
@@ -69,6 +70,12 @@ export const authSlice = createSlice({
         (_, index) => index !== action.payload
       );
     },
+    setLocalStock: (state, action) => {
+      state.localStock = action.payload.map(item => ({
+        name: item.name,
+        quantity: item.quantity,
+      }));
+    },
   },
 });
 
@@ -83,5 +90,6 @@ export const {
   clearCartItem,
   setOrderItem,
   deleteOrderItem,
+  setLocalStock
 } = authSlice.actions;
 export default authSlice.reducer;

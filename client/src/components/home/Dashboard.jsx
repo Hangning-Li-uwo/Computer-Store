@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AccountMenu from "./Profile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -9,7 +9,6 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { useDemoRouter } from "@toolpad/core/internal";
 import Index from "./Index";
-import { useAuth } from "../../context/AuthContext";
 import Stock from "../stock/Stock";
 import CartDrawer from "../drawer/CartDrawer";
 import ProfileDrawer from "../drawer/ProfileDrawer";
@@ -68,14 +67,12 @@ Index.prototype = {
 };
 
 function Dashboard(props) {
-  const { user, loading } = useAuth();
   const currentUser = useSelector((state) => state.user);
   const router = useDemoRouter("/dashboard");
   const [openCartDrawer, setOpenCartDrawer] = React.useState(false);
   const [openSettingsDrawer, setOpenSettingsDrawer] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("Current user: ", currentUser);
   }, [currentUser]);
 
   return (

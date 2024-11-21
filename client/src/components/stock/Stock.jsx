@@ -14,6 +14,7 @@ import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import { toast } from "sonner";
+import Skeleton from "@mui/material/Skeleton";
 import ITEM_LIST from "../home/ItemList";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -47,10 +48,11 @@ export default function Stock() {
   );
   const [loading, setLoading] = useState(true);
 
-
   const handleQuantityChange = (e, name) => {
     const updatedRows = rows.map((row) =>
-      row.name === name ? { ...row, quantity: parseInt(e.target.value, 10) || 0 } : row
+      row.name === name
+        ? { ...row, quantity: parseInt(e.target.value, 10) || 0 }
+        : row
     );
     setRows(updatedRows);
   };
@@ -60,18 +62,23 @@ export default function Stock() {
 
     if (selectedRow) {
       try {
-        const matchingItem = ITEM_LIST.find((item) => item.name === selectedRow.name);
+        const matchingItem = ITEM_LIST.find(
+          (item) => item.name === selectedRow.name
+        );
 
         if (!matchingItem) {
           console.error("Matching item not found in ITEM_LIST");
           return;
         }
 
-        const response = await axios.post("http://localhost:5001/api/updateStock", {
-          id: matchingItem.id,
-          name: selectedRow.name,
-          quantity: selectedRow.quantity,
-        });
+        const response = await axios.post(
+          "http://localhost:5001/api/updateStock",
+          {
+            id: matchingItem.id,
+            name: selectedRow.name,
+            quantity: selectedRow.quantity,
+          }
+        );
 
         if (response.status === 200) {
           toast.success("Stock updated successfully!", {
@@ -89,7 +96,9 @@ export default function Stock() {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/getAllStock");
+        const response = await axios.get(
+          "http://localhost:5001/api/getAllStock"
+        );
         if (response.status === 200) {
           console.log(response);
           setRows(response.data);
@@ -107,9 +116,31 @@ export default function Stock() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state
+    return (
+      <Box
+        sx={{
+          width: "80%",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          margin: "0 auto",
+          marginTop: 5,
+          gap: 2, // Add spacing between skeletons
+        }}
+      >
+        {Array.from({ length: 15 }).map((_, index) => (
+          <Skeleton
+            key={index}
+            variant="rectangular"
+            animation="wave"
+            width="100%"
+            height={60}
+          />
+        ))}
+      </Box>
+    );
   }
-
 
   return (
     <Box
@@ -125,7 +156,7 @@ export default function Stock() {
       <TableContainer
         component={Paper}
         sx={{
-          width: isMobile ? "100%" : "80%", // Full width on mobile
+          width: isMobile ? "50%" : "80%", // Full width on mobile
           overflowX: "auto", // Allow horizontal scrolling on mobile
         }}
       >
@@ -133,9 +164,13 @@ export default function Stock() {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Item Name</StyledTableCell>
-              {!isMobile && <StyledTableCell align="center">Manufacturer</StyledTableCell>}
+              {!isMobile && (
+                <StyledTableCell align="center">Manufacturer</StyledTableCell>
+              )}
               <StyledTableCell align="center">Quantity</StyledTableCell>
-              {!isMobile && <StyledTableCell align="center">In Stock</StyledTableCell>}
+              {!isMobile && (
+                <StyledTableCell align="center">In Stock</StyledTableCell>
+              )}
               <StyledTableCell align="center">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -146,7 +181,9 @@ export default function Stock() {
                   {row.name}
                 </StyledTableCell>
                 {!isMobile && (
-                  <StyledTableCell align="center">{row.manufacturer}</StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.manufacturer}
+                  </StyledTableCell>
                 )}
                 <StyledTableCell align="center">
                   <TextField
@@ -162,7 +199,9 @@ export default function Stock() {
                 </StyledTableCell>
                 {!isMobile && (
                   <StyledTableCell align="center">
-                    <Typography sx={{ color: row.quantity > 0 ? "green" : "red" }}>
+                    <Typography
+                      sx={{ color: row.quantity > 0 ? "green" : "red" }}
+                    >
                       {row.quantity > 0 ? "In Stock" : "Out of Stock"}
                     </Typography>
                   </StyledTableCell>

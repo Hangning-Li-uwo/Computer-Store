@@ -21,6 +21,7 @@ import { green } from "@mui/material/colors";
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const user = useSelector((state) => state.user);
+  const stock = useSelector((state) => state.localStock);
 
   React.useEffect(() => {
     setIsOpen(openCartDrawer); // Sync internal state with external prop
@@ -44,7 +45,36 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
 
   const clearCart = async () => {
-    dispatch(setOrderItem(items));  // create an order
+    try {
+      const updatedStock = items.map((item) => {
+        const matchingStock = stock.find((s) => s.name === item.name); // Find the stock item by ID
+        if (matchingStock) {
+          console.log(matchingStock);
+          return {
+            id: item.id,
+            name: item.name,
+            quantity: matchingStock.quantity - item.quantity, // New quantity
+          };
+        }
+        return null;
+      }).filter((item) => item !== null);
+  
+      // Loop through each item and send individual API requests
+      for (const stockItem of updatedStock) {
+        const response = await axios.post("http://localhost:5001/api/updateStock", stockItem);
+  
+        if (response.status !== 200) {
+          throw new Error(`Failed to update stock for item ID ${stockItem.id}`);
+        }
+      }
+      
+      dispatch(setOrderItem(items)); // Create an order
+      toast.success("Order Submitted and stock updated!", {
+        icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+      });
+    } catch (error) {
+      console.error("Error updating stock:", error.message);
+    }
     // try {
 
     //   const response = await axios.post("http://localhost:5001/api/sendConfirmationEmail", {
@@ -88,31 +118,33 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       >
         Cart
       </h1>
-
+  
       {items.length > 0 ? (
         <List>
           {items.map((item, index) => (
-            <>
-             <ListItem
-              key={index}
-              sx={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <ListItemText primary={item.title} secondary={item.description} />
-              <IconButton
-                onClick={() => deleteItem(index)}
-                edge="end"
-                aria-label="delete"
+            <React.Fragment key={index}> {/* Apply the key to React.Fragment */}
+              <ListItem
+                sx={{ display: "flex", justifyContent: "space-between" }}
               >
-                <DeleteIcon />
-              </IconButton>
-            </ListItem>
-            <ListItem
-              sx={{ display: "flex", justifyContent: "space-between", marginLeft: 2 }}
-            >
-              <ListItemText secondary={`X ${item.quantity}`} />
-            </ListItem>
-            </>
-           
+                <ListItemText primary={item.title} secondary={item.description} />
+                <IconButton
+                  onClick={() => deleteItem(index)}
+                  edge="end"
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </ListItem>
+              <ListItem
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginLeft: 2,
+                }}
+              >
+                <ListItemText secondary={`X ${item.quantity}`} />
+              </ListItem>
+            </React.Fragment>
           ))}
           <Divider sx={{ width: "100%", my: 2 }} />
           <Typography variant="h6" sx={{ textAlign: "center", my: 2 }}>
