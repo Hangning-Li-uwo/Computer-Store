@@ -10,6 +10,9 @@ import ComputerLists from "./Computers";
 import { useSelector, useDispatch } from "react-redux";
 import { updateRole } from "../../state";
 import Search from "./Search";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { green } from "@mui/material/colors";
+import { toast } from "sonner";
 import ITEM_LIST from "./ItemList";
 
 function Index() {
@@ -59,7 +62,9 @@ function Index() {
             role: role,
           })
         );
-        alert(data.message);
+        toast.success(data.message, {
+          icon: <CheckCircleIcon sx={{ color: green[500] }} />,
+        });
       } else {
         throw new Error("Failed to assign role");
       }
