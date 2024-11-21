@@ -57,7 +57,12 @@ export const authSlice = createSlice({
       // state.items = [];
     },
     setOrderItem: (state, action) => {
-      const newOrder = { ...action.payload, id: state.nextOrderId || 1 };
+      const newOrder = {
+        id: state.nextOrderId || 1,
+        items: action.payload, // Pass an array of items directly
+        date: new Date().toISOString(),
+      };
+    
       state.nextOrderId = (state.nextOrderId || 1) + 1;
     
       state.orders.push(newOrder);

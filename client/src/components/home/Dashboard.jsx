@@ -15,6 +15,7 @@ import ProfileDrawer from "../drawer/ProfileDrawer";
 import { useSelector } from "react-redux";
 import OrderHistory from "./OrderHistory";
 import ManageOrder from "../admin/ManageOrder";
+import { useAuth } from "../../context/AuthContext";
 
 const USER_NAVIGATION = [
   {
@@ -68,13 +69,13 @@ Index.prototype = {
 };
 
 function Dashboard(props) {
-  const currentUser = useSelector((state) => state.user);
+  // const currentUser = useSelector((state) => state.user);
+  const {currentUser, loading} = useAuth();
   const router = useDemoRouter("/dashboard");
   const [openCartDrawer, setOpenCartDrawer] = React.useState(false);
   const [openSettingsDrawer, setOpenSettingsDrawer] = React.useState(false);
 
   React.useEffect(() => {
-    console.log("current user: ", currentUser);
   }, [currentUser]);
 
   return (
@@ -85,9 +86,9 @@ function Dashboard(props) {
         title: "Computer Store",
       }}
       navigation={
-        currentUser === null ||
+        currentUser === null||
         currentUser.role === "" ||
-        currentUser.role == "user"
+        currentUser.role === "user"
           ? USER_NAVIGATION
           : ADMIN_NAVIGATION
       }
