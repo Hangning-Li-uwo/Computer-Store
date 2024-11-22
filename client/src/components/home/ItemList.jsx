@@ -34,6 +34,27 @@ import LofreeMoruKeyboardImage from "../../static/images/LofreeMoruKeyboard1.png
 import LofreePetalMouseImage from "../../static/images/LofreePetalMouse.png";
 import HPChromebookPlusImage from "../../static/images/HP Chromebook Plus.png";
 
+import LenovoImage from "../../static/images/Levono.png"
+import AsusRogImage from "../../static/images/AsusRog.png"
+import ViprTechReaper3Image from "../../static/images/ViprTechReaper3.png"
+import ViprTechAvalanche2Image from "../../static/images/ViprTechAvalanche2.png"
+import ASUSROGG16Image from "../../static/images/ASUSROGG16.png"
+import ZonicGamingPCImage from "../../static/images/ZonicGamingPC.png"
+import AQVINImage from "../../static/images/RefurbishedAQVIN.png"
+import AcerMonitorImage from "../../static/images/AcerMonitor.png"
+import MSICodexRImage from "../../static/images/MSICodexR.png"
+
+import DellProRugged14Image from "../../static/images/DellProRugged14.png"
+import Latitude5430RuggedImage from "../../static/images/Latitude5430Rugged.png"
+import DellProRugged13Image from "../../static/images/DellProRugged13.png"
+import Chromebook3110Image from "../../static/images/Chromebook3110.png"
+import DellXPS13Image from "../../static/images/DellXPS13.png"
+import Latitude7455Image from "../../static/images/Latitude7455.png"
+import DellG16Image from "../../static/images/DellG16.png"
+import LenovoLaptopImage from "../../static/images/LenovoLaptop.png"
+import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg"
+
+
 
 const ITEM_LIST = [
   {
@@ -128,10 +149,173 @@ const ITEM_LIST = [
     image: HPChromebookPlusImage,
     price: 649.99,
   },
+  {
+    id: 10,
+    name: 'Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super',
+    manufacturer: "Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super",
+    title: 'Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super - $3499.99',
+    description:
+      "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
+    image: LenovoImage,
+    price: 3499.99,
+  },
+  {
+    id: 11,
+    name: 'XPS 13 Laptop',
+    manufacturer: "Dell",
+    title: 'XPS 13 Laptop - $1999.99',
+    description:
+      "Create and work anywhere with our thinnest and lightest XPS, starting at only 2.6 lbs.[1]. AI-enabled with Intel® Core™ Ultra processors.",
+    image: DellXPS13Image,
+    price: 1999.99,
+  },
+  
+  {
+    id: 12,
+    name: 'ASUS ROG Strix G13 Gaming PC',
+    manufacturer: "ASUS",
+    title: 'ASUS ROG Strix G13 Gaming PC - $1199.99',
+    description:
+      "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
+    image: AsusRogImage,
+    price: 1199.99,
+  },
+  {
+    id: 13,
+    name: 'ViprTech Reaper 3.0 Liquid-Cooled PC',
+    manufacturer: "ViprTech",
+    title: 'ViprTech Reaper 3.0 Liquid-Cooled PC - $2049.99',
+    description:
+      "The ViprTech Reaper 3.0 (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games. ",
+    image: ViprTechReaper3Image,
+    price: 2049.99,
+  },
+  {
+    id: 14,
+    name: 'ViprTech Avalanche 2.0 Gaming PC',
+    manufacturer: "ViprTech",
+    title: 'ViprTech Avalanche 2.0 Gaming PC - $979.99',
+    description:
+      "Take a revolutionary leap into real-world hybrid performance with 12th Gen Intel® Core™, an innovative design that distributes processing power to where you need it most.",
+    image: ViprTechAvalanche2Image,
+    price: 979.99,
+  },
+  {
+    id: 15,
+    name: 'LOQ Essential Gen 9 Laptop',
+    manufacturer: "Lenovo",
+    title: 'LOQ Essential Gen 9 Laptop - $729.99',
+    description:
+      "The ViprTech Avalanche 2.0 (AMD) gaming PC comes fully equipped to take on most popular video games.",
+    image: LenovoLaptopImage,
+    price: 729.99,
+  },
+  {
+    id: 16,
+    name: 'ASUS ROG G16CHR Gaming PC',
+    manufacturer: "ASUS",
+    title: 'ASUS ROG G16CHR Gaming PC - $729.99',
+    description:
+      "Enjoy intense and seamless gameplay with this ASUS ROG G16CHR gaming PC. Featuring Intel Core i7-14700F processor, 32GB DDR5 U-DIMM RAM, and NVIDIA GeForce RTX4070 GPU, this PC ensures smooth gaming and multitasking.",
+    image: ASUSROGG16Image,
+    price: 729.99,
+  },
+  {
+    id: 17,
+    name: 'Zonic Gaming P',
+    manufacturer: "Zonic",
+    title: 'Zonic Gaming P - $2285.97',
+    description:
+      "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
+    image: ZonicGamingPCImage,
+    price: 2285.97,
+  },
+
+  {
+    id: 18,
+    name: 'Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC ',
+    manufacturer: "AQVIN",
+    title: 'Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC - $2285.97',
+    description:
+      "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
+    image: AQVINImage,
+    price: 2285.97,
+  },
+  {
+    id: 19,
+    name: 'MSI Codex R Gaming PC',
+    manufacturer: "Codex R",
+    title: 'MSI Codex R Gaming PC - $1099.99',
+    description:
+      "Effortlessly beat your opponents with this MSI Codex R2 gaming PC. Equipped with Intel Core i5-12400F processor and 16GB RAM, this machine delivers smooth and seamless performance for gaming and multitasking.",
+    image: MSICodexRImage,
+    price: 1099.99,
+  },
+  {
+    id: 20,
+    name: 'Acer Nitro LED Curved FreeSync Gaming Monitor',
+    manufacturer: "AQVIN",
+    title: 'Acer Nitro LED Curved FreeSync Gaming Monitor - $169.99',
+    description:
+      "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
+    image: AcerMonitorImage,
+    price: 169.99,
+  },
+  {
+    id: 21,
+    name: 'Dell Pro Rugged 14 Laptop',
+    manufacturer: "Dell",
+    title: 'Dell Pro Rugged 14 Laptop - $2223.81',
+    description:
+      "Dell Pro Rugged 14 features Intel® Core™ Ultra processors with a dedicated NPU,allowing apps using AI to run faster and smoother in any condition.",
+    image: DellProRugged14Image,
+    price: 2223.81,
+  },
+  {
+    id: 22,
+    name: 'Latitude 5430 Rugged Laptop',
+    manufacturer: "Dell",
+    title: 'Latitude 5430 Rugged Laptop - $2219.00',
+    description:
+      "24x7 operations with dual hot-swappable batteries with up to 25-hour battery runtime and Express Charge Boost for up to a 35% charge in 15 minutes, so you can be always on.",
+    image: Latitude5430RuggedImage,
+    price: 2219.00,
+  },
+  {
+    id: 23,
+    name: 'Latitude 5430 Rugged Laptop',
+    manufacturer: "Dell",
+    title: 'Latitude 5430 Rugged Laptop - $4949.00',
+    description:
+      "Dell Pro Rugged 13 features Intel® Core™ Ultra U-series and H-series processors, with a dedicated NPU, allowing apps using AI to run faster and smoother in any condition.",
+    image: DellProRugged13Image,
+    price: 4949.00,
+  },
+  {
+    id: 24,
+    name: 'Chromebook 3110 Laptop',
+    manufacturer: "Dell",
+    title: 'Chromebook 3110 Laptop - $586.61',
+    description:
+      "The Dell Chromebook 3110 features rubberized edges and rounded corners to minimize drop impact, a spill-resistant keyboard with captive keys, plus hinge strength and micro-drop protection. ",
+    image: Chromebook3110Image,
+    price: 586.61,
+  },
+  {
+    id: 25,
+    name: 'Latitude 7455 Laptop',
+    manufacturer: "Dell",
+    title: 'Latitude 7455 Laptop - $586.61',
+    description:
+      "The first Copilot+ Latitude[1], and our first with Windows 11 Arm®, has powerful on-device AI and exceptional speed and efficiency in a premium Latitude design. ",
+    image: Latitude7455Image,
+    price: 586.61,
+  },
+  
   
 
   {
-    id: 20,
+    id: 26,
     name: 'Surface Laptop',
     manufacturer: "Microsoft",
     title: 'Surface Laptop - $1,449.99',
@@ -160,6 +344,16 @@ const ITEM_LIST = [
       "With the Razer Blade 15, true power will always be wherever you are.",
     image: RazerBlade15Image,
     price: 2699.99,
+  },
+  {
+    id: 29,
+    name: 'Dell G16 Gaming Laptop',
+    manufacturer: "Dell",
+    title: 'Dell G16 Gaming Laptop - $1549.99',
+    description:
+      "Enjoy all the benefits of a portable gaming laptop with a larger 16:10 aspect ratio. ",
+    image: DellG16Image,
+    price: 1549.99,
   },
 
 
@@ -266,6 +460,18 @@ const ITEM_LIST = [
     image: RazerHanboChromaLiquidCoolerImage,
     price: 227.99,
   },
+  {
+    id: 40,
+    name: 'Razer Naga Left-Handed Edition',
+    manufacturer: "Razer",
+    title: 'Razer Naga Left-Handed Edition - $134.99',
+    description:
+      "Ergonomic MMO Gaming Mouse for Left-Handed Users",
+    image: RazerNagaLeftImage,
+    price: 134.99,
+  },
+  
+
   {
     id: 41,
     name: 'Lofree Petal Mouse',
@@ -393,4 +599,5 @@ const ITEM_LIST = [
 ];
 
 export default ITEM_LIST;
+
 
