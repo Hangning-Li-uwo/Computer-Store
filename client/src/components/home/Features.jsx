@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Divider, Link, Rating } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
-export default function Features() {
+export default function Features( {item} ) {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  console.log(item.name);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/reviews')
-      .then((response) => response.json())
-      .then((data) => setReviews(data))
-      .catch((error) => console.error('Error fetching reviews:', error));
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(`http://localhost:5001/api/reviews?item_id=9045903045`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setReviews(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+        setError('Failed to load reviews'); 
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
   }, []);
 
   return (
@@ -30,7 +48,19 @@ export default function Features() {
 
       <Divider sx={{ marginY: 3 }} />
 
-      {reviews.length > 0 ? (
+      {loading ? (
+          <Box sx={{ pt: 0.5 }}>
+          <Skeleton />
+          <Skeleton width="60%" />
+
+          <Skeleton />
+          <Skeleton width="60%" />
+        </Box>
+      ) : error ? (
+        <Typography variant="body2" align="center" color="error">
+          {error}
+        </Typography>
+      ) : reviews.length > 0 ? (
         reviews.map((review, index) => (
           <Box key={index} sx={{ marginBottom: 2 }}>
             <Typography variant="h6">{review.title}</Typography>
@@ -43,7 +73,7 @@ export default function Features() {
         ))
       ) : (
         <Typography variant="body2" align="center" color="text.secondary">
-          Loading reviews...
+          No reviews available.
         </Typography>
       )}
 
