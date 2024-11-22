@@ -52,23 +52,8 @@ export const authSlice = createSlice({
       // Remove the item at the specified index
       state.items = state.items.filter((_, index) => index !== action.payload);
     },
-    clearCartItem: (state, action) => {
-      // Remove the item at the specified index
-      // state.items = [];
-    },
     setOrderItem: (state, action) => {
-      const newOrder = {
-        id: state.nextOrderId || 1,
-        items: action.payload, // Pass an array of items directly
-        date: new Date().toISOString(),
-        address: state.user.address,
-        paymentMethod: state.user.paymentMethod
-      };
-    
-      state.nextOrderId = (state.nextOrderId || 1) + 1;
-    
-      state.orders.push(newOrder);
-    
+      state.user?.ordersRef.push(action.payload);
       // Clear cart items
       state.items = [];
     },

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const TAX_RATE = 0.13;
 
@@ -20,9 +21,39 @@ function calculateSubtotal(items) {
   return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
+// fetch orders from firestore
+const fetchOrders = async (ordersRef) => {
+  try {
+    const response = await axios.post("http://localhost:5001/api/getOrders", { ordersRef });
+
+    if (response.status === 200) {
+      console.log("Fetched Orders:", response.data);
+      return response.data; // an array of orders
+    } else {
+      console.error("Failed to fetch orders:", response.data.message);
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching orders:", error.message);
+    return [];
+  }
+};
+
 export default function OrderHistory() {
-  const orders = useSelector((state) => state.orders); // Array of arrays
-  console.log(orders);
+  const [orders, setOrders] = useState([]);
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const loadOrders = async () => {
+      if (user?.ordersRef) {
+        const fetchedOrders = await fetchOrders(user.ordersRef);
+        setOrders(fetchedOrders);
+      }
+    };
+
+    loadOrders();
+  }, [user?.ordersRef]);
+  
   return (
     <Box
       sx={{
@@ -35,7 +66,6 @@ export default function OrderHistory() {
     >
 {orders.length > 0 ? (
   orders.map((order, orderIndex) => {
-    // Extract items from the order
     const items = order.items || [];
     
     // Calculate totals for the order
@@ -46,14 +76,14 @@ export default function OrderHistory() {
     return (
       <TableContainer
         component={Paper}
-        key={order.id} // Use order ID as the key
+        key={order.id}
         sx={{ marginBottom: 3, width: "85%" }}
       >
         <Table sx={{ minWidth: 700 }} aria-label="spanning table">
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={3}>
-                Order #{order.id} (Date: {new Date(order.date).toLocaleString()})
+                Order #{order.id} &nbsp;&nbsp;&nbsp; (Date: {new Date(order.date).toLocaleString()})
               </TableCell>
               <TableCell align="right"></TableCell>
             </TableRow>
@@ -64,8 +94,8 @@ export default function OrderHistory() {
               <TableCell align="right">Price</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Desc</TableCell>
-              <TableCell align="right">Qty.</TableCell>
+              <TableCell>Item</TableCell>
+              <TableCell align="right">Qty</TableCell>
               <TableCell align="right">Unit</TableCell>
               <TableCell align="right">Sum</TableCell>
             </TableRow>

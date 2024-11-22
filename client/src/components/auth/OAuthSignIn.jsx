@@ -36,7 +36,6 @@ export default function OAuthSignIn() {
       const result = await signInWithPopup(auth, google);
       const user = result.user;
 
-      console.log(user);
       // Upload user information to Firestore
       const userData = {
         uid: user.uid,

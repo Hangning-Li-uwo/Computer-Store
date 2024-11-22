@@ -22,10 +22,14 @@ import axios from "axios";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
+  const [selectedItem, setSelectedItem] = useState(null);
   const stock = useSelector((state) => state.localStock);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (item) => {
+    setSelectedItem(item);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const dispatch = useDispatch();
@@ -164,9 +168,7 @@ export default function ComputerLists({ filteredItems }) {
               </CardContent>
               <CardActions>
                 {matchingStock && matchingStock.quantity === 0 ? (
-                  <Button disabled>
-                    Sold Out
-                  </Button>
+                  <Button disabled>Sold Out</Button>
                 ) : (
                   <Button
                     size="small"
@@ -177,35 +179,36 @@ export default function ComputerLists({ filteredItems }) {
                     Add
                   </Button>
                 )}
-                <Button size="small" onClick={handleOpen}>
+                <Button size="small" onClick={() => handleOpen(item)}>
                   Learn More
                 </Button>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      boxShadow: 24,
-                      // backgroundColor: "#f9f9f9",
-                      padding: 4,
-                      borderRadius: 2,
-                    }}
-                  >
-                    <Features />
-                  </Box>
-                </Modal>
               </CardActions>
             </Card>
           </Grid>
         );
       })}
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            // boxShadow: 24,
+            // backgroundColor: "#f9f9f9",
+            padding: 4,
+            borderRadius: 2,
+          }}
+        >
+          {selectedItem && <Features item={selectedItem} />}
+        </Box>
+      </Modal>
     </Grid>
   );
 }
