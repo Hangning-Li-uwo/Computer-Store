@@ -51,6 +51,23 @@ const mg = mailgun.client({
   key: process.env.MAiLGUN_API_KEY,
 });
 
+app.get("/api/getAllOrders", async (req, res) => {
+  try {
+    const ordersCollection = collection(firestore, "Orders");
+    const snapshot = await getDocs(ordersCollection);
+
+    const orders = [];
+    snapshot.forEach((doc) => {
+      orders.push({ id: doc.id, ...doc.data() });
+    });
+
+    res.status(200).send(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error.message);
+    res.status(500).send({ message: "Failed to fetch orders." });
+  }
+});
+
 app.post("/api/getOrders", async (req, res) => {
   const { ordersRef } = req.body;
 
