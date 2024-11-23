@@ -58,9 +58,11 @@ export const authSlice = createSlice({
       state.items = [];
     },
     deleteOrderItem: (state, action) => {
-      state.orders = state.orders.filter(
-        (_, index) => index !== action.payload
-      );
+      if(state.user.ordersRef){
+        state.user.ordersRef = state.user.ordersRef.filter(
+          (_, index) => index !== action.payload
+        );
+      }
     },
     setLocalStock: (state, action) => {
       state.localStock = action.payload.map(item => ({

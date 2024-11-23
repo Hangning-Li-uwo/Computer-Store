@@ -11,6 +11,7 @@ const {
   getDoc,
   getDocs,
   setDoc,
+  deleteDoc,
   updateDoc,
 } = require("firebase/firestore");
 const { initializeApp } = require("firebase/app");
@@ -85,6 +86,41 @@ app.post("/api/getOrders", async (req, res) => {
         orders.push({ id: orderId, ...orderSnapshot.data() });
       }
     }
+
+    res.status(200).send(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error.message);
+    res.status(500).send({ message: "Failed to fetch orders." });
+  }
+});
+
+app.delete("/api/deleteOrder/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).send({ message: "Order ID is required." });
+  }
+
+  try {
+    const orderDocRef = doc(firestore, "Orders", id);
+    await deleteDoc(orderDocRef);
+
+    res.status(200).send({ message: "Order deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting order:", error.message);
+    res.status(500).send({ message: "Failed to delete order." });
+  }
+});
+
+app.get("/api/getAllOrders", async (req, res) => {
+  try {
+    const ordersCollection = collection(firestore, "Orders");
+    const snapshot = await getDocs(ordersCollection);
+
+    const orders = [];
+    snapshot.forEach((doc) => {
+      orders.push({ id: doc.id, ...doc.data() });
+    });
 
     res.status(200).send(orders);
   } catch (error) {
