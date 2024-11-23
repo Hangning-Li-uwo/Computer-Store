@@ -1,6 +1,6 @@
 // server.js
 const express = require("express");
-const axios = require("axios"); 
+const axios = require("axios");
 require("dotenv").config(); // load .env
 const cors = require("cors");
 const {
@@ -51,8 +51,168 @@ const mg = mailgun.client({
   username: "api",
   key: process.env.MAiLGUN_API_KEY,
 });
+// =====================================  USER PROFILE =====================================
 
-app.get("/api/getAllOrders", async (req, res) => {
+app.post("/api/profile", async (req, res) => {
+  const { uid, firstName, lastName, email, photoURL } = req.body;
+
+  const userDocRef = doc(firestore, "Profiles", uid);
+  const userInfo = await getDoc(userDocRef);
+  if (
+    userInfo.exists() &&
+    userInfo.data() &&
+    (userInfo.data().role === "user" || userInfo.data().role === "admin")
+  ) {
+    res.status(200).send(userInfo.data());
+  } else {
+    try {
+      // Save user data to Firestore
+      const newProfile = {
+        firstName,
+        lastName,
+        role: "",
+        UID: uid,
+        email,
+        photoURL,
+        address: "",
+        paymentMethod: "",
+        ordersRef: [],
+      };
+
+      await setDoc(doc(firestore, "Profiles", uid), newProfile);
+      res.status(200).send(newProfile);
+    } catch (error) {
+      console.error("Error creating profile:", error);
+      res.status(500).send({ message: "Failed to create profile" });
+    }
+  }
+});
+
+// Endpoint to assign roles
+app.post("/api/role", async (req, res) => {
+  const { uid, role } = req.body;
+  if (!uid && !role) {
+    return res.status(400).send({ message: "no user info" });
+  }
+
+  try {
+    // Update user's role in Firestore
+    const userDocRef = doc(firestore, "Profiles", uid);
+    await updateDoc(userDocRef, { role: role });
+
+    res.status(200).send({ message: "Role assigned successfully" });
+  } catch (error) {
+    console.error("Error updating role:", error);
+    res.status(500).send({ message: "Failed to assign role" });
+  }
+});
+
+app.patch("/api/profile", async (req, res) => {
+  const { uid, address, paymentMethod } = req.body;
+
+  if (!uid && !role) {
+    return res.status(400).send({ message: "no user info" });
+  }
+
+  if (!address || !paymentMethod) {
+    return res
+      .status(400)
+      .send({ message: "Address and payment method are required." });
+  }
+
+  try {
+    const userDocRef = doc(firestore, "Profiles", uid);
+
+    await updateDoc(userDocRef, {
+      address: address,
+      paymentMethod: paymentMethod,
+    });
+
+    res.status(200).send({ message: "Profile updated successfully!" });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    res.status(500).send({ message: "Failed to update user profile." });
+  }
+});
+
+// =====================================  STOCK =====================================
+// get a stock
+app.get("/api/stock/:id", async (req, res) => {
+  const { id } = req.params; // Extract item ID from query parameters
+
+  if (!id) {
+    return res.status(400).send({ message: "Item ID is required" });
+  }
+
+  try {
+    // Access the Firestore collection and find the item by ID
+    const stockDocRef = doc(firestore, "Stock", id);
+    const stockDoc = await getDoc(stockDocRef);
+
+    if (stockDoc.exists()) {
+      const stockData = stockDoc.data();
+      res.status(200).send({ quantity: stockData.quantity }); // Send the quantity of the item
+    } else {
+      res.status(404).send({ message: "Item not found in stock" });
+    }
+  } catch (error) {
+    console.error("Error retrieving stock:", error);
+    res.status(500).send({ message: "Failed to retrieve stock" });
+  }
+});
+
+// get all stock
+app.get("/api/stock", async (req, res) => {
+  try {
+    const stockCollectionRef = collection(firestore, "Stock");
+    const stockSnapshot = await getDocs(stockCollectionRef);
+
+    if (stockSnapshot.empty) {
+      return res.status(404).send({ message: "No stock items found" });
+    }
+
+    const stockItems = [];
+    stockSnapshot.forEach((doc) => {
+      stockItems.push({ id: doc.id, ...doc.data() });
+    });
+
+    res.status(200).send(stockItems);
+  } catch (error) {
+    console.error("Error retrieving all stock:", error);
+    res.status(500).send({ message: "Failed to retrieve all stock" });
+  }
+});
+
+// update stock
+app.post("/api/stock", async (req, res) => {
+  const { id, name, quantity } = req.body;
+
+  const stockDocRef = doc(firestore, "Stock", String(id));
+  const stockInfo = await getDoc(stockDocRef);
+
+  // if stock exist, update the stock
+  if (stockInfo.exists()) {
+    await updateDoc(stockDocRef, { id, name, quantity });
+    res.status(200).send({ message: "Stock info retrieved!" });
+  } else {
+    try {
+      // create stock
+      await setDoc(doc(firestore, "Stock", String(id)), {
+        id,
+        name,
+        quantity: quantity,
+      });
+      res.status(200).send({ message: "Stock updated" });
+    } catch (error) {
+      console.error("Error retrieving stock:", error);
+      res.status(500).send({ message: "Failed to retrieve stock" });
+    }
+  }
+});
+
+// =====================================  ORDERS =====================================
+// get all orders
+app.get("/api/orders", async (req, res) => {
   try {
     const ordersCollection = collection(firestore, "Orders");
     const snapshot = await getDocs(ordersCollection);
@@ -69,11 +229,16 @@ app.get("/api/getAllOrders", async (req, res) => {
   }
 });
 
-app.post("/api/getOrders", async (req, res) => {
+// get an order
+app.post("/api/orders", async (req, res) => {
   const { ordersRef } = req.body;
 
   if (!ordersRef || !Array.isArray(ordersRef)) {
-    return res.status(400).send({ message: "Orders reference is required and should be an array." });
+    return res
+      .status(400)
+      .send({
+        message: "Orders reference is required and should be an array.",
+      });
   }
 
   try {
@@ -94,7 +259,8 @@ app.post("/api/getOrders", async (req, res) => {
   }
 });
 
-app.delete("/api/deleteOrder/:id", async (req, res) => {
+// delete an order
+app.delete("/api/orders/:id", async (req, res) => {
   const { id } = req.params;
 
   if (!id) {
@@ -112,27 +278,18 @@ app.delete("/api/deleteOrder/:id", async (req, res) => {
   }
 });
 
-app.get("/api/getAllOrders", async (req, res) => {
-  try {
-    const ordersCollection = collection(firestore, "Orders");
-    const snapshot = await getDocs(ordersCollection);
-
-    const orders = [];
-    snapshot.forEach((doc) => {
-      orders.push({ id: doc.id, ...doc.data() });
-    });
-
-    res.status(200).send(orders);
-  } catch (error) {
-    console.error("Error fetching orders:", error.message);
-    res.status(500).send({ message: "Failed to fetch orders." });
-  }
-});
-
-app.post("/api/createOrder", async (req, res) => {
+// create an order
+app.post("/api/orders", async (req, res) => {
   const { userId, items, address, paymentMethod, totalAmount, date } = req.body;
 
-  if (!userId || !items || !address || !paymentMethod || !totalAmount || !date) {
+  if (
+    !userId ||
+    !items ||
+    !address ||
+    !paymentMethod ||
+    !totalAmount ||
+    !date
+  ) {
     return res.status(400).send({ message: "All fields are required." });
   }
 
@@ -147,48 +304,49 @@ app.post("/api/createOrder", async (req, res) => {
     };
 
     const orderRef = await addDoc(collection(firestore, "Orders"), orderData);
-    res.status(200).send({ message: "Order created successfully", orderId: orderRef.id });
+    res
+      .status(200)
+      .send({ message: "Order created successfully", orderId: orderRef.id });
   } catch (error) {
     console.error("Error creating order:", error.message);
     res.status(500).send({ message: "Failed to create order" });
   }
 });
 
-app.get("/api/reviews", async (req, res) => {
-  const { item_id } = req.query;
+// ===================================== PRODUCT  REVIEWS =====================================
+// get a review
+// app.get("/api/reviews/:id", async (req, res) => {
+//   const { id } = req.params;
 
-  if (!item_id) {
-    return res.status(400).send({ message: "Product id is required" });
-  }
+//   if (!id) {
+//     return res.status(400).send({ message: "Product ID is required" });
+//   }
 
-  try {
-    const response = await axios.get("https://serpapi.com/search.json", {
-      params: {
-        engine: "ebay",
-        item_id: item_id,
-        ebay_domain: "ebay.com",
-        api_key: process.env.SERPAPI_API_KEY,
-      },
-    });
+//   try {
+//     const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+//     const product = response.data;
 
-    // Extract reviews and ratings from the response
-    const products = response.data.organic_results || [];
-    const reviews = products.map((product) => ({
-      title: product.title,
-      rating: product.rating || "No rating available",
-      reviewCount: product.reviews || "No reviews available",
-      link: product.link,
-    }));
+//     if (!product || !product.rating) {
+//       return res.status(404).send({ message: "No reviews found for this product" });
+//     }
 
-    res.status(200).json(reviews);
-  } catch (error) {
-    console.error("Error fetching reviews:", error);
-    res.status(500).send({ message: "Failed to fetch reviews" });
-  }
-});
+//     const reviews = [
+//       {
+//         title: product.title,
+//         rating: product.rating.rate,
+//         reviewCount: product.rating.count,
+//       },
+//     ];
 
+//     res.status(200).json(reviews);
+//   } catch (error) {
+//     console.error("Error fetching reviews:", error);
+//     res.status(500).send({ message: "Failed to fetch reviews" });
+//   }
+// });
+// =====================================  EMAIL =====================================
 // Route to send email confirmation
-app.post("/api/sendConfirmationEmail", async (req, res) => {
+app.post("/api/email", async (req, res) => {
   const { uid, items } = req.body;
 
   if (!uid) {
@@ -205,8 +363,11 @@ app.post("/api/sendConfirmationEmail", async (req, res) => {
     }
 
     const userData = userDoc.data();
-    
-    const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const subtotal = items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
     const TAX_RATE = 0.13;
     const tax = subtotal * TAX_RATE;
     const total = subtotal + tax;
@@ -288,184 +449,6 @@ app.post("/api/sendConfirmationEmail", async (req, res) => {
   } catch (error) {
     console.error("Error sending email:", error);
     res.status(500).send({ message: "Failed to send email" });
-  }
-});
-
-app.post("/api/setUserProfile", async (req, res) => {
-  const { uid, firstName, lastName, email, photoURL } = req.body;
-
-  const userDocRef = doc(firestore, "Profiles", uid);
-  const userInfo = await getDoc(userDocRef);
-  if (
-    userInfo.exists() &&
-    userInfo.data() &&
-    (userInfo.data().role === "user" || userInfo.data().role === "admin")
-  ) {
-    res.status(200).send(userInfo.data());
-  } else {
-    try {
-      // Save user data to Firestore
-      const newProfile = {
-        firstName,
-        lastName,
-        role: "",
-        UID: uid,
-        email,
-        photoURL,
-        address: "",
-        paymentMethod: "",
-        ordersRef: []
-      };
-
-      await setDoc(doc(firestore, "Profiles", uid), newProfile);
-      res.status(200).send(newProfile);
-    } catch (error) {
-      console.error("Error creating profile:", error);
-      res.status(500).send({ message: "Failed to create profile" });
-    }
-  }
-});
-
-// Endpoint to assign roles
-app.post("/api/assignRole", async (req, res) => {
-  const { uid, role } = req.body;
-  if (!uid && !role) {
-    return res.status(400).send({ message: "no user info" });
-  }
-
-  try {
-    // Update user's role in Firestore
-    const userDocRef = doc(firestore, "Profiles", uid);
-    await updateDoc(userDocRef, { role: role });
-
-    res.status(200).send({ message: "Role assigned successfully" });
-  } catch (error) {
-    console.error("Error updating role:", error);
-    res.status(500).send({ message: "Failed to assign role" });
-  }
-});
-
-app.get("/api/getStock", async (req, res) => {
-  const { id } = req.query; // Extract item ID from query parameters
-
-  if (!id) {
-    return res.status(400).send({ message: "Item ID is required" });
-  }
-
-  try {
-    // Access the Firestore collection and find the item by ID
-    const stockDocRef = doc(firestore, "Stock", id);
-    const stockDoc = await getDoc(stockDocRef);
-
-    if (stockDoc.exists()) {
-      const stockData = stockDoc.data();
-      res.status(200).send({ quantity: stockData.quantity }); // Send the quantity of the item
-    } else {
-      res.status(404).send({ message: "Item not found in stock" });
-    }
-  } catch (error) {
-    console.error("Error retrieving stock:", error);
-    res.status(500).send({ message: "Failed to retrieve stock" });
-  }
-});
-
-app.get("/api/getAllStock", async (req, res) => {
-  try {
-    const stockCollectionRef = collection(firestore, "Stock");
-    const stockSnapshot = await getDocs(stockCollectionRef);
-
-    if (stockSnapshot.empty) {
-      return res.status(404).send({ message: "No stock items found" });
-    }
-
-    const stockItems = [];
-    stockSnapshot.forEach((doc) => {
-      stockItems.push({ id: doc.id, ...doc.data() });
-    });
-
-    res.status(200).send(stockItems);
-  } catch (error) {
-    console.error("Error retrieving all stock:", error);
-    res.status(500).send({ message: "Failed to retrieve all stock" });
-  }
-});
-
-app.post("/api/updateStock", async (req, res) => {
-  const { id, name, quantity } = req.body;
-
-  const stockDocRef = doc(firestore, "Stock", String(id));
-  const stockInfo = await getDoc(stockDocRef);
-
-  // if stock exist, update the stock
-  if (stockInfo.exists()) {
-    await updateDoc(stockDocRef, { id, name, quantity });
-    res.status(200).send({ message: "Stock info retrieved!" });
-  } else {
-    try {
-      // create stock
-      await setDoc(doc(firestore, "Stock", String(id)), {
-        id,
-        name,
-        quantity: quantity,
-      });
-      res.status(200).send({ message: "Stock updated" });
-    } catch (error) {
-      console.error("Error retrieving stock:", error);
-      res.status(500).send({ message: "Failed to retrieve stock" });
-    }
-  }
-});
-
-// app.get("/api/reviews", async (req, res) => {
-//   try {
-//     const response = await axios.get("https://serpapi.com/search", {
-//       params: {
-//         engine: "google_product",
-//         product_id: "21473839577",
-//         reviews: true,
-//         api_key:
-//           "df5e954cf47dc057227a92264234498d4f6496e679d69d162e05b148ee7626a9",
-//       },
-//     });
-//     res.status(200).json(response.data.reviews_results);
-//   } catch (error) {
-//     // res.status(500).json({ error: error });
-//     res.status(200).json([
-//       { rating: 5, title: "Amazing Product!", snippet: "Highly recommend it." },
-//       {
-//         rating: 4,
-//         title: "Great value",
-//         snippet: "Satisfied with the purchase.",
-//       },
-//     ]);
-//   }
-// });
-
-app.post("/api/updateUserProfile", async (req, res) => {
-  const { uid, address, paymentMethod } = req.body;
-
-  if (!uid && !role) {
-    return res.status(400).send({ message: "no user info" });
-  }
-
-  if (!address || !paymentMethod) {
-    return res
-      .status(400)
-      .send({ message: "Address and payment method are required." });
-  }
-
-  try {
-    const userDocRef = doc(firestore, "Profiles", uid);
-
-    await updateDoc(userDocRef, {
-      address: address,
-      paymentMethod: paymentMethod,
-    });
-
-    res.status(200).send({ message: "Profile updated successfully!" });
-  } catch (error) {
-    console.error("Error updating user profile:", error);
-    res.status(500).send({ message: "Failed to update user profile." });
   }
 });
 

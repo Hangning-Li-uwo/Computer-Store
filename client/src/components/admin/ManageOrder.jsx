@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { green, red } from "@mui/material/colors";
+import { green } from "@mui/material/colors";
 import { toast } from "sonner";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
@@ -26,7 +26,7 @@ function Row({ row, deleteOrder }) {
 
   // Calculate subtotal, tax, and total
   const subtotal = row.items.reduce((sum, item) => sum + item.quantity * item.price, 0);
-  const taxRate = 0.13; // Example tax rate of 13%
+  const taxRate = 0.13;
   const tax = subtotal * taxRate;
   const total = subtotal + tax;
 
@@ -83,7 +83,6 @@ function Row({ row, deleteOrder }) {
                       </TableCell>
                     </TableRow>
                   ))}
-                  {/* Summary Row */}
                   <TableRow>
                     <TableCell rowSpan={3} />
                     <TableCell colSpan={2}>Subtotal</TableCell>
@@ -94,7 +93,9 @@ function Row({ row, deleteOrder }) {
                     <TableCell align="right">${tax.toFixed(2)}</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell colSpan={2}><strong>Total</strong></TableCell>
+                    <TableCell colSpan={2}>
+                      <strong>Total</strong>
+                    </TableCell>
                     <TableCell align="right">
                       <strong>${total.toFixed(2)}</strong>
                     </TableCell>
@@ -126,9 +127,10 @@ Row.propTypes = {
 function ManageOrder() {
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
+
   const getAllOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/api/getAllOrders");
+      const response = await axios.get("http://localhost:5001/api/orders");
       if (response.status === 200) {
         setOrders(response.data);
       } else {
@@ -141,12 +143,10 @@ function ManageOrder() {
 
   const handleDeleteOrder = async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5001/api/deleteOrder/${id}`
-      );
+      const response = await axios.delete(`http://localhost:5001/api/orders/${id}`);
       if (response.status === 200) {
         setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
-        dispatch(deleteOrderItem(id))
+        dispatch(deleteOrderItem(id));
         toast.success("Order deleted successfully", {
           icon: <CheckCircleIcon sx={{ color: green[500] }} />,
         });
@@ -165,22 +165,30 @@ function ManageOrder() {
   }, []);
 
   return (
-    <TableContainer component={Paper} sx={{ width: "85%", margin: "0 auto", marginTop: 4 }}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Order ID</TableCell>
-            <TableCell align="right">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {orders.map((order) => (
-            <Row key={order.id} row={order} deleteOrder={handleDeleteOrder} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Box sx={{ marginTop: 6 }}>
+      {orders.length > 0 ? (
+        <TableContainer component={Paper} sx={{ width: "85%", margin: "0 auto", marginTop: 4 }}>
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>Order ID</TableCell>
+                <TableCell align="right">Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {orders.map((order) => (
+                <Row key={order.id} row={order} deleteOrder={handleDeleteOrder} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <Typography variant="h3" color="text.secondary" sx={{ textAlign: "center", marginTop: 8 }}>
+          No Orders
+        </Typography>
+      )}
+    </Box>
   );
 }
 

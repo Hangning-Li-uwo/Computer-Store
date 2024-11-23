@@ -72,7 +72,7 @@ export default function Stock() {
         }
 
         const response = await axios.post(
-          "http://localhost:5001/api/updateStock",
+          "http://localhost:5001/api/stock",
           {
             id: matchingItem.id,
             name: selectedRow.name,
@@ -97,7 +97,7 @@ export default function Stock() {
     const fetchStockData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/getAllStock"
+          "http://localhost:5001/api/stock"
         );
         if (response.status === 200) {
           console.log(response);

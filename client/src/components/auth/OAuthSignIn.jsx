@@ -46,7 +46,7 @@ export default function OAuthSignIn() {
       };
 
       // Send a request to the backend to set the user profile in Firestore
-      const response = await fetch("http://localhost:5001/api/setUserProfile", {
+      const response = await fetch("http://localhost:5001/api/profile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

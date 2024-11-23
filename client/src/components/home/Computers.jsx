@@ -38,7 +38,7 @@ export default function ComputerLists({ filteredItems }) {
     const fetchStockData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/getAllStock"
+          "http://localhost:5001/api/stock"
         );
         if (response.status === 200) {
           dispatch(setLocalStock(response.data));
@@ -105,7 +105,7 @@ export default function ComputerLists({ filteredItems }) {
       try {
         // Step 1: Check stock availability for the selected item
         const response = await axios.get(
-          `http://localhost:5001/api/getStock?id=${item.id}`
+          `http://localhost:5001/api/stock/${item.id}`
         );
 
         if (response.status === 200 && response.data.quantity > 0) {

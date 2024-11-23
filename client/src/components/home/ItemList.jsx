@@ -58,7 +58,7 @@ import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg"
 
 const ITEM_LIST = [
   {
-    id: 1,
+    id: 21,
     name: "iMac",
     manufacturer: "Apple",
     title: "iMac - $1,699.00",
@@ -66,6 +66,19 @@ const ITEM_LIST = [
       "Image Playground. Create fun, original images based on a description, a concept or even a person from your Photos library.",
     image: iMacImage,
     price: 1699.00,
+    rating: 4.8,
+    reviews: [
+      {
+        reviewer: "John Doe",
+        rating: 5,
+        reviewText: "Amazing performance and sleek design!",
+      },
+      {
+        reviewer: "Jane Smith",
+        rating: 4,
+        reviewText: "Great for work and play. A bit pricey though.",
+      },
+    ],
   },
   {
     id: 2,

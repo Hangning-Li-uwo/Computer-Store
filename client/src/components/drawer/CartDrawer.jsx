@@ -56,7 +56,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       };
   
       // Send order data to the backend
-      const response = await axios.post("http://localhost:5001/api/createOrder", orderData);
+      const response = await axios.post("http://localhost:5001/api/orders", orderData);
   
       if (response.status === 200) {
         // Dispatch the action to save the order locally
@@ -81,7 +81,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
   const sendEmail = async (items) => {
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/sendConfirmationEmail",
+        "http://localhost:5001/api/email",
         {
           uid: user.UID, // Pass the user ID to identify the user in Firestore
           items: items,
@@ -106,7 +106,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
         for (const stockItem of updatedStock) {
           const response = await axios.post(
-            "http://localhost:5001/api/updateStock",
+            "http://localhost:5001/api/stock",
             stockItem
           );
 

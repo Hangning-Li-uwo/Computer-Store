@@ -24,7 +24,7 @@ function calculateSubtotal(items) {
 // fetch orders from firestore
 const fetchOrders = async (ordersRef) => {
   try {
-    const response = await axios.post("http://localhost:5001/api/getOrders", { ordersRef });
+    const response = await axios.post("http://localhost:5001/api/orders", { ordersRef });
 
     if (response.status === 200) {
       console.log("Fetched Orders:", response.data);
@@ -42,7 +42,7 @@ const fetchOrders = async (ordersRef) => {
 export default function OrderHistory() {
   const [orders, setOrders] = useState([]);
   const user = useSelector((state) => state.user);
-
+  
   useEffect(() => {
     const loadOrders = async () => {
       if (user?.ordersRef) {
@@ -53,6 +53,8 @@ export default function OrderHistory() {
 
     loadOrders();
   }, [user?.ordersRef]);
+
+  console.log(orders);
   
   return (
     <Box
