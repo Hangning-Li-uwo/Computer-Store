@@ -6,6 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, google } from "../firebase";
 import { setUserProfile } from "../../state/index";
 import { useDispatch } from "react-redux";
+import { BASE_URL } from "../../../Constants";
 
 const providers = [{ id: "google", name: "Google" }];
 
@@ -46,7 +47,7 @@ export default function OAuthSignIn() {
       };
 
       // Send a request to the backend to set the user profile in Firestore
-      const response = await fetch("http://localhost:5001/api/profile", {
+      const response = await fetch(`${BASE_URL}/api/profile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

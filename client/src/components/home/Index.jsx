@@ -14,6 +14,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import { toast } from "sonner";
 import ITEM_LIST from "./ItemList";
+import { BASE_URL } from "../../../Constants";
 
 function Index() {
   const user = useSelector((state) => state.user);
@@ -47,7 +48,7 @@ function Index() {
   const roleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5001/api/role", {
+      const response = await fetch(`${BASE_URL}/api/role`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
