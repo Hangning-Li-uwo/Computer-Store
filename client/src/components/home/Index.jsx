@@ -14,7 +14,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import { toast } from "sonner";
 import ITEM_LIST from "./ItemList";
-import { BASE_URL } from "../../../Constants";
+import { BASE_URL } from "../../constants";
 
 function Index() {
   const user = useSelector((state) => state.user);

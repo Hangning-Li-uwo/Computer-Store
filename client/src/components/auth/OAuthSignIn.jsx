@@ -6,7 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, google } from "../firebase";
 import { setUserProfile } from "../../state/index";
 import { useDispatch } from "react-redux";
-import { BASE_URL } from "../../../Constants";
+import { BASE_URL } from "../../constants";
 
 const providers = [{ id: "google", name: "Google" }];
 
