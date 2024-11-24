@@ -229,35 +229,6 @@ app.get("/api/orders", async (req, res) => {
   }
 });
 
-// get an order
-app.post("/api/orders", async (req, res) => {
-  const { ordersRef } = req.body;
-
-  if (!ordersRef || !Array.isArray(ordersRef)) {
-    return res
-      .status(400)
-      .send({
-        message: "Orders reference is required and should be an array.",
-      });
-  }
-
-  try {
-    const orders = [];
-    for (const orderId of ordersRef) {
-      const orderDocRef = doc(firestore, "Orders", orderId);
-      const orderSnapshot = await getDoc(orderDocRef);
-
-      if (orderSnapshot.exists()) {
-        orders.push({ id: orderId, ...orderSnapshot.data() });
-      }
-    }
-
-    res.status(200).send(orders);
-  } catch (error) {
-    console.error("Error fetching orders:", error.message);
-    res.status(500).send({ message: "Failed to fetch orders." });
-  }
-});
 
 // delete an order
 app.delete("/api/orders/:id", async (req, res) => {
@@ -279,7 +250,7 @@ app.delete("/api/orders/:id", async (req, res) => {
 });
 
 // create an order
-app.post("/api/orders", async (req, res) => {
+app.post("/api/orders/create", async (req, res) => {
   const { userId, items, address, paymentMethod, totalAmount, date } = req.body;
 
   if (
@@ -310,6 +281,34 @@ app.post("/api/orders", async (req, res) => {
   } catch (error) {
     console.error("Error creating order:", error.message);
     res.status(500).send({ message: "Failed to create order" });
+  }
+});
+
+// get an order
+app.post("/api/orders", async (req, res) => {
+  const { ordersRef } = req.body;
+
+  if (!ordersRef || !Array.isArray(ordersRef)) {
+    return res.status(400).send({
+      message: "Orders reference is required and should be an array.",
+    });
+  }
+
+  try {
+    const orders = [];
+    for (const orderId of ordersRef) {
+      const orderDocRef = doc(firestore, "Orders", orderId);
+      const orderSnapshot = await getDoc(orderDocRef);
+
+      if (orderSnapshot.exists()) {
+        orders.push({ id: orderId, ...orderSnapshot.data() });
+      }
+    }
+
+    res.status(200).send(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error.message);
+    res.status(500).send({ message: "Failed to fetch orders." });
   }
 });
 
@@ -369,8 +368,9 @@ app.post("/api/email", async (req, res) => {
       0
     );
     const TAX_RATE = 0.13;
+    const shipping = 10;
     const tax = subtotal * TAX_RATE;
-    const total = subtotal + tax;
+    const total = subtotal + tax + shipping;
 
     // Generate order table
     const orderTable = `
@@ -407,6 +407,12 @@ app.post("/api/email", async (req, res) => {
           <tr>
             <td colspan="3" style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">Subtotal</td>
             <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$${subtotal.toFixed(
+              2
+            )}</td>
+          </tr>
+           <tr>
+            <td colspan="3" style="border: 1px solid #ddd; padding: 8px; text-align: right; font-weight: bold;">Shipping</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$${shipping.toFixed(
               2
             )}</td>
           </tr>

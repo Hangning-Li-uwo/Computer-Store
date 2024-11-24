@@ -51,17 +51,23 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
         items: items,
         address: user.address,
         paymentMethod: user.paymentMethod,
-        totalAmount: items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+        totalAmount: items.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        ),
         date: new Date().toISOString(),
       };
-  
+
       // Send order data to the backend
-      const response = await axios.post("http://localhost:5001/api/orders", orderData);
-  
+      const response = await axios.post(
+        "http://localhost:5001/api/orders/create",
+        orderData
+      );
+
       if (response.status === 200) {
         // Dispatch the action to save the order locally
         dispatch(setOrderItem(response.data.orderId));
-  
+
         toast.success("Order successfully created!", {
           icon: <CheckCircleIcon sx={{ color: green[500] }} />,
         });
@@ -80,13 +86,10 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
   const sendEmail = async (items) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5001/api/email",
-        {
-          uid: user.UID, // Pass the user ID to identify the user in Firestore
-          items: items,
-        }
-      );
+      const response = await axios.post("http://localhost:5001/api/email", {
+        uid: user.UID, // Pass the user ID to identify the user in Firestore
+        items: items,
+      });
 
       if (response.status === 200) {
         // Prepare updated stock data
@@ -126,12 +129,9 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
           }
         );
       } else {
-        toast.error(
-          "Failed to send the email, please contact support",
-          {
-            icon: <CheckCircleIcon sx={{ color: red[500] }} />,
-          }
-        );
+        toast.error("Failed to send the email, please contact support", {
+          icon: <CheckCircleIcon sx={{ color: red[500] }} />,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -166,8 +166,11 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       console.error("Error updating stock:", error.message);
     }
   };
-
-  const subtotal = items.reduce((sum, item) => sum + (item.price || 0), 0);
+  const TAX_RATE = 0.13;
+  const subtotal = items.reduce((sum, item) => sum + (item.price  * item.quantity|| 0), 0);
+  const tax = subtotal * TAX_RATE;
+  const shippingFee = 10;
+  const total = subtotal + tax + shippingFee;
 
   const list = (
     <Box
@@ -193,8 +196,6 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
         <List>
           {items.map((item, index) => (
             <React.Fragment key={index}>
-              {" "}
-              {/* Apply the key to React.Fragment */}
               <ListItem
                 sx={{ display: "flex", justifyContent: "space-between" }}
               >
@@ -222,9 +223,19 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
             </React.Fragment>
           ))}
           <Divider sx={{ width: "100%", my: 2 }} />
-          <Typography variant="h6" sx={{ textAlign: "center", my: 2 }}>
-            Subtotal: ${subtotal.toFixed(2)}
-          </Typography>
+          <Box sx={{ width: "100%", textAlign: "left", my: 2, padding: 2 }}>
+            {/* Calculate shipping fee, tax, subtotal, and total */}
+            <Typography variant="body1" style={{color: "#78909c"}}>
+              Subtotal: ${subtotal.toFixed(2)}
+            </Typography>
+            <Typography variant="body1" style={{color: "#78909c"}}>
+              Shipping Fee: ${shippingFee.toFixed(2)}
+            </Typography>
+            <Typography variant="body1" style={{color: "#78909c"}}>Tax: ${tax.toFixed(2)}</Typography>
+            <Typography variant="body1" style={{color: "#607d8b"}} sx={{ mt: 2 }}>
+              Total: ${total.toFixed(2)}
+            </Typography>
+          </Box>
           <CartButton onClick={() => clearCart(items)}>Order</CartButton>
         </List>
       ) : (

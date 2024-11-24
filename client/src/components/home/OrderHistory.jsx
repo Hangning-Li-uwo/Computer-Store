@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const TAX_RATE = 0.13;
+const SHIPPING_FEE = 10;
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -73,65 +74,71 @@ export default function OrderHistory() {
     // Calculate totals for the order
     const subtotal = calculateSubtotal(items);
     const tax = subtotal * TAX_RATE;
-    const total = subtotal + tax;
+    const shippingFee = SHIPPING_FEE;
+    const total = subtotal + tax + shippingFee;
 
     return (
       <TableContainer
-        component={Paper}
-        key={order.id}
-        sx={{ marginBottom: 3, width: "85%" }}
-      >
-        <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={3}>
-                Order #{order.id} &nbsp;&nbsp;&nbsp; (Date: {new Date(order.date).toLocaleString()})
+      component={Paper}
+      key={order.id}
+      sx={{ marginBottom: 3, width: "85%" }}
+    >
+      <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center" colSpan={3}>
+              Order #{order.id} &nbsp;&nbsp;&nbsp; (Date: {new Date(order.date).toLocaleString()})
+            </TableCell>
+            <TableCell align="right"></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell align="center" colSpan={3}>
+              Address - {order?.address} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Payment Method - {order?.paymentMethod}
+            </TableCell>
+            <TableCell align="right">Price</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Item</TableCell>
+            <TableCell align="right">Qty</TableCell>
+            <TableCell align="right">Unit</TableCell>
+            <TableCell align="right">Sum</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {items.map((item) => (
+            <TableRow key={item.id}>
+              <TableCell>{item.name}</TableCell>
+              <TableCell align="right">{item.quantity || 1}</TableCell>
+              <TableCell align="right">
+                {ccyFormat(item.price || 0)}
               </TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align="center" colSpan={3}>
-                Address - {order?.address} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Payment Method - {order?.paymentMethod}
+              <TableCell align="right">
+                {ccyFormat((item.price || 0) * (item.quantity || 1))}
               </TableCell>
-              <TableCell align="right">Price</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell>Item</TableCell>
-              <TableCell align="right">Qty</TableCell>
-              <TableCell align="right">Unit</TableCell>
-              <TableCell align="right">Sum</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {items.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell>{item.name}</TableCell>
-                <TableCell align="right">{item.quantity || 1}</TableCell>
-                <TableCell align="right">
-                  {ccyFormat(item.price || 0)}
-                </TableCell>
-                <TableCell align="right">
-                  {ccyFormat((item.price || 0) * (item.quantity || 1))}
-                </TableCell>
-              </TableRow>
-            ))}
-            <TableRow>
-              <TableCell rowSpan={3} />
-              <TableCell colSpan={2}>Subtotal</TableCell>
-              <TableCell align="right">{ccyFormat(subtotal)}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Tax</TableCell>
-              <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-              <TableCell align="right">{ccyFormat(tax)}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={2}>Total</TableCell>
-              <TableCell align="right">{ccyFormat(total)}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+          ))}
+          <TableRow>
+            <TableCell rowSpan={4} />
+            <TableCell colSpan={2}>Subtotal</TableCell>
+            <TableCell align="right">{ccyFormat(subtotal)}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Tax</TableCell>
+            <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+            <TableCell align="right">{ccyFormat(tax)}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Shipping Fee</TableCell>
+            <TableCell align="right"></TableCell>
+            <TableCell align="right">{ccyFormat(shippingFee)}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>Total</TableCell>
+            <TableCell align="right">{ccyFormat(total)}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
     );
   })
 ) : (

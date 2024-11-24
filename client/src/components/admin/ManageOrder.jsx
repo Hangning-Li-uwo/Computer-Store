@@ -25,10 +25,14 @@ function Row({ row, deleteOrder }) {
   const [open, setOpen] = React.useState(false);
 
   // Calculate subtotal, tax, and total
-  const subtotal = row.items.reduce((sum, item) => sum + item.quantity * item.price, 0);
+  const subtotal = row.items.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0
+  );
   const taxRate = 0.13;
   const tax = subtotal * taxRate;
-  const total = subtotal + tax;
+  const shippingFee = 10;
+  const total = subtotal + tax + shippingFee;
 
   return (
     <React.Fragment>
@@ -77,20 +81,29 @@ function Row({ row, deleteOrder }) {
                     <TableRow key={item.name}>
                       <TableCell>{item.name}</TableCell>
                       <TableCell>{item.quantity}</TableCell>
-                      <TableCell align="right">${item.price.toFixed(2)}</TableCell>
+                      <TableCell align="right">
+                        ${item.price.toFixed(2)}
+                      </TableCell>
                       <TableCell align="right">
                         ${(item.quantity * item.price).toFixed(2)}
                       </TableCell>
                     </TableRow>
                   ))}
                   <TableRow>
-                    <TableCell rowSpan={3} />
+                    <TableCell rowSpan={4} />
                     <TableCell colSpan={2}>Subtotal</TableCell>
                     <TableCell align="right">${subtotal.toFixed(2)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell colSpan={2}>Tax (13%)</TableCell>
                     <TableCell align="right">${tax.toFixed(2)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Shipping Fee</TableCell>
+                    <TableCell align="right"></TableCell>
+                    <TableCell align="right">
+                      ${shippingFee.toFixed(2)}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell colSpan={2}>
@@ -143,9 +156,13 @@ function ManageOrder() {
 
   const handleDeleteOrder = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5001/api/orders/${id}`);
+      const response = await axios.delete(
+        `http://localhost:5001/api/orders/${id}`
+      );
       if (response.status === 200) {
-        setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
+        setOrders((prevOrders) =>
+          prevOrders.filter((order) => order.id !== id)
+        );
         dispatch(deleteOrderItem(id));
         toast.success("Order deleted successfully", {
           icon: <CheckCircleIcon sx={{ color: green[500] }} />,
@@ -167,7 +184,10 @@ function ManageOrder() {
   return (
     <Box sx={{ marginTop: 6 }}>
       {orders.length > 0 ? (
-        <TableContainer component={Paper} sx={{ width: "85%", margin: "0 auto", marginTop: 4 }}>
+        <TableContainer
+          component={Paper}
+          sx={{ width: "85%", margin: "0 auto", marginTop: 4 }}
+        >
           <Table aria-label="collapsible table">
             <TableHead>
               <TableRow>
@@ -178,13 +198,21 @@ function ManageOrder() {
             </TableHead>
             <TableBody>
               {orders.map((order) => (
-                <Row key={order.id} row={order} deleteOrder={handleDeleteOrder} />
+                <Row
+                  key={order.id}
+                  row={order}
+                  deleteOrder={handleDeleteOrder}
+                />
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       ) : (
-        <Typography variant="h3" color="text.secondary" sx={{ textAlign: "center", marginTop: 8 }}>
+        <Typography
+          variant="h3"
+          color="text.secondary"
+          sx={{ textAlign: "center", marginTop: 8 }}
+        >
           No Orders
         </Typography>
       )}
