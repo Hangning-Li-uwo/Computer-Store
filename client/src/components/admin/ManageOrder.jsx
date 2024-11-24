@@ -20,6 +20,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { deleteOrderItem } from "../../state";
 import { Button } from "@mui/material";
+import { BASE_URL } from "../../constants";
 
 function Row({ row, deleteOrder }) {
   const [open, setOpen] = React.useState(false);
@@ -143,7 +144,7 @@ function ManageOrder() {
 
   const getAllOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/api/orders");
+      const response = await axios.get(`${BASE_URL}/api/orders`);
       if (response.status === 200) {
         setOrders(response.data);
       } else {
@@ -157,7 +158,7 @@ function ManageOrder() {
   const handleDeleteOrder = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5001/api/orders/${id}`
+        `${BASE_URL}/api/orders/${id}`
       );
       if (response.status === 200) {
         setOrders((prevOrders) =>

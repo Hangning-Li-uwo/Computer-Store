@@ -13,6 +13,7 @@ import { useAuth } from "../../context/AuthContext";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import { toast } from "sonner";
+import { BASE_URL } from "../../constants";
 
 function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
   const {currentUser} = useAuth();

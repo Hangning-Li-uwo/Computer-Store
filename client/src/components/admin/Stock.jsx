@@ -16,6 +16,7 @@ import { green } from "@mui/material/colors";
 import { toast } from "sonner";
 import Skeleton from "@mui/material/Skeleton";
 import ITEM_LIST from "../home/ItemList";
+import { BASE_URL } from "../../constants";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -72,7 +73,7 @@ export default function Stock() {
         }
 
         const response = await axios.post(
-          "http://localhost:5001/api/stock",
+          `${BASE_URL}/api/stock`,
           {
             id: matchingItem.id,
             name: selectedRow.name,
@@ -97,7 +98,7 @@ export default function Stock() {
     const fetchStockData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/stock"
+          `${BASE_URL}/api/stock`
         );
         if (response.status === 200) {
           console.log(response);

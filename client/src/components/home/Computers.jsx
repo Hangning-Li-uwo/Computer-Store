@@ -20,6 +20,7 @@ import { setLocalStock } from "../../state";
 import { Box } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
@@ -66,7 +67,7 @@ export default function ComputerLists({ filteredItems }) {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await axios.get("http://localhost:5001/api/stock");
+        const response = await axios.get(`${BASE_URL}/api/stock`);
         if (response.status === 200) {
           dispatch(setLocalStock(response.data));
         } else {
@@ -133,7 +134,7 @@ export default function ComputerLists({ filteredItems }) {
       try {
         // Step 1: Check stock availability for the selected item
         const response = await axios.get(
-          `http://localhost:5001/api/stock/${item.id}`
+          `${BASE_URL}/api/stock/${item.id}`
         );
 
         if (response.status === 200 && response.data.quantity > 0) {

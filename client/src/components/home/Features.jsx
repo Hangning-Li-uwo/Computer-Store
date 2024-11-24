@@ -13,7 +13,7 @@ import Skeleton from "@mui/material/Skeleton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useColorScheme } from "@mui/material";
-
+import { BASE_URL } from "../../constants";
 
 export default function Features({ item }) {
   const [reviews, setReviews] = useState([]);
@@ -29,7 +29,7 @@ export default function Features({ item }) {
     const fetchReviews = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5001/api/reviews/${item.id}`
+          `${BASE_URL}/api/reviews/${item.id}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

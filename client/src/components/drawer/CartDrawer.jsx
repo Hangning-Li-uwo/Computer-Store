@@ -17,8 +17,8 @@ import CartButton from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { BASE_URL } from "../../constants";
 
-// TODO
 export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const user = useSelector((state) => state.user);
@@ -60,7 +60,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
       // Send order data to the backend
       const response = await axios.post(
-        "http://localhost:5001/api/orders/create",
+        `${BASE_URL}/api/orders/create`,
         orderData
       );
 
@@ -86,7 +86,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
   const sendEmail = async (items) => {
     try {
-      const response = await axios.post("http://localhost:5001/api/email", {
+      const response = await axios.post(`${BASE_URL}/api/email`, {
         uid: user.UID, // Pass the user ID to identify the user in Firestore
         items: items,
       });
@@ -109,7 +109,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
         for (const stockItem of updatedStock) {
           const response = await axios.post(
-            "http://localhost:5001/api/stock",
+            `${BASE_URL}/api/stock`,
             stockItem
           );
 

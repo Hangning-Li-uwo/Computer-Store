@@ -10,6 +10,7 @@ import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 const TAX_RATE = 0.13;
 const SHIPPING_FEE = 10;
@@ -25,7 +26,7 @@ function calculateSubtotal(items) {
 // fetch orders from firestore
 const fetchOrders = async (ordersRef) => {
   try {
-    const response = await axios.post("http://localhost:5001/api/orders", { ordersRef });
+    const response = await axios.post(`${BASE_URL}/api/orders`, { ordersRef });
 
     if (response.status === 200) {
       console.log("Fetched Orders:", response.data);
