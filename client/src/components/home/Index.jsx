@@ -14,7 +14,6 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
 import { toast } from "sonner";
 import ITEM_LIST from "./ItemList";
-import axios from "axios"
 
 function Index() {
   const user = useSelector((state) => state.user);
@@ -24,23 +23,6 @@ function Index() {
   const [query, setQuery] = useState(""); // Search input
   const [filter, setFilter] = useState({}); // Filter criteria
   const [filteredItems, setFilteredItems] = useState(ITEM_LIST); // Filtered items
-
-  const uploadProducts = async (products) => {
-    try {
-      const response = await axios.post("http://localhost:5001/api/products", {
-        products,
-      });
-  
-      if (response.status === 200) {
-        console.log("Products uploaded successfully:", response.data.results);
-      } else {
-        console.error("Failed to upload products:", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error uploading products:", error.message);
-      throw new Error("Failed to upload products.");
-    }
-  };
   
   // Update filtered items based on query and filter
   useEffect(() => {
@@ -61,20 +43,6 @@ function Index() {
 
     setFilteredItems(results);
   }, [query, filter]);
-
-
-  // upload products
-  useEffect(() => {
-    const uploadItems = async () => {
-      try {
-        await uploadProducts(ITEM_LIST);
-      } catch (error) {
-        console.error("Error uploading products:", error);
-      }
-    };
-  
-    uploadItems();
-  }, [])
 
   const roleSubmit = async (e) => {
     e.preventDefault();

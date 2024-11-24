@@ -314,35 +314,34 @@ app.post("/api/orders", async (req, res) => {
 
 // ===================================== PRODUCT  REVIEWS =====================================
 // get a review
-// app.get("/api/reviews/:id", async (req, res) => {
-//   const { id } = req.params;
+app.get("/api/reviews/:id", async (req, res) => {
+  const { id } = req.params;
 
-//   if (!id) {
-//     return res.status(400).send({ message: "Product ID is required" });
-//   }
+  if (!id) {
+    return res.status(400).send({ message: "Product ID is required" });
+  }
 
-//   try {
-//     const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
-//     const product = response.data;
+  try {
+    const response = await axios.get(`https://67424979e464749900904321.mockapi.io/reviews/${id}`);
+    const product = response.data;
 
-//     if (!product || !product.rating) {
-//       return res.status(404).send({ message: "No reviews found for this product" });
-//     }
+    if (!product || !product.ratings) {
+      return res.status(404).send({ message: "No reviews found for this product" });
+    }
 
-//     const reviews = [
-//       {
-//         title: product.title,
-//         rating: product.rating.rate,
-//         reviewCount: product.rating.count,
-//       },
-//     ];
+    const reviews = [
+      {
+        ratings: product.ratings,
+        reviews: product.reviews,
+      },
+    ];
 
-//     res.status(200).json(reviews);
-//   } catch (error) {
-//     console.error("Error fetching reviews:", error);
-//     res.status(500).send({ message: "Failed to fetch reviews" });
-//   }
-// });
+    res.status(200).json(reviews);
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    res.status(500).send({ message: "Failed to fetch reviews" });
+  }
+});
 // =====================================  EMAIL =====================================
 // Route to send email confirmation
 app.post("/api/email", async (req, res) => {

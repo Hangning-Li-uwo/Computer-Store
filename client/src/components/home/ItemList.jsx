@@ -58,7 +58,7 @@ import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg"
 
 const ITEM_LIST = [
   {
-    id: 21,
+    id: 1,
     name: "iMac",
     manufacturer: "Apple",
     title: "iMac - $1,699.00",

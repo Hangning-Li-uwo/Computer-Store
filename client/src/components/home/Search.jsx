@@ -8,6 +8,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import { useColorScheme } from "@mui/material";
 
 function Search({ query, setQuery, onFilter }) {
   const [input, setInput] = React.useState("");
@@ -16,6 +17,8 @@ function Search({ query, setQuery, onFilter }) {
   const [selectedBrand, setSelectedBrand] = React.useState("");
 
   const brands = ["Apple", "Dell", "Razer", "Lofree", "Microsoft"];
+
+  const { mode, setMode } = useColorScheme();
 
   const handleSearchSubmit = () => {
     setQuery(input);
@@ -115,7 +118,7 @@ function Search({ query, setQuery, onFilter }) {
         sx={{
           "& .MuiPaper-root": {
             width: "300px",
-            backgroundColor: "rgba(255, 255, 255, 0.2)", //  the transparent style
+            backgroundColor: mode === "light" ? "rgba(255, 255, 255, 0.8)" : "rgba(50, 50, 50, 0.8)", // Transparent and adaptive
             backdropFilter: "blur(10px)",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
             borderRadius: "15px",
@@ -129,7 +132,7 @@ function Search({ query, setQuery, onFilter }) {
             padding: 2,
           }}
         >
-          <Typography variant="subtitle1" style={{ color: "#bdbdbd" }}>
+          <Typography variant="subtitle1" style={{ color:  mode === "light" ? "#757575" : "#bdbdbd" }}>
             Filter by Brand
           </Typography>
           {brands.map((brand) => (
@@ -138,9 +141,9 @@ function Search({ query, setQuery, onFilter }) {
               selected={selectedBrand === brand}
               onClick={() => setSelectedBrand(brand)}
               sx={{
-                color: "#bdbdbd", // Default text color
+                color: mode === "light" ? "#757575" : "#bdbdbd", // Default text color
                 "&:hover": {
-                  color: "#ffffff", // Highlighted text color
+                  color: mode === "light" ?  "#424242" : "#ffffff", // Highlighted text color
                   backgroundColor: "rgba(255, 255, 255, 0.3)", // Subtle background color on hover
                 },
               }}
@@ -148,7 +151,7 @@ function Search({ query, setQuery, onFilter }) {
               {brand}
             </MenuItem>
           ))}
-          <Typography variant="subtitle1" style={{ color: "#bdbdbd" }}>
+          <Typography variant="subtitle1" style={{ color:  mode === "light" ? "#757575" : "#bdbdbd"  }}>
             Filter by Price
           </Typography>
           <Slider

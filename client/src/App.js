@@ -1,6 +1,7 @@
 import "./App.css";
 import * as React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { useSelector } from "react-redux";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   BrowserRouter as Router,
@@ -13,18 +14,24 @@ import Dashboard from "./components/home/Dashboard";
 import OAuthSignIn from "./components/auth/OAuthSignIn";
 import { Toaster } from 'sonner';
 
-const ROLES = {
-  ADMIN: "admin",
-  USER: "user",
-};
-
 function App() {
   React.useEffect(() => {
-    // Update the document title using the browser API
     document.title = "Computer Store";
   }, []);
 
-  const theme = React.useMemo(() => createTheme(themeSettings('light')), ['light']);
+  const mode = useSelector((state) => state.mode);
+
+  const theme = React.useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
+  theme.typography.h2 = {
+    fontSize: '1.2rem',
+    '@media (min-width:600px)': {
+      fontSize: '1.5rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.4rem',
+    },
+  };
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,26 +1,73 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, Divider, Link, Rating } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Divider,
+  Link,
+  Rating,
+  Stack,
+  Pagination,
+  PaginationItem,
+} from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useColorScheme } from "@mui/material";
+
 
 export default function Features({ item }) {
   const [reviews, setReviews] = useState([]);
+  const [ratings, setRatings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const reviewsPerPage = 3;
 
-  // useEffect(() => {
-  //   const fetchReviews = async () => {
-  
-  //   fetchReviews();
-  // }, [item.id]);
+  const { mode, setMode } = useColorScheme();
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5001/api/reviews/${item.id}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setRatings(data[0].ratings);
+        setReviews(data[0].reviews);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+        setError("Failed to load reviews");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReviews();
+  }, [item.id]);
+
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+  const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
     <Box
       sx={{
-        backgroundColor: "#f9f9f9",
         padding: 4,
         borderRadius: 2,
         maxWidth: 900,
         margin: "auto",
+        padding: 4,
+        borderRadius: 3,
+        background: mode === "dark" ? "" : " linear-gradient(135deg,rgba(255, 255, 255, 0.85),rgba(240, 240, 240, 0.85))",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+        backdropFilter: "blur(10px)",
       }}
     >
       <Typography variant="h4" align="center" gutterBottom>
@@ -49,25 +96,35 @@ export default function Features({ item }) {
           {error}
         </Typography>
       ) : reviews.length > 0 ? (
-        reviews.map((review, index) => (
-          <Box key={index} sx={{ marginBottom: 2 }}>
-            <Typography variant="h6">{review.title}</Typography>
-            <Rating value={review.rating} readOnly />
-            <Typography variant="body2" color="text.secondary">
-              {review.reviewCount} reviews
-            </Typography>
-            {review.description &&
-              review.description.map((desc, descIndex) => (
-                <Box key={descIndex} sx={{ marginTop: 1 }}>
-                  <Typography variant="subtitle1">{desc.reviewer}</Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {desc.reviewText}
-                  </Typography>
-                  <Divider sx={{ marginY: 1 }} />
-                </Box>
-              ))}
-          </Box>
-        ))
+        <Box>
+          <Typography variant="h6" align="center" gutterBottom>
+            Overall Rating: {ratings}
+          </Typography>
+          {currentReviews.map((review, index) => (
+            <Box key={index} sx={{ marginBottom: 2 }}>
+              <Typography variant="subtitle1">{review.reviewer}</Typography>
+              <Rating value={review.rating} readOnly />
+              <Typography variant="body2" color="text.secondary">
+                {review.reviewText}
+              </Typography>
+              <Divider sx={{ marginY: 1 }} />
+            </Box>
+          ))}
+
+          <Stack spacing={2} sx={{ marginTop: 3, alignItems: "center" }}>
+            <Pagination
+              count={Math.ceil(reviews.length / reviewsPerPage)} // Total number of pages
+              page={currentPage}
+              onChange={handlePageChange} 
+              renderItem={(item) => (
+                <PaginationItem
+                  slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                  {...item}
+                />
+              )}
+            />
+          </Stack>
+        </Box>
       ) : (
         <Typography variant="body2" align="center" color="text.secondary">
           No reviews available.

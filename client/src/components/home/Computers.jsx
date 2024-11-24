@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SplashScreen from "../SplashScreen"; 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -8,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/material/Grid2";
 import Features from "./Features";
+import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "../../state";
 import { toast } from "sonner";
@@ -22,6 +24,7 @@ import axios from "axios";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
+  const [showSplash, setShowSplash] = useState(true);
   const [selectedItem, setSelectedItem] = useState(null);
   const stock = useSelector((state) => state.localStock);
   const [loading, setLoading] = useState(true);
@@ -34,12 +37,38 @@ export default function ComputerLists({ filteredItems }) {
 
   const dispatch = useDispatch();
 
+  const [visibleItems, setVisibleItems] = useState([]);
+
+  useEffect(() => {
+    setVisibleItems(filteredItems);
+  }, [filteredItems]);
+
+  const handleScroll = () => {
+    const nextItems = filteredItems.slice(
+      visibleItems.length,
+      visibleItems.length + 10
+    );
+    setVisibleItems((prev) => [...prev, ...nextItems]);
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 300
+      ) {
+        handleScroll();
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [visibleItems, filteredItems]);
+
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5001/api/stock"
-        );
+        const response = await axios.get("http://localhost:5001/api/stock");
         if (response.status === 200) {
           dispatch(setLocalStock(response.data));
         } else {
@@ -53,6 +82,16 @@ export default function ComputerLists({ filteredItems }) {
     };
     fetchStockData();
   }, []);
+
+  useEffect(() => {
+    // Simulate splash screen duration
+    const timer = setTimeout(() => setShowSplash(false), 3000);
+    return () => clearTimeout(timer); // Cleanup timer
+  }, []);
+
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  }
 
   if (loading) {
     return (
@@ -138,10 +177,20 @@ export default function ComputerLists({ filteredItems }) {
         justifyContent: "center",
       }}
     >
-      {filteredItems.map((item) => {
+      {visibleItems.map((item, index) => {
         const matchingStock = stock.find((s) => s.name === item.name);
         return (
-          <Grid container xs={12} sm={6} md={4} key={item.id}>
+          <Grid
+            container
+            xs={12}
+            sm={6}
+            md={4}
+            key={item.id}
+            component={motion.div} // Animate using framer-motion
+            initial={{ opacity: 0, y: 50 }} // Start from transparent and move up
+            animate={{ opacity: 1, y: 0 }} // End fully visible at the correct position
+            transition={{ duration: 0.5, delay: index * 0.1 }} // Add staggered animation
+          >
             <Card
               sx={{
                 width: "100%",
@@ -150,6 +199,11 @@ export default function ComputerLists({ filteredItems }) {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
+                  borderColor: "primary.main",
+                },
               }}
             >
               <CardMedia
@@ -200,8 +254,6 @@ export default function ComputerLists({ filteredItems }) {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            // boxShadow: 24,
-            // backgroundColor: "#f9f9f9",
             padding: 4,
             borderRadius: 2,
           }}
