@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SplashScreen from "../SplashScreen"; 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -24,7 +23,6 @@ import axios from "axios";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
-  const [showSplash, setShowSplash] = useState(true);
   const [selectedItem, setSelectedItem] = useState(null);
   const stock = useSelector((state) => state.localStock);
   const [loading, setLoading] = useState(true);
@@ -83,15 +81,6 @@ export default function ComputerLists({ filteredItems }) {
     fetchStockData();
   }, []);
 
-  useEffect(() => {
-    // Simulate splash screen duration
-    const timer = setTimeout(() => setShowSplash(false), 3000);
-    return () => clearTimeout(timer); // Cleanup timer
-  }, []);
-
-  if (showSplash) {
-    return <SplashScreen onFinish={() => setShowSplash(false)} />;
-  }
 
   if (loading) {
     return (
