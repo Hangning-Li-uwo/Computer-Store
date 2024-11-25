@@ -57,7 +57,7 @@ function Specs({ selectedSpecItem }) {
                 {feature.description}
               </Typography>
               <ul style={{ paddingLeft: 16, textAlign: "left",   fontSize: "0.875rem", }}>
-                {feature.bullets.map((bullet, idx) => (
+                {feature.bullets && feature.bullets.map((bullet, idx) => (
                   <li key={idx}>
                     <Typography variant="body2" color="text.secondary">
                       {bullet}
