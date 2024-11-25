@@ -83,7 +83,7 @@ function Dashboard(props) {
       branding={{
         // Customize logo here
         logo: <img src="https://mui.com/static/logo.png" alt="MUI" />,
-        title: "Computer Store",
+        title: "BLUEBYTE",
       }}
       navigation={
         currentUser === null||
