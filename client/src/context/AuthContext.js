@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
             const userDoc = await getDoc(userDocRef);
 
             if (userDoc.exists()) {
-              console.log("User data:", userDoc.data());
+              // console.log("User data:", userDoc.data());
               setcurrentUser(userDoc.data()); 
               reactLocalStorage.set("currentUser", userDoc.data())
             } else {

@@ -21,6 +21,7 @@ import { Box } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
+import Specs from "./Specs";
 
 export default function ComputerLists({ filteredItems }) {
   const { currentUser } = useAuth();
@@ -28,6 +29,16 @@ export default function ComputerLists({ filteredItems }) {
   const stock = useSelector((state) => state.localStock);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const [specOpen, setSpecOpen] = React.useState(false);
+  const [selectedSpecItem, setSelectedSpecItem] = useState(null);
+
+  const handleSpecOpen = (item) => {
+    setSelectedSpecItem(item);
+    setSpecOpen(true);
+  };
+
+  const handleSpecClose = () => setSpecOpen(false);
+
   const handleOpen = (item) => {
     setSelectedItem(item);
     setOpen(true);
@@ -42,15 +53,15 @@ export default function ComputerLists({ filteredItems }) {
     setVisibleItems(filteredItems);
   }, [filteredItems]);
 
-  const handleScroll = () => {
-    const nextItems = filteredItems.slice(
-      visibleItems.length,
-      visibleItems.length + 10
-    );
-    setVisibleItems((prev) => [...prev, ...nextItems]);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const nextItems = filteredItems.slice(
+        visibleItems.length,
+        visibleItems.length + 10
+      );
+      setVisibleItems((prev) => [...prev, ...nextItems]);
+    };
+
     const onScroll = () => {
       if (
         window.innerHeight + window.scrollY >=
@@ -80,8 +91,7 @@ export default function ComputerLists({ filteredItems }) {
       }
     };
     fetchStockData();
-  }, []);
-
+  }, [dispatch]);
 
   if (loading) {
     return (
@@ -133,9 +143,7 @@ export default function ComputerLists({ filteredItems }) {
     } else {
       try {
         // Step 1: Check stock availability for the selected item
-        const response = await axios.get(
-          `${BASE_URL}/api/stock/${item.id}`
-        );
+        const response = await axios.get(`${BASE_URL}/api/stock/${item.id}`);
 
         if (response.status === 200 && response.data.quantity > 0) {
           const updatedItem = { ...item, quantity: response.data.quantity };
@@ -224,7 +232,11 @@ export default function ComputerLists({ filteredItems }) {
                   </Button>
                 )}
                 <Button size="small" onClick={() => handleOpen(item)}>
-                  Learn More
+                  Reviews
+                </Button>
+
+                <Button size="small" onClick={() => handleSpecOpen(item)}>
+                  Specs
                 </Button>
               </CardActions>
             </Card>
@@ -249,6 +261,30 @@ export default function ComputerLists({ filteredItems }) {
           }}
         >
           {selectedItem && <Features item={selectedItem} />}
+        </Box>
+      </Modal>
+
+      <Modal
+        open={specOpen}
+        onClose={handleSpecClose}
+        aria-labelledby="modal-spec-title"
+        aria-describedby="modal-spec-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: 4,
+            borderRadius: 2,
+            bgcolor: "background.paper",
+            width: "80%",
+            maxWidth: "800px",
+            boxShadow: 24,
+          }}
+        >
+          {selectedSpecItem && <Specs selectedSpecItem={selectedSpecItem} />}
         </Box>
       </Modal>
     </Grid>
