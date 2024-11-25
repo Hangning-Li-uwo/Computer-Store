@@ -34,27 +34,31 @@ import LofreeMoruKeyboardImage from "../../static/images/LofreeMoruKeyboard1.png
 import LofreePetalMouseImage from "../../static/images/LofreePetalMouse.png";
 import HPChromebookPlusImage from "../../static/images/HP Chromebook Plus.png";
 
-import LenovoImage from "../../static/images/Levono.png"
-import AsusRogImage from "../../static/images/AsusRog.png"
-import ViprTechReaper3Image from "../../static/images/ViprTechReaper3.png"
-import ViprTechAvalanche2Image from "../../static/images/ViprTechAvalanche2.png"
-import ASUSROGG16Image from "../../static/images/ASUSROGG16.png"
-import ZonicGamingPCImage from "../../static/images/ZonicGamingPC.png"
-import AQVINImage from "../../static/images/RefurbishedAQVIN.png"
-import AcerMonitorImage from "../../static/images/AcerMonitor.png"
-import MSICodexRImage from "../../static/images/MSICodexR.png"
+import LenovoImage from "../../static/images/Levono.png";
+import AsusRogImage from "../../static/images/AsusRog.png";
+import ViprTechReaper3Image from "../../static/images/ViprTechReaper3.png";
+import ViprTechAvalanche2Image from "../../static/images/ViprTechAvalanche2.png";
+import ASUSROGG16Image from "../../static/images/ASUSROGG16.png";
+import ZonicGamingPCImage from "../../static/images/ZonicGamingPC.png";
+import AQVINImage from "../../static/images/RefurbishedAQVIN.png";
+import AcerMonitorImage from "../../static/images/AcerMonitor.png";
+import MSICodexRImage from "../../static/images/MSICodexR.png";
 
-import DellProRugged14Image from "../../static/images/DellProRugged14.png"
-import Latitude5430RuggedImage from "../../static/images/Latitude5430Rugged.png"
-import DellProRugged13Image from "../../static/images/DellProRugged13.png"
-import Chromebook3110Image from "../../static/images/Chromebook3110.png"
-import DellXPS13Image from "../../static/images/DellXPS13.png"
-import Latitude7455Image from "../../static/images/Latitude7455.png"
-import DellG16Image from "../../static/images/DellG16.png"
-import LenovoLaptopImage from "../../static/images/LenovoLaptop.png"
-import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg"
+import DellProRugged14Image from "../../static/images/DellProRugged14.png";
+import Latitude5430RuggedImage from "../../static/images/Latitude5430Rugged.png";
+import DellProRugged13Image from "../../static/images/DellProRugged13.png";
+import Chromebook3110Image from "../../static/images/Chromebook3110.png";
+import DellXPS13Image from "../../static/images/DellXPS13.png";
+import Latitude7455Image from "../../static/images/Latitude7455.png";
+import DellG16Image from "../../static/images/DellG16.png";
+import LenovoLaptopImage from "../../static/images/LenovoLaptop.png";
+import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg";
 
-
+// ******************************* ICONS *******************************
+import AppleIcon from "@mui/icons-material/Apple";
+import MemoryIcon from "@mui/icons-material/Memory";
+import StorageIcon from "@mui/icons-material/Storage";
+import FlashOnIcon from "@mui/icons-material/FlashOn";
 
 const ITEM_LIST = [
   {
@@ -65,7 +69,47 @@ const ITEM_LIST = [
     description:
       "Image Playground. Create fun, original images based on a description, a concept or even a person from your Photos library.",
     image: iMacImage,
-    price: 1699.00,
+    price: 1699.0,
+    features: [
+      {
+        icon: <AppleIcon fontSize="large" />,
+        title: "Apple M4 chip",
+        description: `The M4 chip brings serious speed and capability so you can blaze through everyday activities and multitask across apps and video calls. And with a faster Neural Engine, AI features within your apps fly.`,
+        bullets: [
+          "Run multiple apps, speed through thousands of photos",
+          "Effortlessly edit 4K video",
+          "With hardware-accelerated ray tracing, graphics look incredible on your favorite game titles",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Unified Memory",
+        description: `Faster and more efficient than traditional RAM, unified memory is integrated within the M4 chip so apps can quickly share data between the CPU, GPU, and Neural Engine.`,
+        bullets: [
+          "Run multiple apps at once while performance remains fast and responsive",
+          "Add memory to run more apps simultaneously for faster, more fluid multitasking",
+          "Configure iMac with up to 32GB unified memory",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `Solid-state drive (SSD) storage is the amount of space your iMac has for your documents, photos, music, videos, and other files.`,
+        bullets: [
+          "Delivers exceptional performance and speed when you start up your iMac, launch apps, open files, and browse libraries",
+          "Configure with up to 2TB of storage",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        description: `Ports allow you to connect accessories like printers, cameras, an additional display, and external drives to your iMac for data transfer, charging, and syncing.`,
+        bullets: [
+          "Thunderbolt ports let you connect high-speed accessories",
+          "Models with Gigabit Ethernet allow you to connect to the internet using an Ethernet cable",
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -75,7 +119,7 @@ const ITEM_LIST = [
     description:
       "MacBook Pro features the most advanced lineup of chips ever built for a pro laptop.",
     image: MacProImage,
-    price: 2699.00,
+    price: 2699.0,
   },
   {
     id: 3,
@@ -85,13 +129,13 @@ const ITEM_LIST = [
     description:
       "MacBook Air sails through work and play. You can express yourself and get things done effortlessly with Apple Intelligence.",
     image: MacAir13Image,
-    price: 999.00,
+    price: 999.0,
   },
   {
     id: 4,
-    name: 'Alienware Gaming Mouse AW920HImage',
+    name: "Alienware Gaming Mouse AW920HImage",
     manufacturer: "Alienware",
-    title: 'Alienware x16 R2 - $2,999.99',
+    title: "Alienware x16 R2 - $2,999.99",
     description:
       "Alienware's most premium gaming laptop, made superior, now with the elevated performance of Intel® Core™ Ultra processors.",
     image: Alienwarex16R2Image,
@@ -99,9 +143,9 @@ const ITEM_LIST = [
   },
   {
     id: 5,
-    name: 'Alienware m18 R2 Gaming Laptop',
+    name: "Alienware m18 R2 Gaming Laptop",
     manufacturer: "Alienware",
-    title: 'Alienware m18 R2 - $3,099.99',
+    title: "Alienware m18 R2 - $3,099.99",
     description:
       "Alienware's most powerful 18-inch gaming laptop. Downsize from your old desktop and scale up with the ultimate in gaming laptop performance.",
     image: ALIENWAREm18R2Image,
@@ -109,9 +153,9 @@ const ITEM_LIST = [
   },
   {
     id: 6,
-    name: 'Alienware Aurora R16 Desktop',
+    name: "Alienware Aurora R16 Desktop",
     manufacturer: "Alienware",
-    title: 'Alienware Aurora R16 Desktop - $2,549.99',
+    title: "Alienware Aurora R16 Desktop - $2,549.99",
     description:
       "Alienware's most advanced and most powerful desktop yet - perfect for gamers and streamers.",
     image: ALIENWAREAURORAR16Image,
@@ -120,20 +164,20 @@ const ITEM_LIST = [
 
   {
     id: 7,
-    name: 'ViprTechGhost Gaming Computer',
+    name: "ViprTechGhost Gaming Computer",
     manufacturer: "ViprTechGhost",
-    title: 'ViprTechGhost Gaming Computer - $1593.99',
+    title: "ViprTechGhost Gaming Computer - $1593.99",
     description:
       "The ViprTech Ghost (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games.",
     image: ViprTechGhostGamingComputerImage,
     price: 1593.99,
   },
-  
+
   {
     id: 8,
-    name: 'CLX RA Gaming Desktop',
+    name: "CLX RA Gaming Desktop",
     manufacturer: "ViprTechGhost",
-    title: 'CLX RA Gaming Desktop - $9,909.99',
+    title: "CLX RA Gaming Desktop - $9,909.99",
     description:
       "This powerful CLX RA is driven by an Intel Core i9 14900K 3.2GHz 24-Core processor, and 96GB of quick as lightning DDR5 memory! Coupled with GeForce RTX 4090 24GB graphics, for eye-stunning visuals.",
     image: CLXRAGamingDesktopImage,
@@ -141,9 +185,9 @@ const ITEM_LIST = [
   },
   {
     id: 9,
-    name: 'HP Chromebook Plus',
+    name: "HP Chromebook Plus",
     manufacturer: "HP",
-    title: 'HP Chromebook Plus - $649.99',
+    title: "HP Chromebook Plus - $649.99",
     description:
       "Ramped up to give you more power for multi-tasking with a reputable Intel® Core™ i3 Processor1, speedy memory, and a large, vibrant display that boots up instantly.",
     image: HPChromebookPlusImage,
@@ -151,9 +195,9 @@ const ITEM_LIST = [
   },
   {
     id: 10,
-    name: 'Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super',
+    name: "Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super",
     manufacturer: "Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super",
-    title: 'Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super - $3499.99',
+    title: "Legion Tower 7i Gen 8 (Intel) with RTX 4080 Super - $3499.99",
     description:
       "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
     image: LenovoImage,
@@ -161,20 +205,20 @@ const ITEM_LIST = [
   },
   {
     id: 11,
-    name: 'XPS 13 Laptop',
+    name: "XPS 13 Laptop",
     manufacturer: "Dell",
-    title: 'XPS 13 Laptop - $1999.99',
+    title: "XPS 13 Laptop - $1999.99",
     description:
       "Create and work anywhere with our thinnest and lightest XPS, starting at only 2.6 lbs.[1]. AI-enabled with Intel® Core™ Ultra processors.",
     image: DellXPS13Image,
     price: 1999.99,
   },
-  
+
   {
     id: 12,
-    name: 'ASUS ROG Strix G13 Gaming PC',
+    name: "ASUS ROG Strix G13 Gaming PC",
     manufacturer: "ASUS",
-    title: 'ASUS ROG Strix G13 Gaming PC - $1199.99',
+    title: "ASUS ROG Strix G13 Gaming PC - $1199.99",
     description:
       "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
     image: AsusRogImage,
@@ -182,9 +226,9 @@ const ITEM_LIST = [
   },
   {
     id: 13,
-    name: 'ViprTech Reaper 3.0 Liquid-Cooled PC',
+    name: "ViprTech Reaper 3.0 Liquid-Cooled PC",
     manufacturer: "ViprTech",
-    title: 'ViprTech Reaper 3.0 Liquid-Cooled PC - $2049.99',
+    title: "ViprTech Reaper 3.0 Liquid-Cooled PC - $2049.99",
     description:
       "The ViprTech Reaper 3.0 (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games. ",
     image: ViprTechReaper3Image,
@@ -192,9 +236,9 @@ const ITEM_LIST = [
   },
   {
     id: 14,
-    name: 'ViprTech Avalanche 2.0 Gaming PC',
+    name: "ViprTech Avalanche 2.0 Gaming PC",
     manufacturer: "ViprTech",
-    title: 'ViprTech Avalanche 2.0 Gaming PC - $979.99',
+    title: "ViprTech Avalanche 2.0 Gaming PC - $979.99",
     description:
       "Take a revolutionary leap into real-world hybrid performance with 12th Gen Intel® Core™, an innovative design that distributes processing power to where you need it most.",
     image: ViprTechAvalanche2Image,
@@ -202,9 +246,9 @@ const ITEM_LIST = [
   },
   {
     id: 15,
-    name: 'LOQ Essential Gen 9 Laptop',
+    name: "LOQ Essential Gen 9 Laptop",
     manufacturer: "Lenovo",
-    title: 'LOQ Essential Gen 9 Laptop - $729.99',
+    title: "LOQ Essential Gen 9 Laptop - $729.99",
     description:
       "The ViprTech Avalanche 2.0 (AMD) gaming PC comes fully equipped to take on most popular video games.",
     image: LenovoLaptopImage,
@@ -212,9 +256,9 @@ const ITEM_LIST = [
   },
   {
     id: 16,
-    name: 'ASUS ROG G16CHR Gaming PC',
+    name: "ASUS ROG G16CHR Gaming PC",
     manufacturer: "ASUS",
-    title: 'ASUS ROG G16CHR Gaming PC - $729.99',
+    title: "ASUS ROG G16CHR Gaming PC - $729.99",
     description:
       "Enjoy intense and seamless gameplay with this ASUS ROG G16CHR gaming PC. Featuring Intel Core i7-14700F processor, 32GB DDR5 U-DIMM RAM, and NVIDIA GeForce RTX4070 GPU, this PC ensures smooth gaming and multitasking.",
     image: ASUSROGG16Image,
@@ -222,9 +266,9 @@ const ITEM_LIST = [
   },
   {
     id: 17,
-    name: 'Zonic Gaming P',
+    name: "Zonic Gaming P",
     manufacturer: "Zonic",
-    title: 'Zonic Gaming P - $2285.97',
+    title: "Zonic Gaming P - $2285.97",
     description:
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: ZonicGamingPCImage,
@@ -233,9 +277,9 @@ const ITEM_LIST = [
 
   {
     id: 18,
-    name: 'Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC ',
+    name: "Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC ",
     manufacturer: "AQVIN",
-    title: 'Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC - $2285.97',
+    title: "Refurbished AQVIN Prebuilt InfinityLite RGB Gaming PC - $2285.97",
     description:
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AQVINImage,
@@ -243,9 +287,9 @@ const ITEM_LIST = [
   },
   {
     id: 19,
-    name: 'MSI Codex R Gaming PC',
+    name: "MSI Codex R Gaming PC",
     manufacturer: "Codex R",
-    title: 'MSI Codex R Gaming PC - $1099.99',
+    title: "MSI Codex R Gaming PC - $1099.99",
     description:
       "Effortlessly beat your opponents with this MSI Codex R2 gaming PC. Equipped with Intel Core i5-12400F processor and 16GB RAM, this machine delivers smooth and seamless performance for gaming and multitasking.",
     image: MSICodexRImage,
@@ -253,9 +297,9 @@ const ITEM_LIST = [
   },
   {
     id: 20,
-    name: 'Acer Nitro LED Curved FreeSync Gaming Monitor',
+    name: "Acer Nitro LED Curved FreeSync Gaming Monitor",
     manufacturer: "AQVIN",
-    title: 'Acer Nitro LED Curved FreeSync Gaming Monitor - $169.99',
+    title: "Acer Nitro LED Curved FreeSync Gaming Monitor - $169.99",
     description:
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AcerMonitorImage,
@@ -263,9 +307,9 @@ const ITEM_LIST = [
   },
   {
     id: 21,
-    name: 'Dell Pro Rugged 14 Laptop',
+    name: "Dell Pro Rugged 14 Laptop",
     manufacturer: "Dell",
-    title: 'Dell Pro Rugged 14 Laptop - $2223.81',
+    title: "Dell Pro Rugged 14 Laptop - $2223.81",
     description:
       "Dell Pro Rugged 14 features Intel® Core™ Ultra processors with a dedicated NPU,allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged14Image,
@@ -273,29 +317,29 @@ const ITEM_LIST = [
   },
   {
     id: 22,
-    name: 'Latitude 5430 Rugged Laptop',
+    name: "Latitude 5430 Rugged Laptop",
     manufacturer: "Dell",
-    title: 'Latitude 5430 Rugged Laptop - $2219.00',
+    title: "Latitude 5430 Rugged Laptop - $2219.00",
     description:
       "24x7 operations with dual hot-swappable batteries with up to 25-hour battery runtime and Express Charge Boost for up to a 35% charge in 15 minutes, so you can be always on.",
     image: Latitude5430RuggedImage,
-    price: 2219.00,
+    price: 2219.0,
   },
   {
     id: 23,
-    name: 'Latitude 5430 Rugged Laptop',
+    name: "Latitude 5430 Rugged Laptop",
     manufacturer: "Dell",
-    title: 'Latitude 5430 Rugged Laptop - $4949.00',
+    title: "Latitude 5430 Rugged Laptop - $4949.00",
     description:
       "Dell Pro Rugged 13 features Intel® Core™ Ultra U-series and H-series processors, with a dedicated NPU, allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged13Image,
-    price: 4949.00,
+    price: 4949.0,
   },
   {
     id: 24,
-    name: 'Chromebook 3110 Laptop',
+    name: "Chromebook 3110 Laptop",
     manufacturer: "Dell",
-    title: 'Chromebook 3110 Laptop - $586.61',
+    title: "Chromebook 3110 Laptop - $586.61",
     description:
       "The Dell Chromebook 3110 features rubberized edges and rounded corners to minimize drop impact, a spill-resistant keyboard with captive keys, plus hinge strength and micro-drop protection. ",
     image: Chromebook3110Image,
@@ -303,22 +347,20 @@ const ITEM_LIST = [
   },
   {
     id: 25,
-    name: 'Latitude 7455 Laptop',
+    name: "Latitude 7455 Laptop",
     manufacturer: "Dell",
-    title: 'Latitude 7455 Laptop - $586.61',
+    title: "Latitude 7455 Laptop - $586.61",
     description:
       "The first Copilot+ Latitude[1], and our first with Windows 11 Arm®, has powerful on-device AI and exceptional speed and efficiency in a premium Latitude design. ",
     image: Latitude7455Image,
     price: 586.61,
   },
-  
-  
 
   {
     id: 26,
-    name: 'Surface Laptop',
+    name: "Surface Laptop",
     manufacturer: "Microsoft",
-    title: 'Surface Laptop - $1,449.99',
+    title: "Surface Laptop - $1,449.99",
     description:
       "Work and play worry-free. For added peace of mind, Microsoft Complete has you covered for mechanical breakdown and accidental damage from handling.",
     image: SurfaceLaptopImage,
@@ -326,9 +368,9 @@ const ITEM_LIST = [
   },
   {
     id: 27,
-    name: 'Surface Laptop Studio2',
+    name: "Surface Laptop Studio2",
     manufacturer: "Microsoft",
-    title: 'Surface Laptop Studio2 - $2,699.99',
+    title: "Surface Laptop Studio2 - $2,699.99",
     description:
       "Over twice the computing power makes this device the most powerful Surface yet.",
     image: SurfaceLaptopStudio2Image,
@@ -337,9 +379,9 @@ const ITEM_LIST = [
 
   {
     id: 28,
-    name: 'Razer Blade 15',
+    name: "Razer Blade 15",
     manufacturer: "Razer",
-    title: 'Razer Blade 15 - $2,699.99',
+    title: "Razer Blade 15 - $2,699.99",
     description:
       "With the Razer Blade 15, true power will always be wherever you are.",
     image: RazerBlade15Image,
@@ -347,23 +389,22 @@ const ITEM_LIST = [
   },
   {
     id: 29,
-    name: 'Dell G16 Gaming Laptop',
+    name: "Dell G16 Gaming Laptop",
     manufacturer: "Dell",
-    title: 'Dell G16 Gaming Laptop - $1549.99',
+    title: "Dell G16 Gaming Laptop - $1549.99",
     description:
       "Enjoy all the benefits of a portable gaming laptop with a larger 16:10 aspect ratio. ",
     image: DellG16Image,
     price: 1549.99,
   },
 
-
   //================= Accessories =================
 
   {
     id: 30,
-    name: 'Razer Huntsman V2 Tenkeyless',
+    name: "Razer Huntsman V2 Tenkeyless",
     manufacturer: "Razer",
-    title: 'Razer Huntsman V2 Tenkeyless - $124.99',
+    title: "Razer Huntsman V2 Tenkeyless - $124.99",
     description:
       "Razer Linear Optical Switches Gen-2, Doubleshot PBT Keycaps, Sound Dampening Foam",
     image: RazerHuntsmanV2TenkeylessImage,
@@ -371,9 +412,9 @@ const ITEM_LIST = [
   },
   {
     id: 31,
-    name: 'Razer Headset with Kitty Ears V2',
+    name: "Razer Headset with Kitty Ears V2",
     manufacturer: "Razer",
-    title: 'Razer Kitty Ears V2 - $97.99',
+    title: "Razer Kitty Ears V2 - $97.99",
     description:
       "Kitty Ears, Stream Reactive Lighting, Razer HyperClear Cardioid Mic",
     image: RazerKittyEarHeadsetImage,
@@ -381,9 +422,9 @@ const ITEM_LIST = [
   },
   {
     id: 32,
-    name: 'Razer RGB Mouse Mat',
+    name: "Razer RGB Mouse Mat",
     manufacturer: "Razer",
-    title: 'Razer RGB Mouse Mat - $139.99',
+    title: "Razer RGB Mouse Mat - $139.99",
     description:
       "Edge-to-Edge Backlit Design, 15-Zone Chroma Lighting, Integrated USB 2.0 Port",
     image: RazerRGBMouseMatImage,
@@ -391,20 +432,19 @@ const ITEM_LIST = [
   },
   {
     id: 33,
-    name: 'Razer Kiyo Pro',
+    name: "Razer Kiyo Pro",
     manufacturer: "Razer",
-    title: 'Razer Kiyo Pro - $168.99',
-    description:
-      "USB Camera with High-Performance Adaptive Light Sensor",
+    title: "Razer Kiyo Pro - $168.99",
+    description: "USB Camera with High-Performance Adaptive Light Sensor",
     image: RazerKiyoProImage,
     price: 168.99,
   },
-  
+
   {
     id: 34,
-    name: 'Razer Basilisk V3 Pro',
+    name: "Razer Basilisk V3 Pro",
     manufacturer: "Razer",
-    title: 'Razer Basilisk V3 Pro - $178.99',
+    title: "Razer Basilisk V3 Pro - $178.99",
     description:
       "Customizable Wireless Gaming Mouse with Razer HyperScroll Tilt Wheel",
     image: RazerBasiliskV3ProImage,
@@ -412,29 +452,27 @@ const ITEM_LIST = [
   },
   {
     id: 35,
-    name: 'Razer Aether Lamp Pro',
+    name: "Razer Aether Lamp Pro",
     manufacturer: "Razer",
-    title: 'Razer Aether Lamp Pro - $139.99',
-    description:
-      "GB LED Lamp with Multi-zone Lighting",
+    title: "Razer Aether Lamp Pro - $139.99",
+    description: "GB LED Lamp with Multi-zone Lighting",
     image: RazerAetherLampProImage,
     price: 139.99,
   },
   {
     id: 36,
-    name: 'Razer Seiren V3 Chroma',
+    name: "Razer Seiren V3 Chroma",
     manufacturer: "Razer",
-    title: 'Razer Seiren V3 Chroma - $189.99',
-    description:
-      "RGB USB Microphone with Tap-to-Mute",
+    title: "Razer Seiren V3 Chroma - $189.99",
+    description: "RGB USB Microphone with Tap-to-Mute",
     image: RazerSeirenV3ChromaImage,
     price: 189.99,
   },
   {
     id: 37,
-    name: 'Razer Aether Monitor Light Bar',
+    name: "Razer Aether Monitor Light Bar",
     manufacturer: "Razer",
-    title: 'Razer Aether Monitor Light Bar - $179.99',
+    title: "Razer Aether Monitor Light Bar - $179.99",
     description:
       "Front-and-Back Dual Lighting, ultra-Wide Natural Illumination, compatible with all Monitor Sizes",
     image: RazerMonitorLightBarImage,
@@ -442,9 +480,9 @@ const ITEM_LIST = [
   },
   {
     id: 38,
-    name: 'Razer Thunderbolt4 Dock Chroma',
+    name: "Razer Thunderbolt4 Dock Chroma",
     manufacturer: "Razer",
-    title: 'Razer Thunderbolt4 Dock Chroma - $408.99',
+    title: "Razer Thunderbolt4 Dock Chroma - $408.99",
     description:
       "Expanded capabilities with 10 ports in one. Dock compatible with Windows and Mac devices",
     image: RazerThunderbolt4DockChromaImage,
@@ -452,9 +490,9 @@ const ITEM_LIST = [
   },
   {
     id: 39,
-    name: 'Razer Hanbo Chroma Liquid Cooler',
+    name: "Razer Hanbo Chroma Liquid Cooler",
     manufacturer: "Razer",
-    title: 'Razer Hanbo Chroma Liquid Cooler - $227.99',
+    title: "Razer Hanbo Chroma Liquid Cooler - $227.99",
     description:
       "OIA cooler has an optimized intake design to ensure greater heat transfer combined with fluid dynamic bearings for silent operation. ",
     image: RazerHanboChromaLiquidCoolerImage,
@@ -462,62 +500,60 @@ const ITEM_LIST = [
   },
   {
     id: 40,
-    name: 'Razer Naga Left-Handed Edition',
+    name: "Razer Naga Left-Handed Edition",
     manufacturer: "Razer",
-    title: 'Razer Naga Left-Handed Edition - $134.99',
-    description:
-      "Ergonomic MMO Gaming Mouse for Left-Handed Users",
+    title: "Razer Naga Left-Handed Edition - $134.99",
+    description: "Ergonomic MMO Gaming Mouse for Left-Handed Users",
     image: RazerNagaLeftImage,
     price: 134.99,
   },
-  
 
   {
     id: 41,
-    name: 'Lofree Petal Mouse',
+    name: "Lofree Petal Mouse",
     manufacturer: "Lofree",
-    title: 'Lofree Petal Mouse - $69.00',
+    title: "Lofree Petal Mouse - $69.00",
     description:
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreePetalMouseImage,
-    price: 69.00,
+    price: 69.0,
   },
   {
     id: 42,
-    name: 'Lofree Foundation Keyboard',
+    name: "Lofree Foundation Keyboard",
     manufacturer: "Lofree",
-    title: 'Lofree Foundation Keyboard - $239.00',
+    title: "Lofree Foundation Keyboard - $239.00",
     description:
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeFoundationKeyboardImage,
-    price: 239.00,
+    price: 239.0,
   },
   {
     id: 43,
-    name: 'Lofree Moru Keyboard',
+    name: "Lofree Moru Keyboard",
     manufacturer: "Lofree",
-    title: 'Lofree 1% Moru Keyboard - $239.00',
+    title: "Lofree 1% Moru Keyboard - $239.00",
     description:
       "Discover the 1% Moru, a 68 layout-keyboard designed not just for typing, but for transforming everyday spaces into havens of serenity. ",
     image: LofreeMoruKeyboardImage,
-    price: 239.00,
+    price: 239.0,
   },
   {
     id: 44,
-    name: 'Lofree Transparent Keyboard',
+    name: "Lofree Transparent Keyboard",
     manufacturer: "Lofree",
-    title: 'Lofree 1% Transparent Keyboard - $219.00',
+    title: "Lofree 1% Transparent Keyboard - $219.00",
     description:
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeTransparentKeyboardImage,
-    price: 219.00,
+    price: 219.0,
   },
-  
+
   {
     id: 45,
-    name: 'Surface Arc Mouse',
+    name: "Surface Arc Mouse",
     manufacturer: "Microsoft",
-    title: 'Surface Arc Mouse - $99.99',
+    title: "Surface Arc Mouse - $99.99",
     description:
       "Slim, light, and ready to travel, Surface Arc Mouse is designed to conform to your hand and snaps flat to fit easily in your bag.",
     image: SurfaceArcMouseImage,
@@ -525,9 +561,9 @@ const ITEM_LIST = [
   },
   {
     id: 46,
-    name: 'Alienware Keyboard AW510K',
+    name: "Alienware Keyboard AW510K",
     manufacturer: "Alienware",
-    title: 'Alienware Keyboard AW510K - $179.99',
+    title: "Alienware Keyboard AW510K - $179.99",
     description:
       "A beautifully designed, full-featured gaming keyboard offering programmable keys and dedicated volume control. Made for ultimate performance.",
     image: AlienwareKeyboardAW510KImage,
@@ -535,9 +571,9 @@ const ITEM_LIST = [
   },
   {
     id: 47,
-    name: 'Alienware Headset AW920H',
+    name: "Alienware Headset AW920H",
     manufacturer: "Alienware",
-    title: 'Alienware Headset AW920H - $189.99',
+    title: "Alienware Headset AW920H - $189.99",
     description:
       "Hear every step and relay every command with a gaming headset that supports Dolby Atmos®, Active Noise Cancelling and versatile connection options.",
     image: AlienwareHeadsetAW920HImage,
@@ -545,9 +581,9 @@ const ITEM_LIST = [
   },
   {
     id: 48,
-    name: 'Alienware Gaming Mouse AW620M',
+    name: "Alienware Gaming Mouse AW620M",
     manufacturer: "Alienware",
-    title: 'Alienware Gaming Mouse AW620M - $137.99',
+    title: "Alienware Gaming Mouse AW620M - $137.99",
     description:
       "Conquer gaming marathons with a wireless mouse that’s crafted with 26,000 DPI, reliable connectivity, robust battery life.",
     image: AlienwareGamingMouseAW620MImage,
@@ -555,25 +591,24 @@ const ITEM_LIST = [
   },
   {
     id: 49,
-    name: 'Alienware Gaming Mouse AW610',
+    name: "Alienware Gaming Mouse AW610",
     manufacturer: "Alienware",
-    title: 'Alienware Gaming Mouse AW610 - $109.99',
+    title: "Alienware Gaming Mouse AW610 - $109.99",
     description:
       "Dual mode wired & wireless gaming mouse with rechargeable lithium ion battery & seven programmable buttons for performance that takes no prisoners.",
     image: AlienwareGamingMouseAW610MImage,
     price: 109.99,
   },
-  
-  
+
   {
     id: 50,
-    name: 'AirPods Pro 2',
+    name: "AirPods Pro 2",
     manufacturer: "Apple",
-    title: 'AirPods Pro 2 - $249.00',
+    title: "AirPods Pro 2 - $249.00",
     description:
       "irPods Pro 2 pairs with Apple Vision Pro to deliver Lossless Audio with ultra-low latency, for an unprecedented sound experience.",
     image: AirPodsPro2Image,
-    price: 249.00,
+    price: 249.0,
   },
   {
     id: 51,
@@ -583,7 +618,7 @@ const ITEM_LIST = [
     description:
       "AirPods Max deliver stunningly detailed, high‑fidelity audio. Personalised Spatial Audio with dynamic head tracking for sound that surrounds you. ",
     image: AirPodsMaxImage,
-    price: 779.00,
+    price: 779.0,
   },
   {
     id: 52,
@@ -593,11 +628,8 @@ const ITEM_LIST = [
     description:
       "Jam-packed with innovation, HomePod mini delivers unexpectedly big sound for a speaker of its size. ",
     image: HomePodMiniImage,
-    price:129.00,
+    price: 129.0,
   },
-  
 ];
 
 export default ITEM_LIST;
-
-
