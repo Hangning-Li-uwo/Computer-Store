@@ -165,9 +165,9 @@ export default function Stock() {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Item Name</StyledTableCell>
-              {!isMobile && (
+              {/* {!isMobile && (
                 <StyledTableCell align="center">Manufacturer</StyledTableCell>
-              )}
+              )} */}
               <StyledTableCell align="center">Quantity</StyledTableCell>
               {!isMobile && (
                 <StyledTableCell align="center">In Stock</StyledTableCell>
@@ -181,11 +181,11 @@ export default function Stock() {
                 <StyledTableCell align="center" component="th" scope="row">
                   {row.name}
                 </StyledTableCell>
-                {!isMobile && (
+                {/* {!isMobile && (
                   <StyledTableCell align="center">
                     {row.manufacturer}
                   </StyledTableCell>
-                )}
+                )} */}
                 <StyledTableCell align="center">
                   <TextField
                     id="outlined-number"
