@@ -13,6 +13,8 @@ const {
   setDoc,
   deleteDoc,
   updateDoc,
+  arrayUnion,
+  arrayRemove
 } = require("firebase/firestore");
 const { initializeApp } = require("firebase/app");
 const formData = require("form-data");
@@ -104,6 +106,29 @@ app.post("/api/role", async (req, res) => {
   } catch (error) {
     console.error("Error updating role:", error);
     res.status(500).send({ message: "Failed to assign role" });
+  }
+});
+
+// Push OrderRefs to user profile
+app.post("/api/profile/:orderRef", async (req, res) => {
+  const { orderRef } = req.params;
+  const { uid } = req.body;
+
+  if (!uid) {
+    return res.status(400).send({ message: "No user ID provided" });
+  }
+
+  try {
+    const userDocRef = doc(firestore, "Profiles", uid);
+
+    await updateDoc(userDocRef, {
+      ordersRef: arrayUnion(orderRef), // add orderRef to the array
+    });
+
+    res.status(200).send({ message: "Order reference added successfully" });
+  } catch (error) {
+    console.error("Error adding order reference:", error.message);
+    res.status(500).send({ message: "Failed to add order reference" });
   }
 });
 
@@ -233,7 +258,7 @@ app.get("/api/orders", async (req, res) => {
 // delete an order
 app.delete("/api/orders/:id", async (req, res) => {
   const { id } = req.params;
-
+  const { uid } = req.body;
   if (!id) {
     return res.status(400).send({ message: "Order ID is required." });
   }
@@ -241,6 +266,11 @@ app.delete("/api/orders/:id", async (req, res) => {
   try {
     const orderDocRef = doc(firestore, "Orders", id);
     await deleteDoc(orderDocRef);
+
+    const userDocRef = doc(firestore, "Profiles", uid);
+    await updateDoc(userDocRef, {
+      ordersRef: arrayRemove(id),
+    });
 
     res.status(200).send({ message: "Order deleted successfully." });
   } catch (error) {

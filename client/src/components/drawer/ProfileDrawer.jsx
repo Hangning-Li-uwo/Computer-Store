@@ -43,7 +43,7 @@ function ProfileDrawer({ setOpenSettingsDrawer, openSettingsDrawer }) {
 
   const updateUserProfile = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/profile", {
+      const response = await fetch(`${BASE_URL}/api/profile`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

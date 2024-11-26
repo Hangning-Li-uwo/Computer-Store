@@ -43,6 +43,23 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     dispatch(removeCartItem(index));
   };
 
+  const addOrderRef = async (uid, orderRef) => {
+    try {
+      await axios.post(`${BASE_URL}/api/profile/${orderRef}`, {
+        uid,
+      });
+
+      // if (response.status === 200) {
+      //   toast.success("Order reference added successfully!");
+      // } else {
+      //   toast.error("Failed to add order reference. Please try again.");
+      // }
+    } catch (error) {
+      console.error("Error adding order reference:", error.message);
+      toast.error("An error occurred while adding the order reference.");
+    }
+  };
+
   const createOrder = async (items) => {
     try {
       // Generate order data
@@ -67,6 +84,8 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
       if (response.status === 200) {
         // Dispatch the action to save the order locally
         dispatch(setOrderItem(response.data.orderId));
+        // Write to DB
+        await addOrderRef(user.UID, response.data.orderId);
 
         toast.success("Order successfully created!", {
           icon: <CheckCircleIcon sx={{ color: green[500] }} />,
@@ -108,10 +127,7 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
           .filter((item) => item !== null);
 
         for (const stockItem of updatedStock) {
-          const response = await axios.post(
-            `${BASE_URL}/api/stock`,
-            stockItem
-          );
+          const response = await axios.post(`${BASE_URL}/api/stock`, stockItem);
 
           if (response.status !== 200) {
             throw new Error(
@@ -167,7 +183,10 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
     }
   };
   const TAX_RATE = 0.13;
-  const subtotal = items.reduce((sum, item) => sum + (item.price  * item.quantity|| 0), 0);
+  const subtotal = items.reduce(
+    (sum, item) => sum + (item.price * item.quantity || 0),
+    0
+  );
   const tax = subtotal * TAX_RATE;
   const shippingFee = 10;
   const total = subtotal + tax + shippingFee;
@@ -225,14 +244,20 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
           <Divider sx={{ width: "100%", my: 2 }} />
           <Box sx={{ width: "100%", textAlign: "left", my: 2, padding: 2 }}>
             {/* Calculate shipping fee, tax, subtotal, and total */}
-            <Typography variant="body1" style={{color: "#78909c"}}>
+            <Typography variant="body1" style={{ color: "#78909c" }}>
               Subtotal: ${subtotal.toFixed(2)}
             </Typography>
-            <Typography variant="body1" style={{color: "#78909c"}}>
+            <Typography variant="body1" style={{ color: "#78909c" }}>
               Shipping Fee: ${shippingFee.toFixed(2)}
             </Typography>
-            <Typography variant="body1" style={{color: "#78909c"}}>Tax: ${tax.toFixed(2)}</Typography>
-            <Typography variant="body1" style={{color: "#607d8b"}} sx={{ mt: 2 }}>
+            <Typography variant="body1" style={{ color: "#78909c" }}>
+              Tax: ${tax.toFixed(2)}
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{ color: "#607d8b" }}
+              sx={{ mt: 2 }}
+            >
               Total: ${total.toFixed(2)}
             </Typography>
           </Box>

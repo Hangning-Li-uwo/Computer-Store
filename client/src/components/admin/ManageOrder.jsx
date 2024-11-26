@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { green } from "@mui/material/colors";
@@ -16,6 +16,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { deleteOrderItem } from "../../state";
@@ -25,7 +27,6 @@ import { BASE_URL } from "../../constants";
 function Row({ row, deleteOrder }) {
   const [open, setOpen] = React.useState(false);
 
-  // Calculate subtotal, tax, and total
   const subtotal = row.items.reduce(
     (sum, item) => sum + item.quantity * item.price,
     0
@@ -140,9 +141,12 @@ Row.propTypes = {
 
 function ManageOrder() {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true); // Track loading state
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const getAllOrders = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(`${BASE_URL}/api/orders`);
       if (response.status === 200) {
@@ -153,13 +157,14 @@ function ManageOrder() {
     } catch (error) {
       toast.error("Error fetching orders");
     }
+    setTimeout(() => setLoading(false), 1500); // Simulate a delay for skeleton
   };
 
-  const handleDeleteOrder = async (id) => {
+  const handleDeleteOrder = async (id, uid) => {
     try {
-      const response = await axios.delete(
-        `${BASE_URL}/api/orders/${id}`
-      );
+      const response = await axios.delete(`${BASE_URL}/api/orders/${id}`, {
+        data: { uid },
+      });
       if (response.status === 200) {
         setOrders((prevOrders) =>
           prevOrders.filter((order) => order.id !== id)
@@ -184,7 +189,19 @@ function ManageOrder() {
 
   return (
     <Box sx={{ marginTop: 6 }}>
-      {orders.length > 0 ? (
+      {loading ? (
+        <Stack spacing={3} sx={{ width: "85%", margin: "0 auto" }}>
+            <Skeleton
+              variant="text"
+              sx={{ fontSize: "1.5rem", marginBottom: 1 }}
+            />
+            <Skeleton
+              variant="rectangular"
+              height={80}
+              sx={{ marginBottom: 1 }}
+            />
+        </Stack>
+      ) : orders.length > 0 ? (
         <TableContainer
           component={Paper}
           sx={{ width: "85%", margin: "0 auto", marginTop: 4 }}
@@ -202,7 +219,7 @@ function ManageOrder() {
                 <Row
                   key={order.id}
                   row={order}
-                  deleteOrder={handleDeleteOrder}
+                  deleteOrder={() => handleDeleteOrder(order.id, user.UID)}
                 />
               ))}
             </TableBody>
