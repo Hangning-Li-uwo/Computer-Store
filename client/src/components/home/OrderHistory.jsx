@@ -10,6 +10,7 @@ import { Box, Typography, Skeleton, Stack } from "@mui/material";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
+import { useAuth } from "../../context/AuthContext";
 
 const TAX_RATE = 0.13;
 const SHIPPING_FEE = 10;
@@ -27,7 +28,7 @@ const fetchOrders = async (ordersRef) => {
     const response = await axios.post(`${BASE_URL}/api/orders`, { ordersRef });
 
     if (response.status === 200) {
-      console.log("Fetched Orders:", response.data);
+      // console.log("Fetched Orders:", response.data);
       return response.data; // an array of orders
     } else {
       console.error("Failed to fetch orders:", response.data.message);
@@ -41,15 +42,16 @@ const fetchOrders = async (ordersRef) => {
 
 export default function OrderHistory() {
   const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const user = useSelector((state) => state.user);
+  const [isLoading, setLoading] = useState(true);
+  // const user = useSelector((state) => state.user);
+  const {currentUser, loading } = useAuth();
 
   // load state
   useEffect(() => {
     const loadOrders = async () => {
       setLoading(true);
-      if (user?.ordersRef) {
-        const fetchedOrders = await fetchOrders(user.ordersRef);
+      if (currentUser?.ordersRef) {
+        const fetchedOrders = await fetchOrders(currentUser.ordersRef);
 
         setTimeout(() => {
           setOrders(fetchedOrders);
@@ -63,7 +65,7 @@ export default function OrderHistory() {
     };
 
     loadOrders();
-  }, [user?.ordersRef]);
+  }, [currentUser?.ordersRef]);
 
   return (
     <Box
@@ -75,8 +77,8 @@ export default function OrderHistory() {
         marginTop: 10,
       }}
     >
-      {loading ? (
-        // skeleton while loading
+      {isLoading ? (
+        // skeleton while isLoading
         <Stack spacing={3} sx={{ width: "85%" }}>
           <Skeleton
             variant="text"
