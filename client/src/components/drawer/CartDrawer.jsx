@@ -156,32 +156,37 @@ export default function CartDrawer({ openCartDrawer, setOpenCartDrawer }) {
 
   const clearCart = async () => {
     try {
-      // Validate item quantities against stock
+      let quantity;
       const isInvalid = items.find((item) => {
         const matchingStock = stock.find((s) => s.name === item.name);
-        return matchingStock && item.quantity > matchingStock.quantity;
+        if (matchingStock) {
+          quantity = matchingStock.quantity;
+          return item.quantity > matchingStock.quantity;
+        }
+        return false;
       });
-
+  
       if (isInvalid) {
         return toast.error(
-          `The quantity of "${isInvalid.name}" exceeds available stock`,
+          `The quantity of "${isInvalid.name}" exceeds available stock: ${quantity} remaining`,
           {
             icon: <CancelIcon sx={{ color: red[500] }} />,
           }
         );
       }
-
-      if (user.address === "" || user.paymentMethod === "") {
+  
+      if (!user.address || !user.paymentMethod) {
         return toast.error(`Missing address and payment info`, {
           icon: <CancelIcon sx={{ color: red[500] }} />,
         });
       }
-
-      sendEmail(items);
+  
+      await sendEmail(items);
     } catch (error) {
       console.error("Error updating stock:", error.message);
     }
   };
+
   const TAX_RATE = 0.13;
   const subtotal = items.reduce(
     (sum, item) => sum + (item.price * item.quantity || 0),
