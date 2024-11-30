@@ -1,0 +1,669 @@
+commit 76fce0795b213c233a09d143e04ee8d5b80935c7
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 27 22:15:02 2024 -0500
+
+    update cart error message
+
+commit c890a44ff4ac960335b3890eb63baeb48f5159c8
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 26 17:01:47 2024 -0500
+
+    fixed orders bug
+
+commit 12504cf34983c196180210c4adc571d149c2b767
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 26 16:52:48 2024 -0500
+
+    updated stock management
+
+commit 9588dca2dddf21070db310a135151f1b52ffa061
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 26 15:06:30 2024 -0500
+
+    fixed order bug
+
+commit a07b65fcd0588f2d4450c5a1ad72a8dc9661830e
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 25 17:01:49 2024 -0500
+
+    optional bullets
+
+commit e01fb40879e2ea0b2d388a718e396ea1ae0c6119
+Merge: 85632b0 a0f6087
+Author: Starry <gfu29@uwo.ca>
+Date:   Mon Nov 25 16:39:55 2024 -0500
+
+    Merge branch 'main' of https://github.com/Hangning-Li-uwo/Computer-Store
+
+commit 85632b0ed2473c727b1a414d77ed492dd45d6443
+Author: Starry <gfu29@uwo.ca>
+Date:   Mon Nov 25 16:39:10 2024 -0500
+
+    update the computer store name to align with the report
+
+commit a0f608779327dbf7cda539d055db2159287dc381
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 25 16:27:16 2024 -0500
+
+    added spec design
+
+commit 0eb0e0c025b08c715674a13917167c31409aa872
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 14:07:08 2024 -0500
+
+    base url config - done
+
+commit 6ad3cbdcf6aaee838fc1aad2c58dd46f38c88444
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 13:43:46 2024 -0500
+
+    add base url
+
+commit 5f164e88a66004fe49710b88adb3d17e78d39d99
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 13:41:02 2024 -0500
+
+    add base url
+
+commit 4c256a192cffe1903e60e3a743eff52ef7980085
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 13:02:00 2024 -0500
+
+    added framer-motion
+
+commit 872d9bcd12960449687a15b94e230e4b549f4069
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 12:50:47 2024 -0500
+
+    added vercel
+
+commit 45f1d1cb1e4d2de5e786bf06b2e49494b167bca6
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 11:46:40 2024 -0500
+
+    updated gitignore
+
+commit 27feddc8a869e4caa3245d35615e91382c70f8c1
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 11:42:51 2024 -0500
+
+    rename files to deploy
+
+commit afd75b13f2ca5afb492b3b8f9d27de2e23919d4f
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 09:47:48 2024 -0500
+
+    delete splash
+
+commit 85447e43286d49e883c8c053cc50c5324f7ff44a
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Nov 24 01:06:50 2024 -0500
+
+    ratings done, themes and animation done
+
+commit fe799d66971b470dee7a33fa484be41252d82e9e
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sat Nov 23 21:36:43 2024 -0500
+
+    order bug fixed
+
+commit ce8ed45b920d0df9b9e0d2eab83d87c564458b51
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sat Nov 23 16:26:34 2024 -0500
+
+    rest api design
+
+commit 724539f68410bcb9ce54d35ce007b3dc66cd0a70
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Fri Nov 22 23:49:55 2024 -0500
+
+    manage orders done
+
+commit 06c20585c1336f1438aa8d2013bc36dc080dfc53
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Fri Nov 22 18:05:07 2024 -0500
+
+    get orders
+
+commit 507d85b46036fd6053a506ab16e0b550d8eb8a54
+Merge: 412c9bd 1bba0c1
+Author: Hangning-Li-uwo <hli936@uwo.ca>
+Date:   Sat Nov 23 06:04:05 2024 +0800
+
+    Merge pull request #3 from Hangning-Li-uwo/Jason
+    
+    set orders
+
+commit 1bba0c1c87935cd6d860c0b5c6758da2cc6a1b22
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Fri Nov 22 17:03:18 2024 -0500
+
+    set orders
+
+commit 412c9bd34e58428d56d67f9e2a2c4b2c62a1bb32
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Fri Nov 22 16:27:52 2024 -0500
+
+    adding ItemList.jsx
+
+commit e8ac7833fa36be66600f598a9a338020956e0351
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Fri Nov 22 16:26:57 2024 -0500
+
+    adding images
+
+commit 990ac655e3b7872a6ae401e56900c9c5d3daf4d6
+Merge: 782bc23 38925c9
+Author: Hangning-Li-uwo <hli936@uwo.ca>
+Date:   Fri Nov 22 07:07:50 2024 +0800
+
+    Merge pull request #2 from Hangning-Li-uwo/Jason
+    
+    fixed bugs for stock
+
+commit 38925c926dfe85cfcdbfc62a98101b2bdd86bff9
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 21 18:07:08 2024 -0500
+
+    fixed bugs for stock
+
+commit 782bc23f33282ca7a42f34bc5d355e87aba521ed
+Author: Starry <gfu29@uwo.ca>
+Date:   Thu Nov 21 17:09:36 2024 -0500
+
+    Add "dotenv" in Server README for ENV automatically setup
+
+commit e89f574db272e227e07ec9585626acbc10055617
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 21 01:21:06 2024 -0500
+
+    fixed bugs
+
+commit 4d00f4957305fa13c23b3c90c55247a778b6de66
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 21 01:20:53 2024 -0500
+
+    added order history
+
+commit 9cb0da5e41c4184c68afdf9b7588149111995fcc
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 21 00:14:26 2024 -0500
+
+    fixed stock and account bugs
+
+commit 791514a43c8b09c37d1dea8b468d3017e86606b6
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 21 00:14:11 2024 -0500
+
+    added filter feature
+
+commit a68de05af584654534c54335bd2e44a45317aa34
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 21:57:13 2024 -0500
+
+    first order version
+
+commit 3cecb9780daf47e5adbd6a17ba4b845d67921587
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 21:17:31 2024 -0500
+
+    added skeleton and added stock functionality
+
+commit 756968915c0087af68c45632b836f80d3cbe4723
+Merge: c86622e 029b311
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Nov 20 18:17:49 2024 -0500
+
+    Merge pull request #1 from Hangning-Li-uwo/Itemlists
+    
+    Itemlists
+
+commit 029b311643d8a3d35dbfa450d32fb030361dcf48
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Nov 20 18:13:42 2024 -0500
+
+    adding images to ItemLists branch
+
+commit 4c395b62dde3cae8ce73cb1c2df85cc4d3745ecb
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Nov 20 17:54:53 2024 -0500
+
+    adding product items to list
+
+commit c86622ee2621d3097218f7269c274816b53a06e5
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 17:08:11 2024 -0500
+
+    fetched all items in stock
+
+commit c2f5afbf32e6ea69c864c0997b601b7664f8d300
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 17:07:38 2024 -0500
+
+    added getAllStock
+
+commit cfb0782980ea37ed90a35da4dacacb52b7c774c9
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 17:07:23 2024 -0500
+
+    fixed bugs
+
+commit 323bd8ebcce345e6573fed940935ba2438099dba
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 17:06:57 2024 -0500
+
+    updated signin dispatch
+
+commit bc9e83de7839c2bf3e0b71da05cd232dc7612b59
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 17:06:41 2024 -0500
+
+    updated README
+
+commit 93e811a47c3d310b025008ad41e193105b04eb33
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 10:34:43 2024 -0500
+
+    added env
+
+commit 4980e6dee8d4b1303b16a7670e04e6002f99599f
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 00:49:18 2024 -0500
+
+    updated readme
+
+commit 0198260721fc4cdb01b1714cc284d8f8b5065619
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 00:40:48 2024 -0500
+
+    delete add filed
+
+commit ffb21b9b3fb209ccb699548842d1753e57b52ddf
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 20 00:38:57 2024 -0500
+
+    order confirmation and management
+
+commit e5a6b31c4aaccf976b3f681fc1e1efa67acae355
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 17:17:23 2024 -0500
+
+    fixed bugs and made style adjustments
+
+commit 22476258edad66bb74f217eb4137cc03e7477f05
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:51:15 2024 -0500
+
+    updated server with user profile functions
+
+commit 6988e44a29ddc5a50eb90765c0ead8c2c63dcbaf
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:50:46 2024 -0500
+
+    updated drawer
+
+commit c58bc47d5d791111896d2e9f36518aadbb4318b8
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:50:01 2024 -0500
+
+    update search bar
+
+commit 917d8c6f82bd23cefce8d4333b7b32e6659cbd83
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:49:33 2024 -0500
+
+    updated user profile
+
+commit 067109f49eef9fd73c08329a7b4c164e2ca9e8a6
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:49:12 2024 -0500
+
+    update user state
+
+commit bdc8c11081185c3f1d297f3cce335cb8ee674dd7
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 19 12:47:32 2024 -0500
+
+    added order history
+
+commit 99a2f47df6f51ecf6bc12d2bd116c018f7012820
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 22:17:12 2024 -0500
+
+    updated profile
+
+commit 724616926dd4eff98c048682295565d9468f43e1
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 22:12:05 2024 -0500
+
+    Introduced Mode Switch and updated search bar
+
+commit 8ee719072f317b5fee30ae3ca797810401d5b6d2
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 22:10:24 2024 -0500
+
+    updated drawer
+
+commit 3f51671e79cb5ef8d171d1756ffcf956b455d9e7
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 18:03:26 2024 -0500
+
+    updated server for stocks
+
+commit 8a479ef30736f7510e80e169a9c63c12c3efbf79
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 18:02:59 2024 -0500
+
+    updated stock and product reviews
+
+commit 66a20f39b35c45f5bb33413f127461e45517632c
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 17:58:11 2024 -0500
+
+    updated stock and product reviews
+
+commit 2e282cf2b5c8590fda86d738ea31e47016d54d0e
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Nov 18 17:58:09 2024 -0500
+
+    adding images of products
+
+commit 21bd7f7271c6b335c17b6382829a39471caaaa41
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Nov 18 17:56:47 2024 -0500
+
+    adding products to item list
+
+commit 46e897d4d429b55ac8caa43cc5dcce0d451bf0df
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Mon Nov 18 15:20:53 2024 -0500
+
+    fixed bugs
+
+commit 4a2d4ec83a5a13685798cc3b9297214670f9f416
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Thu Nov 14 16:46:52 2024 -0500
+
+    adding clear and subtotal to cart, adding price to item
+
+commit 40c9fdf3bdb6441b1404643190a5bda39496ab44
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Thu Nov 14 16:46:01 2024 -0500
+
+    adding clear and subtotal to cart
+
+commit 6002f9078cded1c9a3acf00d9d3740972a0296d9
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 16:41:41 2024 -0500
+
+    finished search function
+
+commit d03a6e422cb75a953c3773d8bb9fabebd8aa18c6
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 15:45:38 2024 -0500
+
+    logics for adding and deleting items
+
+commit 501d6e2c357f0ca76ebefc223d08eb276480bc5b
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 15:34:09 2024 -0500
+
+    added items to cart
+
+commit 25b9d7322b6cd620b1c590838b6a61983f5884c4
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 15:32:08 2024 -0500
+
+    notification function
+
+commit b23813f186e98e57056c3394546b1536dc5c56e5
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Thu Nov 14 15:28:10 2024 -0500
+
+    adding Product cards
+
+commit 538e44705e31e8f495352138fef242b1285dbccf
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Thu Nov 14 15:27:30 2024 -0500
+
+    adding product images
+
+commit be8bf8434db198f15a71b156bf1585bc1dd0923a
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 14:29:01 2024 -0500
+
+    feature bug fixed
+
+commit 0d9653743730953aea46595cbef2f15020cf5efb
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 14:12:44 2024 -0500
+
+    fixed account sign in bug
+
+commit 112c030b988a8a62c8a9fc7808ee0d1ddf6817f4
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 14:12:29 2024 -0500
+
+    deleted protected routes
+
+commit 9f4c13f2a5bfab0bd88b19016c1899cde9680b99
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 13:58:42 2024 -0500
+
+    fixed grid version
+
+commit 8936e0c3477811181b78f9768d818681091940b7
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 13:54:06 2024 -0500
+
+    modified search function
+
+commit d79e535cd085953a4bbae2155ef7c60d355852bc
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 13:53:19 2024 -0500
+
+    added computer lists - Template
+
+commit daeec84e12545fe433f90462a4afb461622be1b4
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Nov 14 13:52:54 2024 -0500
+
+    Created computer data and details
+
+commit 2566fcb4ddeb8cd284b36388c36cfee628181e00
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 13 21:32:38 2024 -0500
+
+    fixed account view bug
+
+commit a0874abc8fb0d624ac7d09d64243e22bedea06eb
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 13 17:22:11 2024 -0500
+
+    fixed sign-in bug
+
+commit 6827bb2230a743371261baf1f3e09894a260249a
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Nov 13 17:21:32 2024 -0500
+
+    update .gitignore
+
+commit f6423750e31a72b37a0e3e9c645a707a930948bb
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 13 10:18:51 2024 -0500
+
+    fixed sign-in bug
+
+commit c0e2ca551db61a53e14aa1222272c1ed4feb1ae6
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Wed Nov 13 10:18:26 2024 -0500
+
+    updated package.json
+
+commit 86af3b17e2c7b1d05e5e092726ef68c2a5983361
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Tue Nov 12 20:57:36 2024 -0500
+
+    solved major issues on App Crash
+
+commit e8aa3dec4ef280e521d8b991b1f5c78a73687113
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:53:18 2024 -0500
+
+    user profile and settings
+
+commit f24f15e3128cf94c3209dbe34aaac075bb836f5f
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:53:01 2024 -0500
+
+    user views
+
+commit a2139f518c0c527eaca12ffcadb26b547ae98813
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:52:23 2024 -0500
+
+    user dashboard
+
+commit fd6dd2772801392b3dcf36a1fd6451d6d1be4a5f
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:52:04 2024 -0500
+
+    Computer list - TODO
+
+commit d58d93362d51c60033fdeac4ed0091a5bbe7240b
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:51:16 2024 -0500
+
+    protected routes
+
+commit 3a3f5c54e0070b36532e386f9428a87cebfe48f6
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:50:44 2024 -0500
+
+    firebase config
+
+commit 9388b5fbf60453efd44f079b959ca7fa5533ed9a
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:50:28 2024 -0500
+
+    admin test file
+
+commit f833fac924532169cd5d943aaf34d8d6feae3188
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:49:45 2024 -0500
+
+    Stock file - TODO
+
+commit ac16242afa6e88ad4fc78fa613a761d6a62df526
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:49:31 2024 -0500
+
+    Cart Drawer
+
+commit 9cefe46509092dda68fa94a78fdfac60d9919f28
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:49:15 2024 -0500
+
+    Google OAuth
+
+commit b7dd7d50dd14c588a9bdb0c710d94210414e45d7
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:48:46 2024 -0500
+
+    Auth Context file
+
+commit 4275bb4a17a32f5cc85e313759760d4634b5ea18
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:48:23 2024 -0500
+
+    react default files
+
+commit 27c019ecb0099f264176124f3359b824051beadc
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:46:44 2024 -0500
+
+    static images
+
+commit 10f0cbbb1eeb50de7c15a771786d763c1c3f48ec
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:46:06 2024 -0500
+
+    react redux index file
+
+commit 62cf4d094e4a65b4114d352b6ece6c56974dc973
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:45:20 2024 -0500
+
+    App js and css file
+
+commit 1a7fe8c395fc2802b7b14ae1221f417382ccea2d
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:44:49 2024 -0500
+
+    index file with redux
+
+commit 4db8073c3ef9fd9b7d349c1893760bb18f6d2d4e
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:44:03 2024 -0500
+
+    theme pallette
+
+commit 8e1132447cdfd02ffe1126092633f1e4f62366ec
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:43:25 2024 -0500
+
+    client .gigignore
+
+commit 34972ce5784dfcc2252fcfbe4a2f2de6c1faa73a
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:42:28 2024 -0500
+
+    client public folder
+
+commit 09c26193d861dd64d02efd0f5fac900611d67ff4
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:42:05 2024 -0500
+
+    client side packages.json
+
+commit 0af8cc1173b5ffc65d48591d25023bc64a555078
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:40:24 2024 -0500
+
+    README for client side
+
+commit 577514d82559d3b8088e666da7d1dcfe4f4ea76c
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:39:17 2024 -0500
+
+    server endpoints
+
+commit 5ee9bf3e18a945a0289eb75a75226bbb371a7eb7
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:38:35 2024 -0500
+
+    README for server side
+
+commit 66dcb699f58e99a4f511b7858652d393be98bcf9
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:38:09 2024 -0500
+
+    server package.json
+
+commit cfea099be91136d7abe983b89234ae35c525a7dd
+Author: Hangning Li <hli936@uwo.ca>
+Date:   Tue Nov 12 17:31:51 2024 -0500
+
+    server .gitignore
+
+commit df6945503e47a164169dae228d508482c18be95b
+Author: Hangning-Li-uwo <hli936@uwo.ca>
+Date:   Tue Nov 12 13:43:50 2024 +0800
+
+    Delete README.md
+
+commit ac162032cf390cf76c47b4574ba6c078a55c919c
+Author: Hangning-Li-uwo <hli936@uwo.ca>
+Date:   Tue Nov 12 13:40:03 2024 +0800
+
+    Initial commit
