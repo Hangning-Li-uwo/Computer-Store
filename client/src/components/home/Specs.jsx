@@ -47,7 +47,7 @@ function Specs({ selectedSpecItem }) {
       {/* Feature Bullets */}
       <Grid container spacing={4} sx={{ marginTop: 2 }}>
         {selectedSpecItem?.features.map((feature, index) => (
-          <Grid xs={12} sm={6} md={3} size={3} key={index}>
+          <Grid xs={12} sm={6} md={3} size={selectedSpecItem.size} key={index}>
             <Box sx={{ textAlign: "center", color: "#c8c2bd" }}>
               {feature.icon}
               <Typography variant="h6" gutterBottom sx={{ marginTop: 1, fontSize: { xs: "1rem", sm: "1.25rem" }, }}>
