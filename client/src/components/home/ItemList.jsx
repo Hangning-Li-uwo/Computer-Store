@@ -59,6 +59,8 @@ import AppleIcon from "@mui/icons-material/Apple";
 import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
+import ExtensionSharpIcon from '@mui/icons-material/ExtensionSharp';
+
 
 const ITEM_LIST = [
   {
@@ -72,19 +74,20 @@ const ITEM_LIST = [
     price: 1699.0,
     features: [
       {
-        icon: <AppleIcon fontSize="large" />,
-        title: "Apple M4 chip",
-        description: `The M4 chip brings serious speed and capability so you can blaze through everyday activities and multitask across apps and video calls. And with a faster Neural Engine, AI features within your apps fly.`,
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Apple M4 chip `,
         bullets: [
           "Run multiple apps, speed through thousands of photos",
           "Effortlessly edit 4K video",
           "With hardware-accelerated ray tracing, graphics look incredible on your favorite game titles",
+          "brings serious speed and capability so you can blaze through everyday activities and multitask across apps and video calls. And with a faster Neural Engine, AI features within your apps fly."
         ],
       },
       {
         icon: <MemoryIcon fontSize="large" />,
-        title: "Unified Memory",
-        description: `Faster and more efficient than traditional RAM, unified memory is integrated within the M4 chip so apps can quickly share data between the CPU, GPU, and Neural Engine.`,
+        title: "Memory",
+        description: `16GB unified memory`,
         bullets: [
           "Run multiple apps at once while performance remains fast and responsive",
           "Add memory to run more apps simultaneously for faster, more fluid multitasking",
@@ -94,7 +97,7 @@ const ITEM_LIST = [
       {
         icon: <StorageIcon fontSize="large" />,
         title: "Storage",
-        description: `Solid-state drive (SSD) storage is the amount of space your iMac has for your documents, photos, music, videos, and other files.`,
+        description: `256GB SSD storage`,
         bullets: [
           "Delivers exceptional performance and speed when you start up your iMac, launch apps, open files, and browse libraries",
           "Configure with up to 2TB of storage",
@@ -103,7 +106,7 @@ const ITEM_LIST = [
       {
         icon: <FlashOnIcon fontSize="large" />,
         title: "Ports",
-        description: `Ports allow you to connect accessories like printers, cameras, an additional display, and external drives to your iMac for data transfer, charging, and syncing.`,
+        description: `Two Thunderbolt / USB 4 ports`,
         bullets: [
           "Thunderbolt ports let you connect high-speed accessories",
           "Models with Gigabit Ethernet allow you to connect to the internet using an Ethernet cable",
@@ -120,6 +123,48 @@ const ITEM_LIST = [
       "MacBook Pro features the most advanced lineup of chips ever built for a pro laptop.",
     image: MacProImage,
     price: 2699.0,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Apple M4 Pro chip with 12‑core CPU, 16‑core GPU and 16‑core Neural Engine`,
+        bullets: [
+          "Run multiple apps, speed through thousands of photos",
+          "Effortlessly edit 4K video",
+          "With hardware-accelerated ray tracing, graphics look incredible on your favorite game titles",
+          "brings serious speed and capability so you can blaze through everyday activities and multitask across apps and video calls. And with a faster Neural Engine, AI features within your apps fly."
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `24GB unified memory`,
+        bullets: [
+          "Run multiple apps at once while performance remains fast and responsive",
+          "Add memory to run more apps simultaneously for faster, more fluid multitasking",
+          "Configure iMac with up to 32GB unified memory",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512GB SSD storage`,
+        bullets: [
+          "Delivers exceptional performance and speed when you start up your iMac, launch apps, open files, and browse libraries",
+          "Configure with up to 2TB of storage",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        description: `Three Thunderbolt 5 ports, HDMI port, SDXC card slot, headphone jack, MagSafe 3 port`,
+        bullets: [
+          "Thunderbolt ports let you connect high-speed accessories",
+          "An SDXC card slot is a type of Secure Digital (SD) card slot designed to support SDXC (Secure Digital eXtended Capacity) memory cards.",
+          "The MagSafe 3 port is Apple's latest iteration of its magnetic charging technology, primarily used on MacBook Pro models introduced from 2021 onward."
+        ],
+      },
+    ],
   },
   {
     id: 3,
@@ -130,16 +175,108 @@ const ITEM_LIST = [
       "MacBook Air sails through work and play. You can express yourself and get things done effortlessly with Apple Intelligence.",
     image: MacAir13Image,
     price: 999.0,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Apple M3 chip with 8‑core CPU, 8‑core GPU, 16‑core Neural Engine`,
+        bullets: [
+          "Run multiple apps, speed through thousands of photos",
+          "Effortlessly edit 4K video",
+          "With hardware-accelerated ray tracing, graphics look incredible on your favorite game titles",
+          "brings serious speed and capability so you can blaze through everyday activities and multitask across apps and video calls. And with a faster Neural Engine, AI features within your apps fly."
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16GB unified memory`,
+        bullets: [
+          "Run multiple apps at once while performance remains fast and responsive",
+          "Add memory to run more apps simultaneously for faster, more fluid multitasking",
+          "Configure iMac with up to 32GB unified memory",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `256GB SSD storage`,
+        bullets: [
+          "Delivers exceptional performance and speed when you start up your iMac, launch apps, open files, and browse libraries",
+          "Configure with up to 2TB of storage",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Thunderbolt ports let you connect high-speed accessories",
+          "The MagSafe 3 port is Apple's latest iteration of its magnetic charging technology, primarily used on MacBook Pro models introduced from 2021 onward."
+        ],
+      },
+    ],
   },
   {
     id: 4,
-    name: "Alienware Gaming Mouse AW920HImage",
+    name: "Alienware x16 R2",
     manufacturer: "Alienware",
     title: "Alienware x16 R2 - $2,999.99",
     description:
       "Alienware's most premium gaming laptop, made superior, now with the elevated performance of Intel® Core™ Ultra processors.",
     image: Alienwarex16R2Image,
     price: 2999.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Intel® Core™ Ultra 7 155H (24 MB cache, 16 cores, up to 4.8 GHz P-Core Turbo)`,
+        bullets: [
+          "Architecture: Meteor Lake",
+          "Cores and Threads: 16 cores (6 Performance, 8 Efficient, 2 Low-Power Efficient) with 22 threads",
+          "Base Clock Frequency: 3.8 GHz",
+          "Max Turbo Frequency: 4.8 GHz",
+          "Integrated Graphics: Intel Arc Graphics with 8 cores"
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16GB, 2x8GB, LPDDR5X, 7467MT/s`,
+        bullets: [
+          "Using two modules in a dual-channel configuration improves memory performance compared to a single-channel configuration.",
+          "Provides faster data transfer rates and lower power consumption than previous standards.",
+          "Higher MT/s translates to faster data transfer rates, improving overall performance in multitasking, gaming, and demanding applications."
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `1 TB, M.2, PCIe NVMe, SSD`,
+        bullets: [
+          "Provides ample storage space for operating systems, applications, games, and large files like videos or datasets.",
+          "A high-speed interface standard for connecting components.",
+          "Provides significantly faster data transfer speeds compared to older SATA-based SSDs.",
+          "Offers low latency and high throughput, making it ideal for tasks requiring fast read/write speeds."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Global headset jack",
+          "Micro-SD card reader",
+          "Type-C Port (Includes USB4®, 15W (3A/5V) Power Delivery, and DisplayPort 1.4)",
+          "Type-C Port (Includes USB 3.2 Gen 2, 15W (3A/5V) Power Delivery and DisplayPort 1.4)",
+          "HDMI 2.1 Output Port",
+          "Type-A USB 3.2 Gen 1 Port with PowerShare",
+          "Type-A USB 3.2 Gen 1 Port with PowerShare",
+          "Mini Display Port 1.4",
+          "Power/DC-In"
+        ],
+      },
+    ],
   },
   {
     id: 5,
@@ -150,6 +287,57 @@ const ITEM_LIST = [
       "Alienware's most powerful 18-inch gaming laptop. Downsize from your old desktop and scale up with the ultimate in gaming laptop performance.",
     image: ALIENWAREm18R2Image,
     price: 3099.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `14th Gen Intel® Core™i7 14700HX (20-Core, 33MB L3 Cache, up to 5.5GHz Max Turbo Frequency)`,
+        bullets: [
+          "Architecture: Raptor Lake-HX Refresh",
+          "Cores and Threads: 20 cores (8 Performance cores + 12 Efficiency cores), 28 threads",
+          "Integrated Graphics: Intel UHD Graphics",
+          "Thermal Design Power (TDP): 55W (Base), 157W (Max Turbo)",
+          "Integrated Graphics: Intel Arc Graphics with 8 cores"
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16 GB: 2 x 8 GB, DDR5, 5600 MT/s, non-ECC, dual-channel`,
+        bullets: [
+          "Using two modules in a dual-channel configuration improves memory performance compared to a single-channel configuration.",
+          "Provides faster data transfer rates and lower power consumption than previous standards.",
+          "Higher MT/s translates to faster data transfer rates, improving overall performance in multitasking, gaming, and demanding applications."
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `1 TB, M.2, PCIe NVMe, SSD`,
+        bullets: [
+          "This configuration provides sufficient memory for multitasking, gaming, and professional applications.",
+          "The latest standard in memory technology, offering significant improvements over DDR4 in speed, power efficiency, and bandwidth",
+          "Higher speeds result in faster data access, improving overall system performance.",
+          "Utilizes two memory modules to work together, effectively doubling the memory bandwidth compared to a single-channel configuration."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "2 USB 3.2 Gen 1 ports",
+          "1 USB 3.2 Gen 1 port with PowerShare",
+          "1 USB 3.2 Gen 1 Type-C port",
+          "2 Thunderbolt™ 4 Gen 2 Type-C® ports with DisplayPort Alt Mode/USB4",
+          "1 RJ45 Ethernet port",
+          "1 Universal audio jack",
+          "1 HDMI 2.1 port",
+          "1 power-adapter port",
+          "1 mini-Display port"
+        ],
+      },
+    ],
   },
   {
     id: 6,
@@ -160,6 +348,56 @@ const ITEM_LIST = [
       "Alienware's most advanced and most powerful desktop yet - perfect for gamers and streamers.",
     image: ALIENWAREAURORAR16Image,
     price: 2549.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Intel® Core™ i9 14900KF (68 MB cache, 24 cores, up to 6.0 GHz P-Core Thermal Velocity)`,
+        bullets: [
+          "Architecture: Raptor Lake Refresh",
+          "Cores and Threads: 24 cores (8 Performance cores with Hyper-Threading + 16 Efficiency cores), totaling 32 threads",
+          "Integrated Graphics: None (denoted by 'KF')",
+          "Thermal Design Power (TDP): 125W (base), up to 253W (maximum turbo)",
+          "Integrated Graphics: Intel Arc Graphics with 8 cores"
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `64 GB: 2 x 32 GB, DDR5, 5200 MT/s`,
+        bullets: [
+          "The latest generation of RAM, offering improved performance, higher bandwidth, and greater power efficiency compared to DDR4.",
+          "Provides ample memory for heavy multitasking, advanced professional workloads, and memory-intensive applications.",
+          "Enhances system performance, especially for applications that require high memory throughput."
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `1 TB, M.2, PCIe NVMe, SSD`,
+        bullets: [
+          "Provides a significant amount of storage, ideal for operating systems, games, applications, and large files like videos and datasets.",
+          "Compact and slim design, commonly 22 mm wide and 80 mm long (denoted as 2280).",
+          "Offers significantly faster data transfer rates compared to older SATA SSDs.",
+          "Provides high throughput and low latency, ideal for tasks requiring fast data access."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Global headset",
+          "(2x) USB 3.2 Gen 1 ports",
+          "USB 3.2 Gen 1 port with PowerShare technology",
+          "USB 3.2 Gen 2 Type-C® with PowerShare technology",
+          "Audio input/microphone In",
+          "(2x) USB 2.0 Type-A",
+          "(2x) USB 3.2 Gen 1 Type-A (5Gbps)",
+          "RJ-45 Killer™ E3100 Gigabit Ethernet"
+        ],
+      },
+    ],
   },
 
   {
@@ -171,6 +409,51 @@ const ITEM_LIST = [
       "The ViprTech Ghost (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games.",
     image: ViprTechGhostGamingComputerImage,
     price: 1593.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `AMD Ryzen 7 3700X (8-Core / 16-Thread @ 4.4Ghz Turbo)`,
+        bullets: [
+          "a versatile processor offering great value for its price, combining high performance with energy efficiency.",
+          "Its 8-core, 16-thread configuration makes it a solid choice for gaming enthusiasts, content creators, and professionals.",
+          
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `32GB DDR4 3200Mhz`,
+        bullets: [
+          "The latest generation of RAM, offering improved performance, higher bandwidth, and greater power efficiency compared to DDR4.",
+          "Provides ample memory for heavy multitasking, advanced professional workloads, and memory-intensive applications.",
+          "Multi-threaded capabilities make it suitable for video editing, 3D rendering, and software compilation."
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: ` 1TB NVMe SSD`,
+        bullets: [
+          "Offers faster data transfer rates and lower latency compared to older protocols like SATA.",
+          "A protocol designed specifically for SSDs, taking advantage of PCIe (Peripheral Component Interconnect Express) technology.",
+          "offers a perfect blend of capacity, speed, and efficiency for most users, whether for gaming, professional workloads, or general computing."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Other",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "PSU: 600 Watt (80+ Gold-Rated)",
+          "Cooling: 120mm Liquid Cooler",
+          "Motherboard: AM4",
+          "Case: ViprTech X3 White",
+          "Graphics: NVIDIA RTX 4060 Ti 8GB",
+        ],
+      },
+    ],
+
   },
 
   {
@@ -182,6 +465,52 @@ const ITEM_LIST = [
       "This powerful CLX RA is driven by an Intel Core i9 14900K 3.2GHz 24-Core processor, and 96GB of quick as lightning DDR5 memory! Coupled with GeForce RTX 4090 24GB graphics, for eye-stunning visuals.",
     image: CLXRAGamingDesktopImage,
     price: 9909.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Intel® Core™ i7 14700F (61 MB cache, 20 cores, up to 5.4 GHz Turbo)`,
+        bullets: [
+          "Architecture: Raptor Lake Refresh",
+          "Cores and Threads: 20 cores (8 Performance cores with Hyper-Threading + 12 Efficiency cores), totaling 28 threads",
+          "Integrated Graphics: None (requires a discrete GPU)"
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `64 GB: 2 x 32 GB, DDR5, 5200 MT/s`,
+        bullets: [
+          "Enables smooth gameplay in modern titles, especially with ultra-high-resolution textures and demanding game engines.",
+          "Supports high frame rates and reduced stuttering.",
+          "Large memory capacity accommodates heavy workloads without slowing down.",
+          "Ensures stability and performance in complex environments.",
+          "Enhances user experience by providing headroom for browser tabs, office applications, and background processes."
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `1 TB, M.2, PCIe NVMe, SSD`,
+        bullets: [
+          "A high-speed interface standard that connects the SSD to the motherboard.",
+          "Provides ample storage for operating systems, applications, games, videos, and large files.",
+          "Greatly reduces game loading times and enhances overall system responsiveness."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Other",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "PSU: 600 Watt (80+ Gold-Rated)",
+          "Cooling: 120mm Liquid Cooler",
+          "Motherboard: AM4",
+          "Case: ViprTech X3 White",
+          "Graphics: NVIDIA RTX 4060 Ti 8GB",
+        ],
+      },
+    ],
   },
   {
     id: 9,
@@ -192,6 +521,51 @@ const ITEM_LIST = [
       "Ramped up to give you more power for multi-tasking with a reputable Intel® Core™ i3 Processor1, speedy memory, and a large, vibrant display that boots up instantly.",
     image: HPChromebookPlusImage,
     price: 649.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `AMD Ryzen™ 3 7320U (up to 4.1 GHz max boost clock, 4 MB L3 cache, 4 cores, 8 threads)`,
+        bullets: [
+          "Processor family: AMD Ryzen™ 3 processor",
+          "Chipset: AMD Integrated SoC",
+          "Processor cache: 4 MB L3",
+          "Processor core: 4"
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `8 GB LPDDR5-5500 MT/s (onboard)`,
+        bullets: [
+          "Sufficient for light to moderate multitasking, such as web browsing, media streaming, and running standard office applications.",
+          "The latest iteration in the DDR series, designed for high performance and energy efficiency.",
+          "ideal for energy-efficient, portable devices aimed at light to moderate usage. ",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB SSD storage`,
+        bullets: [
+          "Provides sufficient space for the operating system, productivity software, a moderate number of games, multimedia files, and more.",
+          "Provides ample storage for operating systems, applications, games, videos, and large files.",
+          "Greatly reduces game loading times and enhances overall system responsiveness."
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "1 USB Type-C® 5Gbps signaling rate (supports data transfer only and does not support charging or external monitors)",
+          "USB Type-A 5Gbps signaling rate",
+          "AC smart pin",
+          "HDMI 1.4b",
+          "headphone/microphone combo",
+        ],
+      },
+    ],
   },
   {
     id: 10,
@@ -202,6 +576,48 @@ const ITEM_LIST = [
       "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
     image: LenovoImage,
     price: 3499.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `14th Generation Intel® Core™ i9-14900KF Processor (E-cores up to 4.40 GHz P-cores up to 5.60 GHz)`,
+        bullets: [
+          "Architecture: Raptor Lake Refresh",
+          "Cores and Threads: 24 cores (8 Performance-cores with Hyper-Threading + 16 Efficiency-cores), totaling 32 threads",
+          "the Intel Core i9-14900KF stands out as a versatile processor for high-performance desktops, delivering a balanced mix of processing power and energy efficiency.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `32 GB DDR5-4000MHz (UDIMM) - (2 x 16 GB)`,
+        bullets: [
+          "an excellent choice for gamers, content creators, and professionals seeking high performance and future-ready memory.",
+          "The dual-channel configuration ensures enhanced system performance for demanding tasks while providing sufficient capacity for multitasking and modern applications.",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `2 TB SSD M.2 2280 PCIe Gen4 TLC (2 x 1 TB)`,
+        bullets: [
+          "setup offers a perfect combination of speed, capacity, and reliability for gamers, professionals, and enthusiasts.",
+          "With the flexibility of configuration and cutting-edge performance, it caters to a wide range of needs.",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "2 x USB-A 2.0",
+          "2 x USB-A 3.2 Gen 2 (10Gbps)",
+          "2 x USB-A 2.0",
+          "2 x USB-A 3.2 Gen 1 (5Gbps)",
+          "USB-C 3.2 Gen 2 (20Gbps)",
+        ],
+      },
+    ],
   },
   {
     id: 11,
@@ -212,6 +628,48 @@ const ITEM_LIST = [
       "Create and work anywhere with our thinnest and lightest XPS, starting at only 2.6 lbs.[1]. AI-enabled with Intel® Core™ Ultra processors.",
     image: DellXPS13Image,
     price: 1999.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `13th Generation Intel® Core™ i7-13620H Processor (24MB Cache, up to 4.9GHz)`,
+        bullets: [
+          "Architecture: Raptor Lake Refresh",
+          "Cores and Threads: 24 cores (8 Performance-cores with Hyper-Threading + 16 Efficiency-cores), totaling 32 threads",
+          "the Intel Core i9-14900KF stands out as a versatile processor for high-performance desktops, delivering a balanced mix of processing power and energy efficiency.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16GB, 2x8GB, DDR5, 4800MT/s`,
+        bullets: [
+          "an excellent choice for gamers, content creators, and professionals seeking high performance and future-ready memory.",
+          "The dual-channel configuration ensures enhanced system performance for demanding tasks while providing sufficient capacity for multitasking and modern applications.",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB, M.2, PCIe NVMe, SSD`,
+        bullets: [
+          "setup offers a perfect combination of speed, capacity, and reliability for gamers, professionals, and enthusiasts.",
+          "With the flexibility of configuration and cutting-edge performance, it caters to a wide range of needs.",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "USB 3.2 Gen 2 Type-C™ port with DisplayPort",
+          "2 Thunderbolt™ 4 (USB Type-C™ 3.2 Gen 2) ports",
+          "1 headset (headphone and microphone combo) port",
+          "1 SD-card slot",
+          "1 Wedge-shaped lock slot",
+        ],
+      },
+    ],
   },
 
   {
