@@ -55,14 +55,21 @@ import LenovoLaptopImage from "../../static/images/LenovoLaptop.png";
 import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg";
 
 // ******************************* ICONS *******************************
-import AppleIcon from "@mui/icons-material/Apple";
 import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import ExtensionSharpIcon from '@mui/icons-material/ExtensionSharp';
+<<<<<<< HEAD
 import TvIcon from '@mui/icons-material/Tv';
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
 import PowerIcon from '@mui/icons-material/Power';
+=======
+import HomeIcon from '@mui/icons-material/Home';
+import MicIcon from '@mui/icons-material/Mic';
+import AlbumIcon from '@mui/icons-material/Album';
+import Battery50Icon from '@mui/icons-material/Battery50';
+import InputIcon from '@mui/icons-material/Input';
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
 
 const ITEM_LIST = [
   {
@@ -115,6 +122,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 2,
@@ -167,6 +175,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 3,
@@ -218,6 +227,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 4,
@@ -279,6 +289,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 5,
@@ -340,6 +351,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 6,
@@ -400,6 +412,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
 
   {
@@ -455,7 +468,7 @@ const ITEM_LIST = [
         ],
       },
     ],
-
+    size: 3,
   },
 
   {
@@ -513,6 +526,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 9,
@@ -568,6 +582,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 10,
@@ -620,6 +635,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
   {
     id: 11,
@@ -672,6 +688,7 @@ const ITEM_LIST = [
         ],
       },
     ],
+    size: 3,
   },
 
   {
@@ -683,6 +700,7 @@ const ITEM_LIST = [
       "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
     image: AsusRogImage,
     price: 1199.99,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -729,6 +747,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 13,
@@ -739,6 +760,7 @@ const ITEM_LIST = [
       "The ViprTech Reaper 3.0 (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games. ",
     image: ViprTechReaper3Image,
     price: 2049.99,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -784,6 +806,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 14,
@@ -794,6 +819,7 @@ const ITEM_LIST = [
       "Take a revolutionary leap into real-world hybrid performance with 12th Gen Intel® Core™, an innovative design that distributes processing power to where you need it most.",
     image: ViprTechAvalanche2Image,
     price: 979.99,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -837,6 +863,9 @@ const ITEM_LIST = [
       },
     ],
 
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 15,
@@ -847,6 +876,7 @@ const ITEM_LIST = [
       "The ViprTech Avalanche 2.0 (AMD) gaming PC comes fully equipped to take on most popular video games.",
     image: LenovoLaptopImage,
     price: 729.99,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -894,6 +924,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 16,
@@ -904,6 +937,7 @@ const ITEM_LIST = [
       "Enjoy intense and seamless gameplay with this ASUS ROG G16CHR gaming PC. Featuring Intel Core i7-14700F processor, 32GB DDR5 U-DIMM RAM, and NVIDIA GeForce RTX4070 GPU, this PC ensures smooth gaming and multitasking.",
     image: ASUSROGG16Image,
     price: 729.99,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -945,6 +979,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 17,
@@ -955,6 +992,7 @@ const ITEM_LIST = [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: ZonicGamingPCImage,
     price: 2285.97,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -997,6 +1035,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
 
   {
@@ -1008,6 +1049,7 @@ const ITEM_LIST = [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AQVINImage,
     price: 2285.97,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -1048,6 +1090,9 @@ const ITEM_LIST = [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 19,
@@ -1058,6 +1103,7 @@ const ITEM_LIST = [
       "Effortlessly beat your opponents with this MSI Codex R2 gaming PC. Equipped with Intel Core i5-12400F processor and 16GB RAM, this machine delivers smooth and seamless performance for gaming and multitasking.",
     image: MSICodexRImage,
     price: 1099.99,
+<<<<<<< HEAD
 
 features: [
   {
@@ -1100,6 +1146,9 @@ features: [
     ],
   },
 ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 20,
@@ -1110,6 +1159,7 @@ features: [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AcerMonitorImage,
     price: 169.99,
+<<<<<<< HEAD
 
 features: [
   {
@@ -1159,6 +1209,9 @@ features: [
   },
 ],
 
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 21,
@@ -1169,6 +1222,7 @@ features: [
       "Dell Pro Rugged 14 features Intel® Core™ Ultra processors with a dedicated NPU,allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged14Image,
     price: 2223.81,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -1217,6 +1271,9 @@ features: [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 22,
@@ -1227,6 +1284,7 @@ features: [
       "24x7 operations with dual hot-swappable batteries with up to 25-hour battery runtime and Express Charge Boost for up to a 35% charge in 15 minutes, so you can be always on.",
     image: Latitude5430RuggedImage,
     price: 2219.0,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -1275,6 +1333,9 @@ features: [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 23,
@@ -1285,6 +1346,7 @@ features: [
       "Dell Pro Rugged 13 features Intel® Core™ Ultra U-series and H-series processors, with a dedicated NPU, allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged13Image,
     price: 4949.0,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -1334,6 +1396,9 @@ features: [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 24,
@@ -1344,6 +1409,7 @@ features: [
       "The Dell Chromebook 3110 features rubberized edges and rounded corners to minimize drop impact, a spill-resistant keyboard with captive keys, plus hinge strength and micro-drop protection. ",
     image: Chromebook3110Image,
     price: 586.61,
+<<<<<<< HEAD
     features: [
       {
         icon: <ExtensionSharpIcon fontSize="large" />,
@@ -1387,6 +1453,9 @@ features: [
         ],
       },
     ],
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 25,
@@ -1397,7 +1466,11 @@ features: [
       "The first Copilot+ Latitude[1], and our first with Windows 11 Arm®, has powerful on-device AI and exceptional speed and efficiency in a premium Latitude design. ",
     image: Latitude7455Image,
     price: 586.61,
+<<<<<<< HEAD
     //TODO:
+=======
+    size: 3,
+>>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
 
   {
@@ -1409,6 +1482,7 @@ features: [
       "Work and play worry-free. For added peace of mind, Microsoft Complete has you covered for mechanical breakdown and accidental damage from handling.",
     image: SurfaceLaptopImage,
     price: 1449.99,
+    size: 3,
   },
   {
     id: 27,
@@ -1419,6 +1493,7 @@ features: [
       "Over twice the computing power makes this device the most powerful Surface yet.",
     image: SurfaceLaptopStudio2Image,
     price: 2699.99,
+    size: 3,
   },
 
   {
@@ -1430,6 +1505,7 @@ features: [
       "With the Razer Blade 15, true power will always be wherever you are.",
     image: RazerBlade15Image,
     price: 2699.99,
+    size: 3,
   },
   {
     id: 29,
@@ -1440,6 +1516,7 @@ features: [
       "Enjoy all the benefits of a portable gaming laptop with a larger 16:10 aspect ratio. ",
     image: DellG16Image,
     price: 1549.99,
+    size: 3,
   },
 
   //================= Accessories =================
@@ -1453,6 +1530,7 @@ features: [
       "Razer Linear Optical Switches Gen-2, Doubleshot PBT Keycaps, Sound Dampening Foam",
     image: RazerHuntsmanV2TenkeylessImage,
     price: 124.99,
+    size: 3,
   },
   {
     id: 31,
@@ -1463,6 +1541,7 @@ features: [
       "Kitty Ears, Stream Reactive Lighting, Razer HyperClear Cardioid Mic",
     image: RazerKittyEarHeadsetImage,
     price: 97.99,
+    size: 3,
   },
   {
     id: 32,
@@ -1473,6 +1552,7 @@ features: [
       "Edge-to-Edge Backlit Design, 15-Zone Chroma Lighting, Integrated USB 2.0 Port",
     image: RazerRGBMouseMatImage,
     price: 139.99,
+    size: 3,
   },
   {
     id: 33,
@@ -1482,6 +1562,7 @@ features: [
     description: "USB Camera with High-Performance Adaptive Light Sensor",
     image: RazerKiyoProImage,
     price: 168.99,
+    size: 3,
   },
 
   {
@@ -1493,6 +1574,7 @@ features: [
       "Customizable Wireless Gaming Mouse with Razer HyperScroll Tilt Wheel",
     image: RazerBasiliskV3ProImage,
     price: 178.99,
+    size: 3,
   },
   {
     id: 35,
@@ -1502,6 +1584,7 @@ features: [
     description: "GB LED Lamp with Multi-zone Lighting",
     image: RazerAetherLampProImage,
     price: 139.99,
+    size: 3,
   },
   {
     id: 36,
@@ -1511,6 +1594,7 @@ features: [
     description: "RGB USB Microphone with Tap-to-Mute",
     image: RazerSeirenV3ChromaImage,
     price: 189.99,
+    size: 3,
   },
   {
     id: 37,
@@ -1521,6 +1605,7 @@ features: [
       "Front-and-Back Dual Lighting, ultra-Wide Natural Illumination, compatible with all Monitor Sizes",
     image: RazerMonitorLightBarImage,
     price: 179.99,
+    size: 3,
   },
   {
     id: 38,
@@ -1531,6 +1616,7 @@ features: [
       "Expanded capabilities with 10 ports in one. Dock compatible with Windows and Mac devices",
     image: RazerThunderbolt4DockChromaImage,
     price: 408.99,
+    size: 3,
   },
   {
     id: 39,
@@ -1541,6 +1627,7 @@ features: [
       "OIA cooler has an optimized intake design to ensure greater heat transfer combined with fluid dynamic bearings for silent operation. ",
     image: RazerHanboChromaLiquidCoolerImage,
     price: 227.99,
+    size: 3,
   },
   {
     id: 40,
@@ -1550,6 +1637,7 @@ features: [
     description: "Ergonomic MMO Gaming Mouse for Left-Handed Users",
     image: RazerNagaLeftImage,
     price: 134.99,
+    size: 3,
   },
 
   {
@@ -1561,6 +1649,7 @@ features: [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreePetalMouseImage,
     price: 69.0,
+    size: 3,
   },
   {
     id: 42,
@@ -1571,6 +1660,7 @@ features: [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeFoundationKeyboardImage,
     price: 239.0,
+    size: 3,
   },
   {
     id: 43,
@@ -1581,6 +1671,7 @@ features: [
       "Discover the 1% Moru, a 68 layout-keyboard designed not just for typing, but for transforming everyday spaces into havens of serenity. ",
     image: LofreeMoruKeyboardImage,
     price: 239.0,
+    size: 3,
   },
   {
     id: 44,
@@ -1591,6 +1682,7 @@ features: [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeTransparentKeyboardImage,
     price: 219.0,
+    size: 3,
   },
 
   {
@@ -1602,6 +1694,7 @@ features: [
       "Slim, light, and ready to travel, Surface Arc Mouse is designed to conform to your hand and snaps flat to fit easily in your bag.",
     image: SurfaceArcMouseImage,
     price: 99.99,
+    size: 3,
   },
   {
     id: 46,
@@ -1612,6 +1705,37 @@ features: [
       "A beautifully designed, full-featured gaming keyboard offering programmable keys and dedicated volume control. Made for ultimate performance.",
     image: AlienwareKeyboardAW510KImage,
     price: 179.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "General",
+        description: `Overall Information`,
+        bullets: [
+          "detachable USB paracord cable, wireless dongle extender",
+          "Alienware Linear Mechanical Switches, PBT double-shot keycaps, on-board memory, full anti-ghosting",
+          "Dark Side of the Moon"
+        ],
+      },
+      {
+        icon: <InputIcon fontSize="large" />,
+        title: "Input Device",
+        description: `Input Details`,
+        bullets: [
+          "Lighting Per-key 16.8 Million RGB, AlienFXd",
+          "Alienware Linear Mechanical Switches",
+          "2m USB-A to USB-C paracord cable (detachable)"
+        ],
+      },
+      {
+        icon: <Battery50Icon fontSize="large" />,
+        title: "Battery",
+        description: `Run Time Details`,
+        bullets: [
+          "Up to 798 hours (2.4GHz) / Up to 1800 hours (Bluetooth)",
+        ],
+      },
+    ],
+    size: 4,
   },
   {
     id: 47,
@@ -1622,6 +1746,38 @@ features: [
       "Hear every step and relay every command with a gaming headset that supports Dolby Atmos®, Active Noise Cancelling and versatile connection options.",
     image: AlienwareHeadsetAW920HImage,
     price: 189.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "General",
+        description: `Overall Information`,
+        bullets: [
+          "Game console, portable electronics, computer",
+          "2.4GHz/Bluetooth/3.5mm",
+          "Touch control, fast charge",
+          "Lunar light"
+        ],
+      },
+      {
+        icon: <MicIcon fontSize="large" />,
+        title: "Sound",
+        description: `Audio Output`,
+        bullets: [
+          "Bluetooth / 2.4 GHz radio frequency",
+          "AlienFX 16.8 Million RGB colours",
+        ],
+      },
+      {
+        icon: <Battery50Icon fontSize="large" />,
+        title: "Battery",
+        description: `Run Time Details`,
+        bullets: [
+          "55 hour(s)*Up to 55 hours (Bluetooth), 30 hours (2.4Ghz)",
+          "performance based on tests with no LEDs on, at 50% volume. Battery life will vary"
+        ],
+      },
+    ],
+    size: 4,
   },
   {
     id: 48,
@@ -1632,6 +1788,36 @@ features: [
       "Conquer gaming marathons with a wireless mouse that’s crafted with 26,000 DPI, reliable connectivity, robust battery life.",
     image: AlienwareGamingMouseAW620MImage,
     price: 137.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "General",
+        description: `Overall Information`,
+        bullets: [
+          "Colors: Lunar light, dark side of the moon",
+          "Orientation: Right and left-handed",
+        ],
+      },
+      {
+        icon: <InputIcon fontSize="large" />,
+        title: "Input Device",
+        description: `Input Details`,
+        bullets: [
+          "Auto-calibration, adjustable scrolling wheel, nylon braided cord",
+          "50 G maximum acceleration, polling rate: 1000 Hz",
+          "650 inches per second"
+        ],
+      },
+      {
+        icon: <Battery50Icon fontSize="large" />,
+        title: "Battery",
+        description: `Run Time Details`,
+        bullets: [
+          "Run time with default lighting (out of box): up to 140 hours",
+        ],
+      },
+    ],
+    size: 4,
   },
   {
     id: 49,
@@ -1642,6 +1828,37 @@ features: [
       "Dual mode wired & wireless gaming mouse with rechargeable lithium ion battery & seven programmable buttons for performance that takes no prisoners.",
     image: AlienwareGamingMouseAW610MImage,
     price: 109.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "General",
+        description: `Overall Information`,
+        bullets: [
+          "Colors: Lunar light, dark side of the moon",
+          "Orientation: Right and left-handed",
+        ],
+      },
+      {
+        icon: <InputIcon fontSize="large" />,
+        title: "Input Device",
+        description: `Input Details`,
+        bullets: [
+          "Auto-calibration, adjustable scrolling wheel, nylon braided cord",
+          "7 programmable buttons, Omron technology, 20 million clicks",
+          "5 on-the-fly DPI settings, detachable cable, 16.8 million AlienFX lighting"
+        ],
+      },
+      {
+        icon: <Battery50Icon fontSize="large" />,
+        title: "Battery",
+        description: `Run Time Details`,
+        bullets: [
+          "Run time with default lighting (out of box): up to 116 hours",
+          "Run time without lighting: up to 350 hours",
+        ],
+      },
+    ],
+    size: 4,
   },
 
   {
@@ -1653,6 +1870,38 @@ features: [
       "irPods Pro 2 pairs with Apple Vision Pro to deliver Lossless Audio with ultra-low latency, for an unprecedented sound experience.",
     image: AirPodsPro2Image,
     price: 249.0,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "H2 Processor",
+        description: `Voice Isolation, Hey Siri and Siri Interactions`,
+        bullets: [
+          "Up to 6 hours of listening time on a single charge with Active Noise Cancellation enabled",
+          "Up to 30 hours of total listening time with Active Noise Cancellation enabled, using the case",
+          "Wireless Charging Case (USB-C) with MagSafe, Footnote ¹⁰ speaker for Find My with Precision Finding, and lanyard loop^"
+        ],
+      },
+      {
+        icon: <MicIcon fontSize="large" />,
+        title: "Siri",
+        description: `Support Apple Intelligence`,
+        bullets: [
+          "Intelligent assistant",
+          "Voice recognition",
+        ],
+      },
+      {
+        icon: <AlbumIcon fontSize="large" />,
+        title: "Sound",
+        description: ` Smart home hub`,
+        bullets: [
+          "Up to 2x more Active Noise Cancellation, Footnote ³ with Adaptive Audio and Transparency mode",
+          "Personalized Spatial Audio with dynamic head tracking",
+          "Hearing Protection feature, Conversation Boost and Background Sound"
+        ],
+      },
+    ],
+    size: 4,
   },
   {
     id: 51,
@@ -1663,6 +1912,36 @@ features: [
       "AirPods Max deliver stunningly detailed, high‑fidelity audio. Personalised Spatial Audio with dynamic head tracking for sound that surrounds you. ",
     image: AirPodsMaxImage,
     price: 779.0,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "H2 Processor",
+        description: `Voice Isolation, Hey Siri and Siri Interactions`,
+        bullets: [
+          "Up to 20 hours of listening time on a single charge",
+          "Dust-, sweat- and water-resistant"
+        ],
+      },
+      {
+        icon: <MicIcon fontSize="large" />,
+        title: "Siri",
+        description: `Support Apple Intelligence`,
+        bullets: [
+          "Intelligent assistant",
+          "Voice recognition",
+        ],
+      },
+      {
+        icon: <AlbumIcon fontSize="large" />,
+        title: "Sound",
+        description: ` Smart home hub`,
+        bullets: [
+          "Up to 2x more Active Noise Cancellation with Transparency mode",
+          "Personalized Spatial Audio with dynamic head tracking",
+        ],
+      },
+    ],
+    size: 4,
   },
   {
     id: 52,
@@ -1673,6 +1952,38 @@ features: [
       "Jam-packed with innovation, HomePod mini delivers unexpectedly big sound for a speaker of its size. ",
     image: HomePodMiniImage,
     price: 129.0,
+    features: [
+      {
+        icon: <AlbumIcon fontSize="large" />,
+        title: "Sound",
+        description: `Surprising sound for its size`,
+        bullets: [
+          "Full-range driver Dual force-cancelling passive radiators",
+          "Stereo pair capable",
+          "Multi-room audio"
+        ],
+      },
+      {
+        icon: <MicIcon fontSize="large" />,
+        title: "Siri",
+        description: `Support Apple Intelligence`,
+        bullets: [
+          "Intelligent assistant",
+          "Voice recognition",
+        ],
+      },
+      {
+        icon: <HomeIcon fontSize="large" />,
+        title: "Home Stub",
+        description: ` Smart home hub`,
+        bullets: [
+          "Sound Recognition",
+          "Temperature and humidity sensor",
+          "Private and secure"
+        ],
+      },
+    ],
+    size: 4,
   },
 ];
 
