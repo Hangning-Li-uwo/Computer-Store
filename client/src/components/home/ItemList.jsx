@@ -59,17 +59,11 @@ import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import ExtensionSharpIcon from '@mui/icons-material/ExtensionSharp';
-<<<<<<< HEAD
-import TvIcon from '@mui/icons-material/Tv';
-import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
-import PowerIcon from '@mui/icons-material/Power';
-=======
 import HomeIcon from '@mui/icons-material/Home';
 import MicIcon from '@mui/icons-material/Mic';
 import AlbumIcon from '@mui/icons-material/Album';
 import Battery50Icon from '@mui/icons-material/Battery50';
 import InputIcon from '@mui/icons-material/Input';
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
 
 const ITEM_LIST = [
   {
@@ -700,56 +694,7 @@ const ITEM_LIST = [
       "From progressing in-game to advancing in real life, Intel empowers you to be your best self.",
     image: AsusRogImage,
     price: 1199.99,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `Intel Core i5-14400F`,
-        bullets: [
-          "delivers solid performance for gaming and productivity tasks",
-          "Compatible with Intel 600 and 700 series motherboards, the i5-14400F supports both DDR4 and DDR5 memory, providing flexibility for various system configurations.",
-          "Given the lack of integrated graphics, pairing the i5-14400F with a discrete GPU is essential.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `16GB DDR5 U-DIMM RAM`,
-        bullets: [
-          "offering increased bandwidth and efficiency over previous generations.",   
-          "Lower CAS latency values can improve responsiveness. ",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `1TB M.2 2280 NVMe PCIe 4.0 SSD`,
-        bullets: [
-          "soffers high-speed storage suitable for gaming, video editing, and general computing.",
-          "High-performance SSDs can generate significant heat. ",
-          "ffering increased bandwidth and efficiency over previous generations",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Four USB 2.0 Type-A", 
-          "two USB 3.2 Gen 2 Type-A", 
-          "two USB 3.2 Gen 1 Type-A", 
-          "one 3.5mm combo audio jack", 
-          "two HDMI", 
-          "one Display port 1.4", 
-          "one PS2", 
-          "and three audio jacks",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 13,
@@ -760,55 +705,7 @@ const ITEM_LIST = [
       "The ViprTech Reaper 3.0 (AMD) gaming PC comes fully equipped to take on the most graphically intensive video games. ",
     image: ViprTechReaper3Image,
     price: 2049.99,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `AMD Ryzen 5 5600X (6-Core/12-Thread @ 4.6Ghz Turbo)`,
-        bullets: [
-          "delivers solid performance for gaming and productivity tasks",
-          "Compatible with Intel 600 and 700 series motherboards, the i5-14400F supports both DDR4 and DDR5 memory, providing flexibility for various system configurations.",
-          "Given the lack of integrated graphics, pairing the i5-14400F with a discrete GPU is essential.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `32GB DDR4 3200Mhz RAM`,
-        bullets: [
-          "offering increased bandwidth and efficiency over previous generations.",   
-          "Lower CAS latency values can improve responsiveness. ",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `1TB NVMe M.2 SSD`,
-        bullets: [
-          "soffers high-speed storage suitable for gaming, video editing, and general computing.",
-          "High-performance SSDs can generate significant heat. ",
-          "ffering increased bandwidth and efficiency over previous generations",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Other",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Graphics: AMD Radeon RX 580 8GB",
-          "Case: ViprTech X3 White (6x RGB fans)",
-          "Motherboard: AM4 Motherboard",
-          "Cooling: 120mm RGB Liquid Cooler",
-          "PSU: 600 Watt (80+ Gold-Rated)",
-          "OS: Windows 11 Pro",
-          "USB WiFi adapter",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 14,
@@ -819,53 +716,7 @@ const ITEM_LIST = [
       "Take a revolutionary leap into real-world hybrid performance with 12th Gen Intel® Core™, an innovative design that distributes processing power to where you need it most.",
     image: ViprTechAvalanche2Image,
     price: 979.99,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `AMD Ryzen 7 2700 (8-Core / 16-Thread @ 4.1Ghz Turbo)`,
-        bullets: [
-          "he processor performs well in gaming when paired with a capable GPU, although its single-threaded performance is slightly behind newer Ryzen 5000 and 7000 series processors.",
-          "Optimizes clock speeds dynamically for improved single-thread and multi-thread workloads.",
-          "Enhances performance when paired with adequate cooling solutions.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `32GB DDR4 3200`,
-        bullets: [
-          "A 32GB DDR4 3200MHz memory kit is an excellent choice for enhancing system performance in tasks such as gaming, content creation, and multitasking. ",   
-          "Lower CAS latency values can improve responsiveness. Balance between speed and latency based on your workload requirements.",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `1TB NVMe M.2 SSD`,
-        bullets: [
-          "A 1TB NVMe M.2 SSD offers high-speed storage suitable for various computing needs, including gaming, content creation, and general use",
-          "Ensure your motherboard has an available M.2 slot that supports NVMe PCIe SSDs.",
-          "For tasks like gaming or video editing, SSDs with higher read/write speeds are beneficial.",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "2x USB2.0",
-          "1x USB3.0",
-          "1x Aux",
-          "1x Mic",
-        ],
-      },
-    ],
-
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 15,
@@ -876,57 +727,7 @@ const ITEM_LIST = [
       "The ViprTech Avalanche 2.0 (AMD) gaming PC comes fully equipped to take on most popular video games.",
     image: LenovoLaptopImage,
     price: 729.99,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `12th Generation Intel® Core™ i5-12450HX`,
-        bullets: [
-          "a powerful mobile processor designed for high-performance laptops, part of Intel's Alder Lake series. ",
-          "Combines P-cores for single-threaded tasks (e.g., gaming) with E-cores for multitasking and background applications.",
-          "Optimizes task distribution between P-cores and E-cores for efficient performance.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `8 GB DDR5-4800MHz (SODIMM)`,
-        bullets: [
-          "designed to enhance laptop performance by providing higher data transfer rates and improved energy efficiency compared to DDR4 memory.",   
-          "suitable for general computing tasks. ",
-          "provides a cost-effective solution for upgrading laptops, operating at 4800 MT/s with a CAS latency of 40.",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `512 GB SSD M.2 2242 PCIe Gen4 QLC`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "SD Card Reader",
-          "HDMI",
-          "USB-A (USB 5Gbps)",
-          "USB-A (USB 5Gbps)",
-          "Power Input",
-          "USB-C® (5Gbps transfer rate)",
-          "RJ45 (Ethernet)",
-          "Headphone / Mic Combo",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 16,
@@ -937,51 +738,7 @@ const ITEM_LIST = [
       "Enjoy intense and seamless gameplay with this ASUS ROG G16CHR gaming PC. Featuring Intel Core i7-14700F processor, 32GB DDR5 U-DIMM RAM, and NVIDIA GeForce RTX4070 GPU, this PC ensures smooth gaming and multitasking.",
     image: ASUSROGG16Image,
     price: 729.99,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `Intel Core i7-13700F`,
-        bullets: [
-          "offer competitive base and boost clock speeds, with boost frequencies reaching up to 5.4 GHz in recent models, providing responsive performance across various workloads.",
-          "High-performance processors can generate significant heat. Adequate cooling solutions are essential to maintain optimal performance and longevity.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `16 GB DDR4`,
-        bullets: [
-          "a versatile choice for enhancing system performance across various computing tasks. ",
-          "provides a cost-effective solution for upgrading laptops, operating at 4800 MT/s with a CAS latency of 40.",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `512 GB Solid State Drive (SSD)`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "2x USB 3.2 Gen 1 Type-C",
-          "2x USB 3.2 Gen 1 Type-A",
-          "2x USB 3.2 Gen 2 Type-A",
-          "DisplayPort 1.4",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 17,
@@ -992,52 +749,7 @@ const ITEM_LIST = [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: ZonicGamingPCImage,
     price: 2285.97,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `Intel® Core™ i7 14700FF`,
-        bullets: [
-          "With a maximum turbo frequency of 5.4 GHz, it effectively handles modern gaming titles, especially when paired with a capable discrete GPU.",
-          "A base TDP of 65W ensures energy efficiency during standard operations, while the higher turbo TDP allows for enhanced performance under intensive tasks.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `64 GB: 2 x 32 GB, DDR5, 5200 MT/s`,
-        bullets: [
-          "offers substantial capacity and high-speed performance, ideal for demanding applications such as gaming, content creation, and professional workloads. ",
-          "provides a cost-effective solution for upgrading laptops, operating at 4800 MT/s with a CAS latency of 40.",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `512 GB Solid State Drive (SSD)`,
-        bullets: [
-          "provides high-speed storage suitable for various computing needs, including gaming, content creation, and general use. ",
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Global headset",
-          "(2x) USB 3.2 Gen 1 ports",
-          "USB 3.2 Gen 1 port with PowerShare technology",
-          "USB 3.2 Gen 2 Type-C® with PowerShare technology",
-          "Rear L/R Surround Output",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
 
   {
@@ -1049,106 +761,18 @@ const ITEM_LIST = [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AQVINImage,
     price: 2285.97,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `3.4 GHz core_i7`,
-        bullets: [
-          "offer competitive base and boost clock speeds, with boost frequencies reaching up to 5.4 GHz in recent models, providing responsive performance across various workloads.",
-          "High-performance processors can generate significant heat. Adequate cooling solutions are essential to maintain optimal performance and longevity.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `32 GB DDR4`,
-        bullets: [
-          "a versatile choice for enhancing system performance across various computing tasks. ",
-          "provides a cost-effective solution for upgrading laptops, operating at 4800 MT/s with a CAS latency of 40.",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `1 TB SSD`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "USB3.0",
-          "hdmi", 
-          "displayport", 
-          "USB2.0",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 19,
-    name: "MSI Codex R2 Gaming PC",
+    name: "MSI Codex R Gaming PC",
     manufacturer: "Codex R",
-    title: "MSI Codex R2 Gaming PC - $1699.99",
+    title: "MSI Codex R Gaming PC - $1099.99",
     description:
       "Effortlessly beat your opponents with this MSI Codex R2 gaming PC. Equipped with Intel Core i5-12400F processor and 16GB RAM, this machine delivers smooth and seamless performance for gaming and multitasking.",
     image: MSICodexRImage,
     price: 1099.99,
-<<<<<<< HEAD
-
-features: [
-  {
-    icon: <ExtensionSharpIcon fontSize="large" />,
-    title: "processor",
-    description: `Intel Core i7-14700F`,
-    bullets: [
-      "offer competitive base and boost clock speeds, with boost frequencies reaching up to 5.4 GHz in recent models, providing responsive performance across various workloads.",
-      "High-performance processors can generate significant heat. Adequate cooling solutions are essential to maintain optimal performance and longevity.",
-    ],
-  },
-  {
-    icon: <MemoryIcon fontSize="large" />,
-    title: "Memory",
-    description: `32 GB DDR5`,
-    bullets: [
-      "Ideal for high-performance gaming PCs, especially when combined with modern GPUs and CPUs. ",
-      "Suitable for video editing, 3D modeling, and software that requires large amounts of RAM.",
-      "Perfect for tasks like simulations, rendering, and large-scale computations.",
-    ],
-  },
-  {
-    icon: <StorageIcon fontSize="large" />,
-    title: "Storage",
-    description: `1 TB Solid State Drive (SSD)`,
-    bullets: [
-      "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-      "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-      "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-    ],
-  },
-  {
-    icon: <FlashOnIcon fontSize="large" />,
-    title: "Ports",
-    // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-    bullets: [
-      "3x USB 3.1 Gen 2",
-      "3x Display Ports",
-      "2x USB Type-C",
-    ],
-  },
-],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 20,
@@ -1159,59 +783,7 @@ features: [
       "Elevate your gaming experience with Zonic Gaming PC ! For over 17 years, we've crafted custom gaming and business PCs using reliable components.",
     image: AcerMonitorImage,
     price: 169.99,
-<<<<<<< HEAD
-
-features: [
-  {
-    icon: <TvIcon fontSize="large" />,
-    title: "Display Type",
-    description: `34" LED-backlit LCD monitor / TFT active matrix`,
-    bullets: [
-      "offer competitive base and boost clock speeds, with boost frequencies reaching up to 5.4 GHz in recent models, providing responsive performance across various workloads.",
-      "High-performance processors can generate significant heat. Adequate cooling solutions are essential to maintain optimal performance and longevity.",
-    ],
-  },
-  {
-    icon: <DesktopWindowsIcon fontSize="large" />,
-    title: "Dimensions & Weight",
-    // description: `16 GB DDR4`,
-    bullets: [
-      "With stand - width: 80.79 cm - depth: 23.41 cm - height: 42.73 cm",
-      "Without stand - width: 80.79 cm - depth: 8.58 cm - height: 36.63 cm - weight: 7.7 kg",
-      "Shipping Weight: 14.95 kg",
-
-    ],
-  },
-  {
-    icon: <PowerIcon fontSize="large" />,
-    title: "Power",
-    // description: `512 GB Solid State Drive (SSD)`,
-    bullets: [
-      "Input Voltage: AC 100-240 V (50/60 Hz)",
-      "Power Consumption Stand by: 0.3 Watt",
-      "Power Consumption (On mode): 29.9 W",
-      "Power Consumption (Off Mode): 0.2 Watt",
-      "Power Consumption (Max): 90 Watt",
-    ],
-  },
-  {
-    icon: <FlashOnIcon fontSize="large" />,
-    title: "Ports",
-    // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-    bullets: [
-      "2 x HDMI",
-      "DisplayPort 1.4",
-      "USB 3.2 Gen 1 upstream",
-      "3 x USB 3.2 Gen 1 downstream",
-      "USB 3.2 Gen 1 downstream with Battery Charging 1.2",
-      "Audio line-out",
-    ],
-  },
-],
-
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 21,
@@ -1222,58 +794,7 @@ features: [
       "Dell Pro Rugged 14 features Intel® Core™ Ultra processors with a dedicated NPU,allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged14Image,
     price: 2223.81,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `11th Gen Intel® Core™ i5-1135G7`,
-        bullets: [
-          "Handles everyday tasks such as web browsing, document editing, and media consumption efficiently.",
-          "Multitasking: The 4-core/8-thread configuration allows for smooth multitasking and responsiveness.",
-          "Graphics Performance: The integrated Intel Iris Xe Graphics G7 provides improved graphics capabilities over previous generations, supporting casual gaming and media editing."
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `8 GB: 1 x 8 GB, DDR4, 3200 MT/s`,
-        bullets: [
-          "operates at 3200 MT/s with a CAS latency of 22, suitable for laptops and compact systems requiring SODIMM form factor.",
-          "Designed for desktops, this UDIMM module offers 3200 MT/s speed and CL22 latency, ensuring reliable performance for everyday tasks. ",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `256 GB, M.2, PCIe NVMe, SSD, Class 35`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Stylus",
-          "Stylus lanyard",
-          "microSD Card reader / Nano SIM slot",
-          "2nd TBT4 (Optional) / USB 3.2 Gen 2 Type-C",
-          "RJ-45 Network port",
-          "RS-232 Serial port",
-          "HDMI",
-          "TBT4 / USB 3.2 Gen 2 Type-C",
-          "2x USB 3.2 Gen 1 Type-A",
-          "Universal Audio Jack",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 22,
@@ -1284,58 +805,7 @@ features: [
       "24x7 operations with dual hot-swappable batteries with up to 25-hour battery runtime and Express Charge Boost for up to a 35% charge in 15 minutes, so you can be always on.",
     image: Latitude5430RuggedImage,
     price: 2219.0,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `11th Gen Intel® Core™ i5-1145G7`,
-        bullets: [
-          "Handles everyday tasks such as web browsing, document editing, and media consumption efficiently.",
-          "Multitasking: The 4-core/8-thread configuration allows for smooth multitasking and responsiveness.",
-          "Graphics Performance: The integrated Intel Iris Xe Graphics G7 provides improved graphics capabilities over previous generations, supporting casual gaming and media editing.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `16 GB: 2 x 8 GB, DDR4, 3200 MT/ss`,
-        bullets: [
-          "features a low-profile design suitable for compact builds, with a CAS latency of 16 and support for Intel XMP 2.0 for easy overclocking",
-          "combines high performance with customizable RGB lighting, featuring a CAS latency of 16 and support for Intel XMP 2.0",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `512 GB, M.2, PCIe NVMe, SSD, Class 40`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Stylus",
-          "Stylus lanyard",
-          "microSD Card reader / Nano SIM slot",
-          "2nd TBT4 (Optional) / USB 3.2 Gen 2 Type-C",
-          "RJ-45 Network port",
-          "RS-232 Serial port",
-          "HDMI",
-          "TBT4 / USB 3.2 Gen 2 Type-C",
-          "2x USB 3.2 Gen 1 Type-A",
-          "Universal Audio Jack",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 23,
@@ -1346,59 +816,7 @@ features: [
       "Dell Pro Rugged 13 features Intel® Core™ Ultra U-series and H-series processors, with a dedicated NPU, allowing apps using AI to run faster and smoother in any condition.",
     image: DellProRugged13Image,
     price: 4949.0,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `11th Gen Intel® Core™ i5-1135G7`,
-        bullets: [
-          "Efficient for tasks like web browsing, document editing, and multimedia consumption.",
-          "cores and 8 threads make it adept at multitasking.",
-          "Graphics Performance: The integrated Intel Iris Xe Graphics G7 provides improved graphics capabilities over previous generations, supporting casual gaming and media editing.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `8 GB: 1 x 8 GB, DDR4, 3200 MT/s`,
-        bullets: [
-          "a cost-effective way to enhance your system's performance, providing improved responsiveness and multitasking capabilities.",
-          "features a low-profile design suitable for compact builds, with a CAS latency of 16 and support for Intel XMP 2.0 for easy overclocking",
-          "combines high performance with customizable RGB lighting, featuring a CAS latency of 16 and support for Intel XMP 2.0",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `256 GB, M.2, PCIe NVMe, SSD, Class 35`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "Stylus",
-          "Stylus lanyard",
-          "microSD Card reader / Nano SIM slot",
-          "2nd TBT4 (Optional) / USB 3.2 Gen 2 Type-C",
-          "RJ-45 Network port",
-          "RS-232 Serial port",
-          "HDMI",
-          "TBT4 / USB 3.2 Gen 2 Type-C",
-          "2x USB 3.2 Gen 1 Type-A",
-          "Universal Audio Jack",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 24,
@@ -1409,53 +827,7 @@ features: [
       "The Dell Chromebook 3110 features rubberized edges and rounded corners to minimize drop impact, a spill-resistant keyboard with captive keys, plus hinge strength and micro-drop protection. ",
     image: Chromebook3110Image,
     price: 586.61,
-<<<<<<< HEAD
-    features: [
-      {
-        icon: <ExtensionSharpIcon fontSize="large" />,
-        title: "processor",
-        description: `Intel® Celeron™ N4500 (Dual Core, up to 2.8GHz, 4M Cache, 6W), 4GB Memory, 64GB Storage, HDMI`,
-        bullets: [
-          "a dual-core processor from Intel's Jasper Lake series, introduced in early 2021.",
-          "Designed for budget-friendly laptops and compact devices, it offers a balance between performance and energy efficiency.",
-          "cores and 8 threads make it adept at multitasking.",
-        ],
-      },
-      {
-        icon: <MemoryIcon fontSize="large" />,
-        title: "Memory",
-        description: `4 GB: LPDDR4, 2933 MT/s`,
-        bullets: [
-          "a cost-effective way to enhance your system's performance, providing improved responsiveness and multitasking capabilities.",
-          "features a low-profile design suitable for compact builds, with a CAS latency of 16 and support for Intel XMP 2.0 for easy overclocking",
-          "combines high performance with customizable RGB lighting, featuring a CAS latency of 16 and support for Intel XMP 2.0",
-        ],
-      },
-      {
-        icon: <StorageIcon fontSize="large" />,
-        title: "Storage",
-        description: `64 GB eMMC, on-board`,
-        bullets: [
-          "offers a compact and high-speed storage solution suitable for ultrabooks, tablets, and mini PCs.",
-          "offer higher storage density at a lower cost but may have lower endurance compared to TLC (Triple-Level Cell) SSDs. ",
-          "compact M.2 2242 form factor makes it ideal for thin-and-light devices. ",
-        ],
-      },
-      {
-        icon: <FlashOnIcon fontSize="large" />,
-        title: "Ports",
-        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
-        bullets: [
-          "1 USB 3.2 Gen 1 Type-C® port with DisplayPort Alt mode",
-          "1 USB 3.2 Gen 1 Type-A port with PowerShare",
-          "1 headset (headphone and microphone combo) port",
-          "1 HDMI 1.4 port (optional)",
-        ],
-      },
-    ],
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
   {
     id: 25,
@@ -1466,11 +838,7 @@ features: [
       "The first Copilot+ Latitude[1], and our first with Windows 11 Arm®, has powerful on-device AI and exceptional speed and efficiency in a premium Latitude design. ",
     image: Latitude7455Image,
     price: 586.61,
-<<<<<<< HEAD
-    //TODO:
-=======
     size: 3,
->>>>>>> 2936f16fc4e919d13040c3b3eb65dd96b6262c26
   },
 
   {
