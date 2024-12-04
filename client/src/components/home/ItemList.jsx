@@ -56,7 +56,7 @@ import LenovoLaptopImage from "../../static/images/LenovoLaptop.png";
 import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg";
 
 // TODO: adding item
-// import TurtleBeachImage from "../../static/images/TurtleBeach.jpg";
+import TurtleBeachImage from "../../static/images/TurtleBeach.png";
 
 // ******************************* ICONS *******************************
 import MemoryIcon from "@mui/icons-material/Memory";
@@ -1682,7 +1682,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 29,
+    id: 28,
     name: "Dell G16 Gaming Laptop",
     manufacturer: "Dell",
     title: "Dell G16 Gaming Laptop - $1549.99",
@@ -1735,6 +1735,56 @@ const ITEM_LIST = [
   },
 
   //================= Accessories =================
+  {
+    id: 30,
+    name: "Turtle Beach Kone XP Air Wireless Mouse",
+    manufacturer: "Turtle Beach",
+    title: "Turtle Beach Kone XP Air Wireless Mouse - $169.98",
+    description:
+      "Refined ergonomic Kone shape, Multi-button design and 4D wheel with 29 programmable inputs",
+    image: TurtleBeachImage,
+    price: 169.98,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Operating System: WIndows 10",
+          "Hardware Platform: PC, Linux, Mac",
+          "Color: white",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Keyboard: 99.79g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Height: 4.01cm",
+          "Width: 12.6cm",
+          "Depth: 7.19cm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Power source: battery powered",
+          "Batteries: 1 Lithium Polymer batteries required (included)",
+        ],
+      },
+    ],
+    size: 3,
+  },
 
   {
     id: 30,
