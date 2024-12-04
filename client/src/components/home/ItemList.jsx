@@ -56,7 +56,7 @@ import LenovoLaptopImage from "../../static/images/LenovoLaptop.png";
 import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg";
 
 // TODO: adding item
-import TurtleBeachImage from "../../static/images/TurtleBeach.jpg";
+// import TurtleBeachImage from "../../static/images/TurtleBeach.jpg";
 
 // ******************************* ICONS *******************************
 import MemoryIcon from "@mui/icons-material/Memory";
