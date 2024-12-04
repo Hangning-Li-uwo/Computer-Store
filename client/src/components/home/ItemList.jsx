@@ -1631,7 +1631,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 27,
+    id: 29,
     name: "Surface Laptop Studio2",
     manufacturer: "Microsoft",
     title: "Surface Laptop Studio2 - $2,699.99",
@@ -1682,7 +1682,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 28,
+    id: 30,
     name: "Dell G16 Gaming Laptop",
     manufacturer: "Dell",
     title: "Dell G16 Gaming Laptop - $1549.99",
@@ -1736,7 +1736,7 @@ const ITEM_LIST = [
 
   //================= Accessories =================
   {
-    id: 30,
+    id: 31,
     name: "Turtle Beach Kone XP Air Wireless Mouse",
     manufacturer: "Turtle Beach",
     title: "Turtle Beach Kone XP Air Wireless Mouse - $169.98",
@@ -1787,7 +1787,7 @@ const ITEM_LIST = [
   },
 
   {
-    id: 30,
+    id: 32,
     name: "Razer Huntsman V2 Tenkeyless",
     manufacturer: "Razer",
     title: "Razer Huntsman V2 Tenkeyless - $124.99",
@@ -1840,7 +1840,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 31,
+    id: 33,
     name: "Razer Headset with Kitty Ears V2",
     manufacturer: "Razer",
     title: "Razer Kitty Ears V2 - $97.99",
@@ -1890,7 +1890,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 32,
+    id: 34,
     name: "Razer RGB Mouse Mat",
     manufacturer: "Razer",
     title: "Razer RGB Mouse Mat - $139.99",
@@ -1939,7 +1939,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 33,
+    id: 35,
     name: "Razer Kiyo Pro",
     manufacturer: "Razer",
     title: "Razer Kiyo Pro - $168.99",
@@ -1986,7 +1986,7 @@ const ITEM_LIST = [
   },
 
   {
-    id: 34,
+    id: 36,
     name: "Razer Basilisk V3 Pro",
     manufacturer: "Razer",
     title: "Razer Basilisk V3 Pro - $178.99",
@@ -2037,7 +2037,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 35,
+    id: 37,
     name: "Razer Aether Lamp Pro",
     manufacturer: "Razer",
     title: "Razer Aether Lamp Pro - $139.99",
@@ -2086,7 +2086,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 36,
+    id: 38,
     name: "Razer Seiren V3 Chroma",
     manufacturer: "Razer",
     title: "Razer Seiren V3 Chroma - $189.99",
@@ -2131,7 +2131,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 37,
+    id: 39,
     name: "Razer Aether Monitor Light Bar",
     manufacturer: "Razer",
     title: "Razer Aether Monitor Light Bar - $179.99",
@@ -2180,7 +2180,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 38,
+    id: 40,
     name: "Razer Thunderbolt4 Dock Chroma",
     manufacturer: "Razer",
     title: "Razer Thunderbolt4 Dock Chroma - $408.99",
@@ -2229,7 +2229,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 39,
+    id: 41,
     name: "Razer Hanbo Chroma Liquid Cooler",
     manufacturer: "Razer",
     title: "Razer Hanbo Chroma Liquid Cooler - $227.99",
@@ -2277,7 +2277,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 40,
+    id: 42,
     name: "Razer Naga Left-Handed Edition",
     manufacturer: "Razer",
     title: "Razer Naga Left-Handed Edition - $134.99",
@@ -2324,7 +2324,7 @@ const ITEM_LIST = [
   },
 
   {
-    id: 41,
+    id: 43,
     name: "Lofree Petal Mouse",
     manufacturer: "Lofree",
     title: "Lofree Petal Mouse - $69.00",
@@ -2372,7 +2372,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 42,
+    id: 44,
     name: "Lofree Foundation Keyboard",
     manufacturer: "Lofree",
     title: "Lofree Foundation Keyboard - $239.00",
@@ -2426,7 +2426,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 43,
+    id: 45,
     name: "Lofree Moru Keyboard",
     manufacturer: "Lofree",
     title: "Lofree 1% Moru Keyboard - $239.00",
@@ -2477,7 +2477,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 44,
+    id: 46,
     name: "Lofree Transparent Keyboard",
     manufacturer: "Lofree",
     title: "Lofree 1% Transparent Keyboard - $219.00",
@@ -2530,7 +2530,7 @@ const ITEM_LIST = [
   },
 
   {
-    id: 45,
+    id: 47,
     name: "Surface Arc Mouse",
     manufacturer: "Microsoft",
     title: "Surface Arc Mouse - $99.99",
@@ -2580,7 +2580,7 @@ const ITEM_LIST = [
     size: 3,
   },
   {
-    id: 46,
+    id: 48,
     name: "Alienware Keyboard AW510K",
     manufacturer: "Alienware",
     title: "Alienware Keyboard AW510K - $179.99",
@@ -2621,7 +2621,7 @@ const ITEM_LIST = [
     size: 4,
   },
   {
-    id: 47,
+    id: 49,
     name: "Alienware Headset AW920H",
     manufacturer: "Alienware",
     title: "Alienware Headset AW920H - $189.99",
@@ -2663,7 +2663,7 @@ const ITEM_LIST = [
     size: 4,
   },
   {
-    id: 48,
+    id: 50,
     name: "Alienware Gaming Mouse AW620M",
     manufacturer: "Alienware",
     title: "Alienware Gaming Mouse AW620M - $137.99",
@@ -2703,7 +2703,7 @@ const ITEM_LIST = [
     size: 4,
   },
   {
-    id: 49,
+    id: 51,
     name: "Alienware Gaming Mouse AW610",
     manufacturer: "Alienware",
     title: "Alienware Gaming Mouse AW610 - $109.99",
@@ -2745,7 +2745,7 @@ const ITEM_LIST = [
   },
 
   {
-    id: 50,
+    id: 52,
     name: "AirPods Pro 2",
     manufacturer: "Apple",
     title: "AirPods Pro 2 - $249.00",
@@ -2787,7 +2787,7 @@ const ITEM_LIST = [
     size: 4,
   },
   {
-    id: 51,
+    id: 53,
     name: "AirPods Max",
     manufacturer: "Apple",
     title: "AirPods Max - $779.00",
@@ -2827,7 +2827,7 @@ const ITEM_LIST = [
     size: 4,
   },
   {
-    id: 52,
+    id: 54,
     name: "HomePod Mini",
     manufacturer: "Apple",
     title: "HomePod Mini - $129.00",
