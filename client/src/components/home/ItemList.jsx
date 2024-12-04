@@ -1,3 +1,4 @@
+// Importing img
 import iMacImage from "../../static/images/iMac.png";
 import MacProImage from "../../static/images/MacPro.png";
 import AirPodsMaxImage from "../../static/images/AirPodsMax.png";
@@ -54,6 +55,9 @@ import DellG16Image from "../../static/images/DellG16.png";
 import LenovoLaptopImage from "../../static/images/LenovoLaptop.png";
 import RazerNagaLeftImage from "../../static/images/RazerNagaLeftHanded.jpg";
 
+// TODO: adding item
+import TurtleBeachImage from "../../static/images/TurtleBeach.jpg";
+
 // ******************************* ICONS *******************************
 import MemoryIcon from "@mui/icons-material/Memory";
 import StorageIcon from "@mui/icons-material/Storage";
@@ -67,6 +71,11 @@ import InputIcon from '@mui/icons-material/Input';
 import TvIcon from '@mui/icons-material/Tv';
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
 import PowerIcon from '@mui/icons-material/Power';
+import ScaleIcon from '@mui/icons-material/Scale';
+import StraightenIcon from '@mui/icons-material/Straighten';
+import GridViewIcon from '@mui/icons-material/GridView';
+import InfoIcon from '@mui/icons-material/Info';
+
 
 const ITEM_LIST = [
   {
@@ -1423,6 +1432,45 @@ const ITEM_LIST = [
       "The first Copilot+ Latitude[1], and our first with Windows 11 Arm®, has powerful on-device AI and exceptional speed and efficiency in a premium Latitude design. ",
     image: Latitude7455Image,
     price: 586.61,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Snapdragon(R) X Elite X1E-80-100`,
+        bullets: [
+          "a high-performance ARM-based system-on-chip (SoC) designed for Windows laptops. ",
+          " features 12 Oryon CPU cores arranged in three clusters, all capable of reaching up to 4.0 GHz under single or dual-threaded loads, and up to 3.4 GHz when all cores are active.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `32 GB: LPDDR5X, 8448 MT/s (onboard)`,
+        bullets: [
+          " ideal for multitasking, running intensive applications like software development tools, virtual machines, 3D modeling, and gaming.",
+          " an advanced memory type known for its high bandwidth, energy efficiency, and ability to handle data-intensive applications.",
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB, M.2 2230, TLC PCIe Gen 4 NVMe, SSD`,
+        bullets: [
+          "provides a decent amount of storage for the operating system, applications, and data. It is suitable for general productivity, gaming, and moderate multimedia work.",
+          "Creative workflows, including photo and video editing, due to its high-speed capabilities. ",
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "2 USB 4 Type-C® ports with DisplayPort 2.1 and Power Delivery",
+          "1 USB 3.2 Gen 1 Type-A port",
+          "1 Universal audio jack",
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1435,6 +1483,47 @@ const ITEM_LIST = [
       "Work and play worry-free. For added peace of mind, Microsoft Complete has you covered for mechanical breakdown and accidental damage from handling.",
     image: SurfaceLaptopImage,
     price: 1449.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Qualcomm Snapdragon X Plus`,
+        bullets: [
+          " a high-performance, ARM-based system-on-chip (SoC) designed for Windows laptops, offering a balance between robust processing capabilities and energy efficiency. ",
+          "  demonstrates competitive performance.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16 GB: LPDDR5X`,
+        bullets: [
+          " an advanced memory type known for its high bandwidth, energy efficiency, and ability to handle data-intensive applications.",,
+          " ideal for multitasking, running intensive applications like software development tools, virtual machines, 3D modeling, and gaming.",
+          
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB`,
+        bullets: [
+          "Creative workflows, including photo and video editing, due to its high-speed capabilities. ",
+          "provides a decent amount of storage for the operating system, applications, and data. It is suitable for general productivity, gaming, and moderate multimedia work.",
+          
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "2 x USB-C with USB4", 
+          "1 x USB-A 3.1",
+          "USB-C, Surface Connect for display",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1446,6 +1535,46 @@ const ITEM_LIST = [
       "Over twice the computing power makes this device the most powerful Surface yet.",
     image: SurfaceLaptopStudio2Image,
     price: 2699.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Qualcomm Snapdragon X Plus`,
+        bullets: [
+          " a high-performance, ARM-based system-on-chip (SoC) designed for Windows laptops, offering a balance between robust processing capabilities and energy efficiency. ",
+          "  demonstrates competitive performance.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `32GB: LPDDR5X`,
+        bullets: [
+          " an advanced memory type known for its high bandwidth, energy efficiency, and ability to handle data-intensive applications.",,
+          " ideal for multitasking, running intensive applications like software development tools, virtual machines, 3D modeling, and gaming.",
+          
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: ``,
+        bullets: [
+          "Provides ample storage for a wide range of applications, including operating systems, software, multimedia files, and games.",
+          "Ideal for users needing extensive storage without sacrificing speed.",          
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "3 x USB Ports", 
+          "2 x USB Type-C Ports",
+          "1 x USB Type-A Ports",
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1458,6 +1587,98 @@ const ITEM_LIST = [
       "With the Razer Blade 15, true power will always be wherever you are.",
     image: RazerBlade15Image,
     price: 2699.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `Qualcomm Snapdragon X Plus`,
+        bullets: [
+          " a high-performance, ARM-based system-on-chip (SoC) designed for Windows laptops, offering a balance between robust processing capabilities and energy efficiency. ",
+          "  demonstrates competitive performance.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16 GB: LPDDR5X`,
+        bullets: [
+          " an advanced memory type known for its high bandwidth, energy efficiency, and ability to handle data-intensive applications.",,
+          " ideal for multitasking, running intensive applications like software development tools, virtual machines, 3D modeling, and gaming.",
+          
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB`,
+        bullets: [
+          "Creative workflows, including photo and video editing, due to its high-speed capabilities. ",
+          "provides a decent amount of storage for the operating system, applications, and data. It is suitable for general productivity, gaming, and moderate multimedia work.",
+          
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "2 x USB-C with USB4", 
+          "1 x USB-A 3.1",
+          "USB-C, Surface Connect for display",
+        ],
+      },
+    ],
+    size: 3,
+  },
+  {
+    id: 27,
+    name: "Surface Laptop Studio2",
+    manufacturer: "Microsoft",
+    title: "Surface Laptop Studio2 - $2,699.99",
+    description:
+      "Over twice the computing power makes this device the most powerful Surface yet.",
+    image: SurfaceLaptopStudio2Image,
+    price: 2699.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `NVIDIA GeForce MX150`,
+        bullets: [
+          "a high-performance, ARM-based system-on-chip (SoC) designed for Windows laptops, offering a balance between robust processing capabilities and energy efficiency. ",
+          "demonstrates competitive performance.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `16 GB DDR4`,
+        bullets: [
+          " an advanced memory type known for its high bandwidth, energy efficiency, and ability to handle data-intensive applications.",,
+          " ideal for multitasking, running intensive applications like software development tools, virtual machines, 3D modeling, and gaming.",
+          
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `1 TB SSD`,
+        bullets: [
+          "Provides ample storage for a wide range of applications, including operating systems, software, multimedia files, and games.",
+          "Ideal for users needing extensive storage without sacrificing speed.",          
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "3 x USB 3.0", 
+          "2 x USB Type-C Ports",
+          "1 x USB Type-A Ports",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1469,6 +1690,47 @@ const ITEM_LIST = [
       "Enjoy all the benefits of a portable gaming laptop with a larger 16:10 aspect ratio. ",
     image: DellG16Image,
     price: 1549.99,
+    features: [
+      {
+        icon: <ExtensionSharpIcon fontSize="large" />,
+        title: "processor",
+        description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "a high-performance processor designed for laptops, offering robust capabilities for both productivity and gaming.",
+          "Ideal for: Power users, gamers, and professionals needing a laptop processor that balances performance, efficiency, and future-proofing.",
+        ],
+      },
+      {
+        icon: <MemoryIcon fontSize="large" />,
+        title: "Memory",
+        description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Can support some gaming and creative workflows but may be a limiting factor for heavy multitasking or professional-grade applications.",
+          " Ideal for light to moderate tasks such as browsing, office applications, and media consumption.",
+          
+        ],
+      },
+      {
+        icon: <StorageIcon fontSize="large" />,
+        title: "Storage",
+        description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "a high-performance storage solution optimized for modern laptops and desktops. ",
+          "Ideal for users needing extensive storage without sacrificing speed.",          
+        ],
+      },
+      {
+        icon: <FlashOnIcon fontSize="large" />,
+        title: "Ports",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "1 x USB Type-A Ports",
+          "3 x USB 3.0", 
+          "2 x USB Type-C Ports",
+          
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1483,6 +1745,48 @@ const ITEM_LIST = [
       "Razer Linear Optical Switches Gen-2, Doubleshot PBT Keycaps, Sound Dampening Foam",
     image: RazerHuntsmanV2TenkeylessImage,
     price: 124.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Device Type: Keyboard - US-English Layout",
+          "Backlit: AlienFX RGB / 16.8 million colours", 
+          "Interface: USB",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Keyboard: 0.787kg (1.735lb)",
+          "USB-A to C Detachable Cable: 0.049kg (0.08lb)",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Height: 5.57cm (2.19\")",
+          "Width: 36.73cm (14.46\")",
+          "Depth: 14.77cm (5.81\")",
+        ],
+      },
+      {
+        icon: <GridViewIcon fontSize="large" />,
+        title: "Miscellaneous",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Colour： Lunar light",
+          "Cable Length: 2m",          
+          "Included Accessories: USB-C to USB-A cable (2m)",  
+          "Image Colour Disclaimer: The displayed product image may be a different colour",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1494,6 +1798,45 @@ const ITEM_LIST = [
       "Kitty Ears, Stream Reactive Lighting, Razer HyperClear Cardioid Mic",
     image: RazerKittyEarHeadsetImage,
     price: 97.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Frequenct response: Keyboard - 20Hz - 20kHz",
+          "Volumn control: up and down", 
+          "Interface: USB",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 325g (0.72lb)",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Cable Length: 2.0cm 6.56 ft",
+          "Inner earcup Diameter: 61mm x43mm"
+        ],
+      },
+      {
+        icon: <GridViewIcon fontSize="large" />,
+        title: "Miscellaneous",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Colour： Quartz",
+          "Microphone Style: built into the earcups",          
+          "Included Accessories: USB-C to USB-A cable (2m)",  
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1505,6 +1848,44 @@ const ITEM_LIST = [
       "Edge-to-Edge Backlit Design, 15-Zone Chroma Lighting, Integrated USB 2.0 Port",
     image: RazerRGBMouseMatImage,
     price: 139.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Full Backlit Illumnivated Surface",
+          "Integrated USB 2.0 Port",
+          "Detachable USB Type C Cable",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 325g (0.72lb)",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 278mm ",
+          "Width: 360mm",
+        ],
+      },
+      {
+        icon: <GridViewIcon fontSize="large" />,
+        title: "Miscellaneous",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Mat type: Hard", 
+          "Surface: Micro-textured",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1515,6 +1896,42 @@ const ITEM_LIST = [
     description: "USB Camera with High-Performance Adaptive Light Sensor",
     image: RazerKiyoProImage,
     price: 168.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Image quality settings customization: Yes",
+          "Audio codec: 16bit 32kHz",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 325g (0.72lb)",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Cable Length: 2m ",
+        ],
+      },
+      {
+        icon: <GridViewIcon fontSize="large" />,
+        title: "Miscellaneous",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Connection type: USB", 
+          "Surface: Micro-textured",
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1527,6 +1944,46 @@ const ITEM_LIST = [
       "Customizable Wireless Gaming Mouse with Razer HyperScroll Tilt Wheel",
     image: RazerBasiliskV3ProImage,
     price: 178.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Max sensitivity: 30000",
+          "Max speed (IPS): 750",
+          "Max acceleration (G): 70",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 112 g /3.95 oz (excluding cable)",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 130 mm",
+          "Width: 75.4 mm",
+          "Height: 42.5 mm",
+        ],
+      },
+      {
+        icon: <GridViewIcon fontSize="large" />,
+        title: "Connectivity",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Razer HyperSpeed ireliss", 
+          "Bluetooth",
+          "Wired - USB Type C Cable",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1537,6 +1994,45 @@ const ITEM_LIST = [
     description: "GB LED Lamp with Multi-zone Lighting",
     image: RazerAetherLampProImage,
     price: 139.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Voice assitant: Amazon Alexa, Google Assistant",
+          "White color temperature: 2700 - 6500K",
+          "LED lifetime: 25,000 hours",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 1.12 kg",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 100 mm",
+          "Width: 100 mm",
+          "Height: 214 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Input: 100-240V-50/60Hz", 
+          "Output: 5V 2A (10W)",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1547,6 +2043,41 @@ const ITEM_LIST = [
     description: "RGB USB Microphone with Tap-to-Mute",
     image: RazerSeirenV3ChromaImage,
     price: 189.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Refuency response: 20 Hz - 20kHz",
+          "Polar Patterns: Supercardioid",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 408.23 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Parcel dimension: 25.9 x 10.8 x 10.2 cm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "5 V / 500 mA",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1558,6 +2089,44 @@ const ITEM_LIST = [
       "Front-and-Back Dual Lighting, ultra-Wide Natural Illumination, compatible with all Monitor Sizes",
     image: RazerMonitorLightBarImage,
     price: 179.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Voice assitant: Amazon Alexa, Google Assistant",
+          "White color temperature: 2700 - 6500K", 
+          "LED lifetime: 25,000 hours",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 450g / 1lb",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 451 mm",
+          "Width: 99 mm",
+          "Height: 43 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Power Input: 5V 2A"
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1569,6 +2138,44 @@ const ITEM_LIST = [
       "Expanded capabilities with 10 ports in one. Dock compatible with Windows and Mac devices",
     image: RazerThunderbolt4DockChromaImage,
     price: 408.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "finish: black aluminum",
+          "Audio: 3.5 mm headphone", 
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 338g / 0.75lb",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 190 mm ",
+          "Width: 74.5 mm",
+          "Height: 27 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power Adapter and Connection",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "135W Power adapter",
+          "Connection Type: Thunderbolt 4",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1580,6 +2187,43 @@ const ITEM_LIST = [
       "OIA cooler has an optimized intake design to ensure greater heat transfer combined with fluid dynamic bearings for silent operation. ",
     image: RazerHanboChromaLiquidCoolerImage,
     price: 227.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "RGb: Addressable LEDs",
+          "Type: RGB display", 
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 1180 g / 2.60 lb",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 275 mm ",
+          "Width: 123 mm",
+          "Height: 30 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power Adapter and Connection",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "12 V 3 A",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1590,6 +2234,42 @@ const ITEM_LIST = [
     description: "Ergonomic MMO Gaming Mouse for Left-Handed Users",
     image: RazerNagaLeftImage,
     price: 134.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Color: Black",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 217.72 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 119 mm ",
+          "Width: 75 mm",
+          "Height: 3 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Batteries: 1 Lithium Ion batteries required",
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1602,6 +2282,43 @@ const ITEM_LIST = [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreePetalMouseImage,
     price: 69.0,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Bluetooth name: Petal Lofree",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 85 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 96 mm ",
+          "Width: 64 mm",
+          "Height: 38.3 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power and Connection",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Power Source: AA 1.5V battery",
+          "Connection: Bluetooth 5.0/ 2.4GHz",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1613,6 +2330,49 @@ const ITEM_LIST = [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeFoundationKeyboardImage,
     price: 239.0,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Number of Keys: 84 (75%)",
+          "Switch: Lofree × GATERON Foundation",
+          "Backlight: White LED (warm tone",
+          "Switch Type: Linear",
+          "Keycaps: ABS/PC",
+          "Stem: POM",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 972 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 325 mm ",
+          "Width: 160.5 mm",
+          "Height: 44.4 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Battery Capacity: 4000mAh",
+          "Charging Time: about 5 hours",
+          "Working Time: Up to 14 days",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1624,6 +2384,46 @@ const ITEM_LIST = [
       "Discover the 1% Moru, a 68 layout-keyboard designed not just for typing, but for transforming everyday spaces into havens of serenity. ",
     image: LofreeMoruKeyboardImage,
     price: 239.0,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Bluetooth Name: 1% Lofree",
+          "Number of keys: 68 (65%)",
+          "Switch: Lofree × GATERON Foundation",
+          "Switch Type: Linear",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 812 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 320 mm ",
+          "Width: 117 mm",
+          "Height: 40 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Battery capacity: 2000mAh",
+          "Working Time : Up to 60 hours",
+        ],
+      },
+    ],
     size: 3,
   },
   {
@@ -1635,6 +2435,47 @@ const ITEM_LIST = [
       "Drawing inspiration from the design of makeup foundations, our keyboard showcases a palette of foundation shades.",
     image: LofreeTransparentKeyboardImage,
     price: 219.0,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Bluetooth Name: 1% Lofree",
+          "Number of keys: 68 (65%)",
+          "Number of Multimedia keys: 12",
+          "Backlight: White, 7 effects, 4 levels of brightness",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 812 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 306 mm ",
+          "Width: 144 mm",
+          "Height: 30.6 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Battery capacity: 2000mAh",
+          "Working Time : Up to 60 hours",
+          "Charging Port: USB-C",
+        ],
+      },
+    ],
     size: 3,
   },
 
@@ -1647,6 +2488,45 @@ const ITEM_LIST = [
       "Slim, light, and ready to travel, Surface Arc Mouse is designed to conform to your hand and snaps flat to fit easily in your bag.",
     image: SurfaceArcMouseImage,
     price: 99.99,
+    features: [
+      {
+        icon: <InfoIcon fontSize="large" />,
+        title: "General",
+        // description: `MagSafe 3 charging port, Two Thunderbolt / USB 4 ports, and 30W USB-C Power Adapter`,
+        bullets: [
+          "Interface: Bluetooth 4.1",
+          "Buttons: 2 buttons, right and left click",
+          "Wireless frequency: 2.4GHz frequency range",
+        ],
+      },
+      {
+        icon: <ScaleIcon fontSize="large" />,
+        title: "WEIGHT",
+        // description: `12th Generation Intel® Core™ i7-12700H, 24 MB cache, 14 cores, up to 4.70 GHz`,
+        bullets: [
+          "Approximate weight: 82.49 g",
+        ],
+      },
+      {
+        icon: <StraightenIcon fontSize="large" />,
+        title: "DIMENSIONS",
+        // description: `8 GB, 1 x 8 GB, DDR5, 4800 MHz`,
+        bullets: [
+          "Length: 131 mm ",
+          "Width: 55 mm",
+          "Height: 14 mm",
+        ],
+      },
+      {
+        icon: <PowerIcon fontSize="large" />,
+        title: "Power",
+        // description: `512 GB, M.2 2280, PCIe NVMe Gen4 x4, SSD`,
+        bullets: [
+          "Battery Life : Up to 60 months",
+          "Charging Port: USB-C",
+        ],
+      },
+    ],
     size: 3,
   },
   {
