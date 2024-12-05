@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### ** Warning ** :
+If you wish to run this project, please set Mailgun API Key by yourself since this keys should not be submitted in the Github (violate third party service's rules)
+
+In addition, you should send us an email to give you access to Firestore.
+
 ### `npm start`
 
 Runs the app in the development mode.\
