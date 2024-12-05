@@ -1,3 +1,76 @@
+commit e64532b9adec3ad491e95e73863a998c81ac9c89
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Thu Dec 5 14:00:51 2024 -0500
+
+    final notes
+
+commit 35b77177db9b66b052a3081e7f9cdd8783a703e4
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Dec 4 17:28:56 2024 -0500
+
+    fixing bug: duplicate id
+
+commit f4966404d07838218f7920fdc7ff7113ac4ab403
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Dec 4 17:15:17 2024 -0500
+
+    adding items
+
+commit 3383bc70325475c703a34993c741c8bc9b3def0d
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Dec 4 17:00:23 2024 -0500
+
+    fix bug
+
+commit 747dba09a402f71d3b3813561bd5602fdf2b6182
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Wed Dec 4 16:56:24 2024 -0500
+
+    adding specs
+
+commit 1db2a52a29d089d356acc50cc3a45dde1885a6f2
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Dec 2 22:26:59 2024 -0500
+
+    adding features field that can be mapped to tech specs
+
+commit 6e92fb955211fabffd1c914fffaf007d4876ff96
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Dec 2 22:10:53 2024 -0500
+
+    adding Itemlist
+
+commit f9c95de0306cc06ac23c013d9a3c285cf7109f94
+Merge: ec363af 2936f16
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Dec 2 22:04:11 2024 -0500
+
+    adding features field that can be mapped to tech specs
+
+commit ec363aff655e48c2fb78909c70d5f0fd4be7dcaa
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Mon Dec 2 21:35:02 2024 -0500
+
+    adding fields that can be mapped to tech specs
+
+commit 2936f16fc4e919d13040c3b3eb65dd96b6262c26
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sun Dec 1 11:16:24 2024 -0500
+
+    added specs
+
+commit 4fa2c6bd37e1fd46953d50fbaa846be97bad60bc
+Author: Yihan Xie <yxie389@uwo.ca>
+Date:   Sun Dec 1 01:30:51 2024 -0500
+
+    adding tech specs
+
+commit 5630208d467663c426aa93a791844340c9abc649
+Author: Hangning Li <h623li@uwaterloo.ca>
+Date:   Sat Nov 30 17:18:26 2024 -0500
+
+    added gitlog.txt
+
 commit 76fce0795b213c233a09d143e04ee8d5b80935c7
 Author: Hangning Li <h623li@uwaterloo.ca>
 Date:   Wed Nov 27 22:15:02 2024 -0500
