@@ -5,11 +5,15 @@ import { doc, getDoc, collection } from "firebase/firestore";
 
 const AuthContext = React.createContext();
 
-export function useAuth() {
+export const useAuth = () => {
+  //console.log("22222##################currentUser", AuthContext);
   return useContext(AuthContext);
-}
+};
 
-export function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
+
+  console.log("99999999##################currentUser");
+
   const [currentUser, setcurrentUser] = useState(() => {
     const currentUser = reactLocalStorage.get("currentUser", undefined);
     if (currentUser === undefined || currentUser === null) {
@@ -32,9 +36,14 @@ export function AuthProvider({ children }) {
             const userDoc = await getDoc(userDocRef);
 
             if (userDoc.exists()) {
+  
+              reactLocalStorage.set("currentUser", userDoc.data())              
               // console.log("User data:", userDoc.data());
               setcurrentUser(userDoc.data()); 
-              reactLocalStorage.set("currentUser", userDoc.data())
+              
+              console.log("55555##################currentUser", userDoc.data());
+
+  
             } else {
               console.log("No such user document!");
             }

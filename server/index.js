@@ -324,16 +324,21 @@ app.post("/api/orders", async (req, res) => {
     });
   }
 
+  console.log('111111######### /api/orders received');
+
   try {
     const orders = [];
     for (const orderId of ordersRef) {
       const orderDocRef = doc(firestore, "Orders", orderId);
       const orderSnapshot = await getDoc(orderDocRef);
 
+ 
       if (orderSnapshot.exists()) {
         orders.push({ id: orderId, ...orderSnapshot.data() });
       }
     }
+
+    console.log('22222######### orders:', orders);
 
     res.status(200).send(orders);
   } catch (error) {

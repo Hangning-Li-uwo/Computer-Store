@@ -13,6 +13,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Dashboard from "./components/home/Dashboard";
 import OAuthSignIn from "./components/auth/OAuthSignIn";
 import { Toaster } from 'sonner';
+import OrderHistory from "./components/home/OrderHistory";
 
 function App() {
   React.useEffect(() => {
@@ -40,9 +41,10 @@ function App() {
         <Toaster position="top-right" />
           <Router>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/home" element={<Dashboard />} />
-              <Route path="/sign-in" element={<OAuthSignIn />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/home" element={<Dashboard />} />
+            <Route path="/sign-in" element={<OAuthSignIn />} />
+            <Route path="/orders" element={<OrderHistory />} />
             </Routes>
           </Router>
         </AuthProvider>

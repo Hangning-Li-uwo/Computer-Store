@@ -1,6 +1,16 @@
 // state.js
 import { createSlice } from "@reduxjs/toolkit";
 
+// // In your component where the action is dispatched (e.g., Dashboard.js)
+// import App from "../App"
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import { useAuth } from "../context/AuthContext";
+
+// {/* <AuthProvider>
+//   <App />
+// </AuthProvider> */}
+
 const initialState = {
   mode: "light",
   user: null,
@@ -53,9 +63,20 @@ export const authSlice = createSlice({
       state.items = state.items.filter((_, index) => index !== action.payload);
     },
     setOrderItem: (state, action) => {
+      state.user.ordersRef = Array.from(state.user?.ordersRef || []);
       state.user?.ordersRef.push(action.payload);
+      console.log("77777############## state.user?.ordersRef:",state.user?.ordersRef); 
       // Clear cart items
       state.items = [];
+
+    //   // Update currentUser in AuthContext to reflect changes
+    // if (currentUser) {
+    //   const updatedUser = { ...currentUser, ordersRef: [...currentUser.ordersRef, newOrder] };
+    //   setCurrentUser(updatedUser); // Sync with context
+    //   localStorage.setItem("currentUser", JSON.stringify(updatedUser)); // Optionally save to localStorage
+    // }
+
+
     },
     deleteOrderItem: (state, action) => {
       if(state.user.ordersRef){

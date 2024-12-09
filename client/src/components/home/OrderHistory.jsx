@@ -44,15 +44,27 @@ export default function OrderHistory() {
   const [orders, setOrders] = useState([]);
   const [isLoading, setLoading] = useState(true);
   // const user = useSelector((state) => state.user);
-  const {currentUser, loading } = useAuth();
-
+  // const {currentUser,loading } = useAuth();
+  // 从 Redux 中获取 state.user.ordersRef
+  const ordersRef = useSelector((state) => state.user?.ordersRef);
   // load state
   useEffect(() => {
     const loadOrders = async () => {
       setLoading(true);
-      if (currentUser?.ordersRef) {
-        const fetchedOrders = await fetchOrders(currentUser.ordersRef);
 
+      console.log("33333########### Redux ordersRef:", ordersRef);
+
+      if (ordersRef) {
+        const fetchedOrders = await fetchOrders(ordersRef);
+
+      //currentUser.ordersRef = Array.from(currentUser?.ordersRef || []);
+      // console.log("##################currentUser ordersRef", currentUser?.ordersRef);
+      // console.log("currentUser:", currentUser); // 调试信息
+      // console.log("loading:", loading);         // 调试信息
+      // if (currentUser?.ordersRef) {
+      
+      //   const fetchedOrders = await fetchOrders(currentUser.ordersRef);
+    
         setTimeout(() => {
           setOrders(fetchedOrders);
           setLoading(false);
@@ -65,7 +77,11 @@ export default function OrderHistory() {
     };
 
     loadOrders();
-  }, [currentUser?.ordersRef]);
+  }, [ordersRef]);
+
+  // useEffect(() => {
+  //   console.log("333333#############Updated Orders:", orders);
+  // }, [orders]); // 每次 orders 变化时都会执行
 
   return (
     <Box
